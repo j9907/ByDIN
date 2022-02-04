@@ -31,6 +31,7 @@
             align-items: center;
             padding: 4.5px 0;
             width: 100%;
+            height: 100px;
         }
         img{
             padding: 5px;
@@ -90,7 +91,6 @@
 </head>
 <body>
  <div id="headerwrp">
- 	
         <div id="headermain">
             <div class="h_main">
                 <a href="${cpath }"><img src="${cpath }/resources/img/logo/logo.png" width="166px"></a>
@@ -115,7 +115,11 @@
         	<li class="h_menu">의자</li>
         </ul>
      	<div class="h_right">
-     		<p>쿠폰/혜택</p>
+     		<ul class="h_ul">
+     			<li class="h_menu">로그인</li>
+     			<li class="h_menu">회원가입</li>
+     			<li class="h_menu">쿠폰/혜택</li>
+     		</ul>
      	</div>
  	</div>
     </div>

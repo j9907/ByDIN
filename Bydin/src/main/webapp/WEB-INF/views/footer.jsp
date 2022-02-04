@@ -4,60 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style type="text/css">
-	div,dody,a,ul,li{
-		margin:0;
-		padding:0;
-	}
-	#footer{
-		max-width: 1200px;
-		width:100%;
-		margin:0 auto;
-		padding:40px 12px 80px;
-		clear:both;
-		border-top:1px solid lightgray;
-		background-color: #fff;
-	}
-	.f_info_top{
-		display: flex;
-		margin-bottom: 30px;
-	}
-	#f_left{
-		font-weight: bold;
-	}
-	.f_text_title{
-		font-size: 18px;
-	}
-	.f_text{
-		font-size:23pt;
-	}
-	.f_text_t{
-		font-size: 12px;
-		color:#cecece;
-	}
-	.f_ul{
-		list-style: none;
-		float: left;
-		font-size: 10pt;
-		margin-bottom: 10px;
-	}
-	.f_ul > li{
-		float: left;
-		font-weight: bold;
-		margin-right:20px;
-	}
-	.f_info_bot{
-		display: flex;
-	}
-	.f_info_mid{
-		display: flex;
-		
-	}
-	.f_bot p {
-		display: inline-block;
-		line-height: 1.4em;
-	}
-</style>
+<link type="text/css" rel="stylesheet" href="${cpath }/resources/css/footer.css">
 </head>
 <body>
 <div id="footer">
