@@ -86,6 +86,10 @@
         	height: 560px;
         	margin:0 auto;
         }
+        .h_a{
+        	color:inherit;
+        	text-decoration: none;
+        }
     </style>
 <title>ByDIN</title>
 </head>
@@ -116,7 +120,7 @@
         </ul>
      	<div class="h_right">
      		<ul class="h_ul">
-     			<li class="h_menu">로그인</li>
+     			<li class="h_menu"><a class="h_a" href="${cpath }/member/login">로그인</a></li>
      			<li class="h_menu">회원가입</li>
      			<li class="h_menu">쿠폰/혜택</li>
      		</ul>
