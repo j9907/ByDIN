@@ -97,7 +97,7 @@
  <div id="headerwrp">
         <div id="headermain">
             <div class="h_main">
-                <a href="${cpath }"><img src="${cpath }/resources/img/logo/logo.png" width="166px"></a>
+                <a href="${cpath }/"><img src="${cpath }/resources/img/logo/logo.png" width="166px"></a>
                 <div class="h_search">
                     <input id="h_search" type="text" name="search" placeholder="검색어를 입력하세요">
                     <img class="input_img" src="${cpath }/resources/img/icon/검색.jpg" height="40px" width="40px">
@@ -121,7 +121,7 @@
      	<div class="h_right">
      		<ul class="h_ul">
      			<li class="h_menu"><a class="h_a" href="${cpath }/member/login">로그인</a></li>
-     			<li class="h_menu">회원가입</li>
+     			<li class="h_menu"><a class="h_a" href="${cpath }/member/signup">회원가입</a></li>
      			<li class="h_menu">쿠폰/혜택</li>
      		</ul>
      	</div>
