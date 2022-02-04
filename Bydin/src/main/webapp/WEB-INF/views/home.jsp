@@ -33,6 +33,7 @@
             transform: translate3d(888px, 0px, 0px);      /* 이건 슬라이드 타입 */
         }
 </style>
+
 <div id="main">
 
 <div id="m_slide">
