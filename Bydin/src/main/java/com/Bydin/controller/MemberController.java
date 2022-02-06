@@ -1,5 +1,7 @@
 package com.Bydin.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,21 @@ public class MemberController {
 	@GetMapping("login")
 	public void login() {}
 	
+	@PostMapping("login")
+	public ModelAndView login(MemberDTO member,HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		MemberDTO dto = ms.selectuser(member);
+		if(dto != null) {session.setAttribute("login", dto);}
+		mav.setViewName(dto != null ? "redirect:/" : "login");
+		return mav;
+	}
+	
+	@GetMapping("logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
+	
 	@GetMapping("signup")
 	public void signup() {}
 	
@@ -28,6 +45,9 @@ public class MemberController {
 		System.out.println(member.getGender());
 		int row = ms.insertuser(member);
 		System.out.println(row);
-		return null;
+		mav.setViewName(row != 0 ? "member/joinend" : "member/signup");
+		return mav;
 	}
+	
+	
 }

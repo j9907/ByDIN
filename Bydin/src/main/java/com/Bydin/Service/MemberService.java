@@ -15,4 +15,8 @@ public class MemberService {
 		return dao.insertuser(member);
 	}
 
+	public MemberDTO selectuser(MemberDTO member) {
+		return dao.selectuser(member);
+	}
+
 }

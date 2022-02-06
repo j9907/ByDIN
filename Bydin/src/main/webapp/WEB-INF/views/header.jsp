@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
  <style>
+
  		body,div,a,ul,li,p{
  			margin:0;
  			padding:0;
@@ -89,6 +90,7 @@
         .h_a{
         	color:inherit;
         	text-decoration: none;
+        	
         }
     </style>
 <title>ByDIN</title>
@@ -120,7 +122,7 @@
         </ul>
      	<div class="h_right">
      		<ul class="h_ul">
-     			<li class="h_menu"><a class="h_a" href="${cpath }/member/login">로그인</a></li>
+     			<li class="h_menu"><a class="h_a" href="${cpath }/${empty login ? 'member/login' : 'member/logout'}">${empty login ? '로그인' : '로그아웃' }</a></li>
      			<li class="h_menu"><a class="h_a" href="${cpath }/member/signup">회원가입</a></li>
      			<li class="h_menu">쿠폰/혜택</li>
      		</ul>
