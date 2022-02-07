@@ -84,9 +84,10 @@
             margin-bottom: 50px;
             margin-top:20px;
             max-width: 1270px;
+            height:2500px;
         }
-        #slider {
-            width: 900px;
+        #m_slider {
+            width: 1200px;
             height: 500px;
             margin: 0 auto;
         }
@@ -97,7 +98,7 @@
             /* display: flex; */
             justify-content: center;
             align-items: center;
-            color: white;
+            /* color: white; */
             position: absolute;
             z-index: 0;
             /* transform: translate3d(-888px, 0px, 0px);        */  /* 이건 슬라이드 타입 */
@@ -106,7 +107,11 @@
         .slider_item img {
             top: 85px;
             height: 500px;
-            width: 900px;
+            width: 1200px;
+        }
+        .slider_item div {
+        	font-size: 30px;
+        	text-align: center;
         }
         .showing {
             z-index: 1;
@@ -127,6 +132,19 @@
         .h_m{
         	font-weight: bold;
         }
+        #m_video {
+        	padding-top: 100px;
+        	width: 1200px;
+        	margin: 0 auto;
+        	border: 0;
+        }
+        #m_video video{
+        	width: 1200px;
+        	border: 0;
+        }
+        .h_r_a{
+        	color: #fff;
+        }
     </style>
 <title>ByDIN</title>
 </head>
@@ -140,7 +158,9 @@
                     <img class="input_img" src="${cpath }/resources/img/icon/검색.jpg" height="40px" width="40px">
                 </div>
                 <div class="header_right">
-                        <img title="마이페이지" src="${cpath }/resources/img/icon/로그인.png" height="40px" width="40px">
+                        <a class="h_r_a" href="${cpath}/${login.userid == 'admin' ? 'admin' : 'member' }/${login.userid == 'admin' ? 'admin' : 'mypage' }">
+                        	<img title="${login.userid == 'admin' ? '관리자페이지' : '마이페이지' }" src="${cpath }/resources/img/icon/로그인.png" height="40px" width="40px">
+                        </a>
                         <img title="장바구니" src="${cpath }/resources/img/icon/장바구니.png" height="40px" width="40px">
                         <img title="고객센터" src="${cpath }/resources/img/icon/고객센터.png" height="40px" width="40px">
                 </div>
