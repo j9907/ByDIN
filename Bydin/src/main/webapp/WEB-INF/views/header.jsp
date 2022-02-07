@@ -77,7 +77,7 @@
        		color:red;
         }
         #main{
-       	 position: relative;
+       		position: relative;
             z-index: 999;
             margin: 0 auto;
             background-color: #fff;
@@ -86,7 +86,7 @@
             max-width: 1270px;
         }
         #slider {
-            width: 900px;
+            width: 1200px;
             height: 500px;
             margin: 0 auto;
         }
@@ -106,7 +106,7 @@
         .slider_item img {
             top: 85px;
             height: 500px;
-            width: 900px;
+            width: 1200px;
         }
         .showing {
             z-index: 1;

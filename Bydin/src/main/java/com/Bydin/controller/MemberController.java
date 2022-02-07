@@ -1,8 +1,13 @@
 package com.Bydin.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,7 +42,31 @@ public class MemberController {
 	}
 	
 	@GetMapping("signup")
-	public void signup() {}
+	public ModelAndView signup() throws IOException{
+		ModelAndView mav = new ModelAndView("member/signup");
+		ClassPathResource pri = new ClassPathResource("privacy/privacy.txt");
+		ClassPathResource te = new ClassPathResource("privacy/Terms.txt");
+		File p_f = pri.getFile();
+		File t_f = te.getFile();
+		Scanner psc = new Scanner(p_f);
+		Scanner tsc = new Scanner(t_f);
+		String privacy = "";
+		String terms = "";
+		
+		while(psc.hasNextLine()) {
+			String pdata = psc.nextLine();
+			privacy += pdata + "\n";
+		}
+		while(tsc.hasNextLine()) {
+			String tdata = tsc.nextLine();
+			terms += tdata + "\n";
+		}
+		psc.close();
+		tsc.close();
+		mav.addObject("privacy", privacy);
+		mav.addObject("terms", terms);
+		return mav;
+	}
 	
 	@PostMapping("signup")
 	public ModelAndView signup(MemberDTO member) {
