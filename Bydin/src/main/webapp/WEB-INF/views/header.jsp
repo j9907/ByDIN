@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
  <style>
+
  		body{
  		overflow-x: hidden;
  		}
@@ -119,6 +120,13 @@
             transition-duration: 0.5s;
             /* transform: translate3d(888px, 0px, 0px); */      /* 이건 슬라이드 타입 */
         }
+        .h_a{
+        	color:inherit;
+        	text-decoration: none;	
+        }
+        .h_m{
+        	font-weight: bold;
+        }
     </style>
 <title>ByDIN</title>
 </head>
@@ -126,7 +134,7 @@
  <div id="headerwrp">
         <div id="headermain">
             <div class="h_main">
-                <a href="${cpath }"><img src="${cpath }/resources/img/logo/logo.png" width="166px"></a>
+                <a href="${cpath }/"><img src="${cpath }/resources/img/logo/logo.png" width="166px"></a>
                 <div class="h_search">
                     <input id="h_search" type="text" name="search" placeholder="검색어를 입력하세요">
                     <img class="input_img" src="${cpath }/resources/img/icon/검색.jpg" height="40px" width="40px">
@@ -149,8 +157,9 @@
         </ul>
      	<div class="h_right">
      		<ul class="h_ul">
-     			<li class="h_menu">로그인</li>
-     			<li class="h_menu">회원가입</li>
+     			<li class="h_menu h_m">${empty login ? '' : login.username} ${empty login ? '' : '님'}</li>
+     			<li class="h_menu"><a class="h_a" href="${cpath }/${empty login ? 'member/login' : 'member/logout'}">${empty login ? '로그인' : '로그아웃' }</a></li>
+     			<li class="h_menu"><a class="h_a" href="${cpath }/member/signup">회원가입</a></li>
      			<li class="h_menu">쿠폰/혜택</li>
      		</ul>
      	</div>

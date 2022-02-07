@@ -29,6 +29,7 @@
         function slide() {
             slideHandler();          // 선택된 방식으로 이미지 변환 결정
 
+
             const currentSlide = document.querySelector('.showing');
             const previousSlide = document.querySelector('.previous');
             if(currentSlide) {
@@ -55,4 +56,46 @@
         })
     </script>
     
+=======
+<script type="text/javascript">
+	const slideHandler = () => {
+		document.querySelectorAll('.m_slide').forEach((element) => {
+			element.style.transition = '';
+			element.style.transition = 'translate3d(0px, 0px, 0px)';
+		})
+		document.querySelector('.previous').style.transform = 'translate3d(-888px, 0px, 0px)';
+		document.querySelector('.showing').style.transform = 'translate3d(888px, 0px, 0px)';
+	}
+	
+	
+	firstSlide = document.querySelector('.slider_item:first-child');
+	lastSlide = document.querySelector('.slider_item:last=child');
+	
+	function slide(){
+		slideHandler();
+		
+		const currentslide = document.querySelector('.showing');
+		const previousSlide = document.querySelector('.previous');
+		if(currentSlide){
+			currentSlide.classList.remove('showing');
+			currentSlide.classList.add('previous');
+			const nextSlide = currentSlide.nextElementSibling;
+			if(nextSlide){
+				nextSlide.classList.add('showing');
+			}
+			else{
+				firstSlide.classList.add('showing');
+			}
+		}
+		else{
+			firstSlide.classList.add('showing');
+			lastSlide.classList.add('previous');
+		}
+		if(previousSlide){
+			previousSlide.classList.remove('previous');
+		}
+		slide();
+		setInterval(slide, 4000);
+	}
+</script>
 <%@ include file="footer.jsp"%>
