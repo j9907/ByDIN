@@ -19,6 +19,13 @@
         	<img src="https://admin.dodot.co.kr/data/main_banner/18/39cc3a0f887e9e213879e46f1e36481c.jpg">
         	<div>슬라이드 이미지 4</div>
         </div>
+
+    <div id="slider">
+        <div class="slider_item"><img src="https://admin.dodot.co.kr/data/main_banner/18/bc123e19b0f5919e65a12ab1d52a5fc9.jpg"></div>
+        <div class="slider_item"><img src="https://admin.dodot.co.kr/data/main_banner/18/d71bec32f018b5f2b4c18b88a3d28098.jpg"></div>
+        <div class="slider_item"><img src="https://admin.dodot.co.kr/data/main_banner/18/d6d3f558a12a03dd25e3ecbf87168d49.jpg"></div>
+        <div class="slider_item"><img src="https://admin.dodot.co.kr/data/main_banner/18/39cc3a0f887e9e213879e46f1e36481c.jpg"></div>
+	</div>
     </div>
 
 	<div id="m_video">

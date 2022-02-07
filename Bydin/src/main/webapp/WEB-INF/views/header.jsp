@@ -77,7 +77,7 @@
        		color:red;
         }
         #main{
-       	 position: relative;
+       		position: relative;
             z-index: 999;
             margin: 0 auto;
             background-color: #fff;
@@ -86,6 +86,7 @@
             max-width: 1270px;
             height:2500px;
         }
+
         #m_slider {
             width: 1200px;
             height: 500px;
