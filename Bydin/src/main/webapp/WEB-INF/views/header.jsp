@@ -7,6 +7,9 @@
 <head>
 <meta charset="UTF-8">
  <style>
+ 		body{
+ 		overflow-x: hidden;
+ 		}
  		body,div,a,ul,li,p{
  			margin:0;
  			padding:0;
@@ -79,12 +82,42 @@
             background-color: #fff;
             margin-bottom: 50px;
             margin-top:20px;
+            max-width: 1270px;
         }
-        #m_img{
-        	border:1px solid black;
-        	width: 1200px;
-        	height: 560px;
-        	margin:0 auto;
+        #slider {
+            width: 900px;
+            height: 500px;
+            margin: 0 auto;
+        }
+        .slider_item {
+            width: 100%;
+            height: 500px;
+            opacity: 0;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: absolute;
+            z-index: 0;
+            /* transform: translate3d(-888px, 0px, 0px);        */  /* 이건 슬라이드 타입 */
+            /* transition: opacity 0.5s ease-in-out;            */  /* 이건 투명도 변화 타입 */
+        }
+        .slider_item img {
+            top: 85px;
+            height: 500px;
+            width: 900px;
+        }
+        .showing {
+            z-index: 1;
+            opacity: 1;
+            transition-duration: 0.5s;
+            /* transform: translate3d(0px, 0px, 0px); */        /* 이건 슬라이드 타입 */
+        }
+        .previous {
+            z-index: 1;
+            opacity: 0;
+            transition-duration: 0.5s;
+            /* transform: translate3d(888px, 0px, 0px); */      /* 이건 슬라이드 타입 */
         }
     </style>
 <title>ByDIN</title>
