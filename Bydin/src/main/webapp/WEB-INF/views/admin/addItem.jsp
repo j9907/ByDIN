@@ -46,47 +46,63 @@
 			width: 300px;
 			font-weight: bold;
         }
+        .info > input {
+        	height: 500px;
+        }
     </style>
 
 <h3>상품 등록</h3>
 <div id="add">
-<form method="POST">
-	<div id="addList">
-        <div class="add_left"><p>제품번호</p></div>
-        <div class="add_right"><input ></div>
+<form method="POST" enctype="multipart/form-data">
+
+    <div id="addList">
+        <div class="add_left"><p>제품이름</p></div>
+        <div class="add_right"><input name="name" type="text" autofocus required></div>
     </div>
         
     <div id="addList">
         <div class="add_left"><p>가격</p></div>
-        <div class="add_right"><input ></div>
-    </div>
-        
-    <div id="addList">
-        <div class="add_left"><p>제품이름</p></div>
-        <div class="add_right"><input ></div>
+        <div class="add_right"><input name="price" required></div>
     </div>
         
     <div id="addList">
         <div class="add_left"><p>제품이미지</p></div>
-        <div class="add_right"><input type="file"></div>
+        <div class="add_right"><input name="image" type="file" accept="image/*" multiple="multiple" required></div>
     </div>
         
     <div id="addList">
         <div class="add_left"><p>카테고리</p></div>
-        <div class="add_right"><input ></div>
+        <div class="add_right">
+			<select name="ctgcode">
+				<option value="1-01">서재</option>
+				<option value="1-02">침실</option>
+				<option value="1-03">거실</option>
+				<option value="1-04">주방</option>
+				<option value="1-05">의자</option>
+			</select>
+		</div>
     </div>
         
     <div id="addList">
         <div class="add_left"><p>재고</p></div>
-        <div class="add_right"><input ></div>
+        <div class="add_right"><input name="stock" required></div>
+    </div>
+    
+    <div id="addList">
+    	<div class="add_left"><p>업로드 날짜</p></div>
+    	<div class="add_right"><input name="uploadDate" type="date" id="now_date"></div>
     </div>
         
     <div id="addList">
         <div class="add_left"><p>상세설명</p></div>
-        <div class="add_right"><input ></div>
+        <div class="add_right info"><input name="info" type="text" maxlength="2000" required></div>
     </div>
     <input type="submit" value="등록" class="addSubmit">
 </form>
 </div>
+
+<script>
+	document.getElementById('now_date').valueAsDate = new Date();
+</script>
 
 <%@ include file="../footer.jsp"%>

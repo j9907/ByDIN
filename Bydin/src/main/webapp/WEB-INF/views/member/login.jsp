@@ -45,7 +45,7 @@ body,div,input{
 <form method="post">
 <h1 id="l_title">로그인</h1>
 <div class="login_wrp">
-<input type="text" name="userid" placeholder="ID" autocomplete="off" class="l_input">
+<input type="text" name="userid" placeholder="ID" autofocus autocomplete="off" class="l_input">
 <input type="password" name="userpw" placeholder="PW" autocomplete="off" class="l_input">
 <input type="submit" value="로그인" class="l_submit">
 </div>
