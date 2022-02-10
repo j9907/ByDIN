@@ -17,15 +17,16 @@ public class TotalGoodsDTO {
 	//		info		varchar2(2000)  ,	
 	//	);
 	
+
 	private int idx, no, price, ctgcode, stock;
 	private String name, info;
 	private Date uploadDate;
-	private MultipartFile image;
+	private String image;
 	
-	public MultipartFile getImage() {
+	public String getImage() {
 		return image;
 	}
-	public void setImage(MultipartFile image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 	public int getIdx() {
@@ -50,6 +51,7 @@ public class TotalGoodsDTO {
 		return ctgcode;
 	}
 	public void setCtgcode(int ctgcode) {
+
 		this.ctgcode = ctgcode;
 	}
 	public int getStock() {
