@@ -3,8 +3,8 @@ package com.Bydin.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.Bydin.DAO.MemberDAO;
-import com.Bydin.DAO.MemberDTO;
+import com.Bydin.member.MemberDAO;
+import com.Bydin.member.MemberDTO;
 
 @Service
 public class MemberService {

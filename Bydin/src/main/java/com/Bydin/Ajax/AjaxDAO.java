@@ -2,7 +2,7 @@ package com.Bydin.Ajax;
 
 import org.apache.ibatis.annotations.Select;
 
-import com.Bydin.DAO.MemberDTO;
+import com.Bydin.member.MemberDTO;
 
 public interface AjaxDAO {
 

@@ -1,4 +1,4 @@
-package com.Bydin.DAO;
+package com.Bydin.member;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
