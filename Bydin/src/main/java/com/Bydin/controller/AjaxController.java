@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Bydin.Ajax.AjaxService;
-import com.Bydin.DAO.MemberDTO;
+import com.Bydin.member.MemberDTO;
 
 @RestController
 public class AjaxController {

@@ -122,7 +122,7 @@ body, div, input {
 	align-items: flex-start;
 	width: 90%;
 }
-#i_check,#p_check{
+#i_check,#p_check,#p_check_to{
 	margin: 15px;
 }
 </style>
