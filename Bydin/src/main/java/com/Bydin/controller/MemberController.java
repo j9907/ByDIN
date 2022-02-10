@@ -41,9 +41,9 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("signup")
-	public ModelAndView signup() throws IOException{
-		ModelAndView mav = new ModelAndView("member/signup");
+	@GetMapping("terms")
+	public ModelAndView terms() throws IOException{
+		ModelAndView mav = new ModelAndView();
 		ClassPathResource pri = new ClassPathResource("privacy/privacy.txt");
 		ClassPathResource te = new ClassPathResource("privacy/Terms.txt");
 		File p_f = pri.getFile();
@@ -67,6 +67,9 @@ public class MemberController {
 		mav.addObject("terms", terms);
 		return mav;
 	}
+	
+	@GetMapping("signup")
+	public void signup() {}
 	
 	@PostMapping("signup")
 	public ModelAndView signup(MemberDTO member) {

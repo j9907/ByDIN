@@ -120,45 +120,16 @@ body, div, input {
 	padding-bottom: 10px;
 	display: flex;
 	align-items: flex-start;
-	justify-content:space-between;
 	width: 90%;
-	
-	
+}
+#i_check,#p_check{
+	margin: 15px;
 }
 </style>
 <div id="m_signup">
 	<form method="post" class="sign_form">
-	
-
 		<h1 id="l_title">회원가입</h1>
 		<div class="login_wrp">
-		<div class="s_privacy">
-		<div class="s_m_top">
-		<label for="agree_all" style="padding-bottom: 10px;"> 
-		<input type="checkbox"name="agree_all" id="agree_all"> 
-		<span>모두 동의합니다</span>
-		</label>
-		</div>
-		
-		<div id="s_bot">
-		<label for="agree1"> 
-		<input type="checkbox" name="agree" value="1" id="agree1"> 
-		<strong>(필수)</strong><span>이용약관 동의</span>
-		</label> 
-		<label for="agree2"> 
-		<input type="checkbox" name="agree" value="2" id="agree2"> 
-		<strong>(필수)</strong><span>개인정보 수집, 이용 동의</span>
-		</label> 
-		<label for="agree3"> <input type="checkbox" name="agree"
-			value="3" id="agree3"> 
-			<strong>(필수)</strong><span>개인정보 이용 동의</span>
-		</label> 
-		<label for="agree4"> <input type="checkbox" name="agree" value="4" id="agree4"> 
-			<strong class="select_disable">(선택)</strong>
-			<span>이벤트, 혜택정보 수신동의</span>
-		</label>
-		</div>
-		</div>
 			<div class="login_box">
 				<div class="login_left">
 					<p class="l_text">
@@ -178,7 +149,8 @@ body, div, input {
 				</div>
 				<div class="login_right">
 					<input class="l_input" type="text" name="userid" placeholder="아이디"
-						autocomplete="off" required>
+						autocomplete="off" required id="userid">
+					<span id="i_check"></span>
 				</div>
 			</div>
 			<div class="login_box">
@@ -189,7 +161,8 @@ body, div, input {
 				</div>
 				<div class="login_right">
 					<input class="l_input" type="password" name="userpw"
-						placeholder="비밀번호" autocomplete="off" required>
+						placeholder="비밀번호" autocomplete="off" required id="userpw1">
+					<span id="p_check"></span>
 				</div>
 			</div>
 			<div class="login_box">
@@ -200,7 +173,8 @@ body, div, input {
 				</div>
 				<div class="login_right">
 					<input class="l_input" type="password" name="userpwcheck"
-						placeholder="비밀번호 확인" autocomplete="off" required>
+						placeholder="비밀번호 확인" autocomplete="off" required id="userpw2">
+					<span id="p_check_to"></span>
 				</div>
 			</div>
 			<div class="login_box">
@@ -256,18 +230,113 @@ body, div, input {
 					<label for="f_gender">여</label>
 				</div>
 			</div>
-			<input type="submit" value="회원가입" class="l_submit">
+			<input type="button" value="회원가입" class="l_submit" id="l_submit">
 		</div>
 	</form>
 </div>
-
 <script>
-const agreeChkAll = document.querySelector('input[name=agree_all]');
-    agreeChkAll.addEventListener('change', (e) => {
-    let agreeChk = document.querySelectorAll('input[name=agree]');
-    for(let i = 0; i < agreeChk.length; i++){
-      agreeChk[i].checked = e.target.checked;
-    }
+const userid = document.querySelector('input[id="userid"]');
+const userpw = document.querySelector('input[id="userpw1"]')
+const userpw2 = document.querySelector('input[id="userpw2"]')
+const check = document.getElementById('i_check')
+const pwcheck = document.getElementById('p_check')
+const pwcheck2 = document.getElementById('p_check_to')
+const form = document.forms[0]
+const button = document.getElementById('l_submit')
+console.log(button)
+
+userid.addEventListener("focusout",async (event) => {
+	if((userid.value.length < 5)||(userid.value.length > 12))
+	  {
+			check.innerHTML = "아이디는 최소 5자 최대 12자 까지 가능합니다."
+			check.style.color = "red"
+			check.style.fontSize = "10pt"
+			check.style.fontWeight = "bold"
+	   return false;
+	  }
+	const url = '${cpath}/checkuserid?userid=' + userid.value
+	const opt = {
+			method : 'GET'
+	}
+	const resp = await fetch(url,opt)
+	const json = await resp.json()
+	if(json != 0){
+		check.innerHTML = "일치하는 아이디가 존재합니다."
+		check.style.color = "red"
+		check.style.fontSize = "10pt"
+		check.style.fontWeight = "bold"
+	}
+	else{
+		check.innerHTML = "사용가능한 아이디 입니다."
+		check.style.color = "#6667ab"
+		check.style.fontSize = "10pt"
+		check.style.fontWeight = "bold"
+	}
+	
 });
+
+userid.addEventListener("focusin",async (event) => {
+	check.innerHTML = ''
+});
+
+userpw.addEventListener("focusout",(event) => {
+	if((userpw.value.length < 6)||(userpw.value.length > 15))
+	  {
+		pwcheck.innerHTML = "비밀번호는 최소 6자 최대 15자 까지 가능합니다."
+		pwcheck.style.color = "red"
+		pwcheck.style.fontSize = "10pt"
+		pwcheck.style.fontWeight = "bold"
+	   return false;
+	  }
+});
+userpw2.addEventListener("focusout",(event)=>{
+	if(userpw.value != userpw2.value){
+			pwcheck2.innerHTML = "비밀번호가 일치하지 않습니다."
+			pwcheck2.style.color = "red"
+			pwcheck2.style.fontSize = "10pt"
+			pwcheck2.style.fontWeight = "bold"
+			pwcheck2.value = ""
+			pwcheck2.focus();
+		   return false;
+	}
+});
+userpw.addEventListener("focusin",async (event) => {
+	pwcheck.innerHTML = ''
+});
+userpw2.addEventListener("focusin",async (event) => {
+	pwcheck2.innerHTML = ''
+});
+
+
+button.addEventListener("click",function(event) {
+	if(check.style.color == "red" && check.innerHTML == "아이디는 최소 5자 최대 12자 까지 가능합니다."){
+		alert('아이디는 최소 5자 최대 12자 까지 가능합니다.')
+		history.go(0);
+		return false;
+	}
+	if(check.style.color == "red" && check.innerHTML == "일치하는 아이디가 존재합니다."){
+		alert('동일한 아이디가 존재합니다.')
+		history.go(0)
+		return false;
+	}
+	if(pwcheck.style.color == "red"){
+		alert('비밀번호는 최소 6자 최대 15자 까지 가능합니다.')
+		history.go(0)
+		return false;
+	}
+	if(pwcheck2.style.color == "red"){
+	 	alert('비밀번호가 일치하지 않습니다')
+	 	history.go(0)
+	 	return false;
+	}
+	else{
+		form.submit();
+        return false;
+	}
+});
+
 </script>
+
+
+
 <%@ include file="../footer.jsp"%>
