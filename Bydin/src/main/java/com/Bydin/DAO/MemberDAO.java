@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
+import com.Bydin.admin.TotalGoodsDTO;
+
 @Repository
 public interface MemberDAO {
 
@@ -13,5 +15,9 @@ public interface MemberDAO {
 
 	@Select("select * from member where userid=#{userid} and userpw=#{userpw}")
 	public MemberDTO selectuser(MemberDTO member);
+
+	
+
+	
 
 }
