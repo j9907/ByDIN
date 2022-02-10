@@ -1,11 +1,8 @@
-package com.Bydin.DAO;
+package com.Bydin.member;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-
-import com.Bydin.admin.TotalGoodsDTO;
-import com.Bydin.member.MemberDTO;
 
 @Repository
 public interface MemberDAO {
@@ -16,9 +13,5 @@ public interface MemberDAO {
 
 	@Select("select * from member where userid=#{userid} and userpw=#{userpw}")
 	public MemberDTO selectuser(MemberDTO member);
-
-	
-
-	
 
 }

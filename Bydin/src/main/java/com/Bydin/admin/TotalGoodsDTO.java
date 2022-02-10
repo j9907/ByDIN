@@ -17,10 +17,11 @@ public class TotalGoodsDTO {
 	//		info		varchar2(2000)  ,	
 	//	);
 	
-	private int idx, no, price, stock;
-	private String name, info, ctgcode,image;
+
+	private int idx, no, price, ctgcode, stock;
+	private String name, info;
 	private Date uploadDate;
-	
+	private String image;
 	
 	public String getImage() {
 		return image;
@@ -46,10 +47,11 @@ public class TotalGoodsDTO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getCtgcode() {
+	public int getCtgcode() {
 		return ctgcode;
 	}
-	public void setCtgcode(String ctgcode) {
+	public void setCtgcode(int ctgcode) {
+
 		this.ctgcode = ctgcode;
 	}
 	public int getStock() {
