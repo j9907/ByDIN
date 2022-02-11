@@ -1,9 +1,12 @@
 package com.Bydin.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Bydin.board.boardDAO;
+import com.Bydin.board.boardDTO;
 
 
 
@@ -11,4 +14,12 @@ import com.Bydin.board.boardDAO;
 public class BoardService {
 
 	@Autowired private boardDAO dao;
+
+	public List<boardDTO> selectboard() {
+		return dao.selectboard();
+	}
+
+	public int insertboard(boardDTO dto) {
+		return dao.insertboard(dto); 
+	}
 }

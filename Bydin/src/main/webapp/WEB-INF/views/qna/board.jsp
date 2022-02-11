@@ -18,7 +18,7 @@ h3{
 	text-align:center;
 }
 #boardList tr {
-	border-bottom: 1px solid #dadada;
+	border-bottom: 1px solid #6667ab;
 	height: 45px;
 }
 #boardList tr:hover {
@@ -49,10 +49,10 @@ h3{
 	cursor: pointer;
 }
 #boardList .boardw {
-	width: 5%;
+	width: 8%;
 }
 #boardList  .boardt {
-	width: 70%;
+	width: 68%;
 }
 #boardList  .boardd {
 	width: 8%;
@@ -61,7 +61,7 @@ h3{
 	width: 8%;
 }
 #boardList .boardy {
-	width: 8%;
+	width: 10%;
 }
 #boardList .current {
 	background-color: #eaeaea;
@@ -112,9 +112,23 @@ h3{
 	border:0;
 	cursor:pointer;
 }
+.b_btn{
+	max-width: 1200px;
+	margin:auto;
+	padding:30px;
+}
+.b_btn button{
+	background-color: #6667ab;
+	border: 0;
+	border-radius: 10px;
+	color:#fff;
+	padding: 10px;
+	cursor:pointer;
+	outline: none;
+}
 </style>
 <div id="table">
-<h3>게시판</h3>
+<h3>문의 게시판</h3>
 <table id="boardList">
 <thead>
 
@@ -126,22 +140,32 @@ h3{
 		<td class="boardy">답변유무</td>
 	</tr>
 </thead>
-<!-- <tbody> -->
-<%-- 	<c:forEach var="list" items="${list }"> --%>
-<!-- 		<tr> -->
-<!-- 			<td colspan="2" class="boardt"> -->
-<%-- 				<div class="board-number">${list.idx }</div> --%>
-<%-- 				<div class="board-title"><a href="${cpath }/board/read/${list.idx}" id="a">${list.title }</a></div> --%>
-<!-- 			</td> -->
-<%-- 			<td class="boardw">${list.writer }</td> --%>
-<%-- 			<td class="boardd">${list.datetime }</td> --%>
-<%-- 			<td class="boardv">${list.viewCount }</td> --%>
-<!-- 		</tr> -->
-<%-- 	</c:forEach> --%>
-<!-- </tbody>	 -->
+<tbody>
+<c:choose>
+	<c:when test="${empty list}">
+	<tr>
+	<td colspan="7">
+		작성된 게시글이 없습니다.
+	</td>
+	</tr>
+	</c:when>
+	</c:choose>
+	<c:forEach var="list" items="${list }">
+		<tr>
+			<td colspan="2" class="boardt">
+				<div class="board-number">${list.idx }</div>
+				<div class="board-title"><a href="#" id="a">${list.title }</a></div>
+			</td>
+			<td class="boardw">${list.writer }</td>
+			<td class="boardd">${list.uploaddate }</td>
+			<td class="boardv">${list.anwercheck}</td>
+		</tr>
+	</c:forEach>
+
+</tbody>	
 </table>
 <div class="b_btn">
-	<button>새글쓰기</button>
+	<a href="${cpath }/qna/write"><button>새글쓰기</button></a>
 </div>
 </div>
 <%@ include file="../footer.jsp"%>
