@@ -1,4 +1,4 @@
-package com.Bydin.DAO;
+package com.Bydin.member;
 
 public class MemberDTO {
 	private int idx;

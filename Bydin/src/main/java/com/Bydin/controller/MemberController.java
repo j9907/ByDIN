@@ -2,26 +2,31 @@ package com.Bydin.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.annotation.Inherited;
 import java.util.Scanner;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.Bydin.DAO.MemberDTO;
 import com.Bydin.Service.MemberService;
+import com.Bydin.member.MemberDTO;
 
 @Controller
 @RequestMapping("member/")
 public class MemberController {
 
 	@Autowired private MemberService ms;
+	@Inject BCryptPasswordEncoder pwdencoder;
+	
 	
 	@GetMapping("login")
 	public void login() {}
@@ -29,9 +34,14 @@ public class MemberController {
 	@PostMapping("login")
 	public ModelAndView login(MemberDTO member,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		MemberDTO dto = ms.selectuser(member);
-		if(dto != null) {session.setAttribute("login", dto);}
-		mav.setViewName(dto != null ? "redirect:/" : "login");
+		MemberDTO dto = ms.selectuser(member.getUserid());
+		if(dto != null && member != null) {
+			boolean pwdMatch = pwdencoder.matches(member.getUserpw(),dto.getUserpw());
+			System.out.println(pwdMatch);
+			session.setAttribute("login", dto != null && pwdMatch == true ? dto : null);
+			}
+		mav.addObject("msg",session.getAttribute("login") == null && dto == null ? "아이디 또는 비밀번호가 잘못되었습니다." : "");
+		mav.setViewName(session.getAttribute("login") == null && dto == null  ? "redirect:/member/login" : "redirect:/");
 		return mav;
 	}
 	
@@ -75,6 +85,7 @@ public class MemberController {
 	public ModelAndView signup(MemberDTO member) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println(member.getGender());
+		member.setUserpw(pwdencoder.encode(member.getUserpw()));
 		int row = ms.insertuser(member);
 		System.out.println(row);
 		mav.setViewName(row != 0 ? "member/joinend" : "member/signup");
