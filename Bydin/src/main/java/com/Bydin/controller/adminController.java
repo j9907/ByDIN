@@ -31,21 +31,14 @@ public class adminController {
 	
 	@PostMapping("addItem")
 	public ModelAndView addItem(MultipartRequest upload, TotalGoodsDTO dto) {
-		ModelAndView mav = new ModelAndView("redirect:admin/addItem");
+		ModelAndView mav = new ModelAndView("redirect:/admin/addItem");
 		MultipartFile file = upload.getFile("file");
 		System.out.println(file);
-//		int cnt = as.upload(file);
-		String fileName = file.getOriginalFilename();
-		dto.setImage(fileName);
-		System.out.println(dto.getImage());
-		System.out.println(dto.getCtgcode());
-		// dto.setImage(upload.getOriginalFilename());
-		
+		int cnt = as.upload(file);	
+		dto.setImage(file.getOriginalFilename());		
 		int add = as.addItem(dto);
-		System.out.println(add);
-//		System.out.println(add);
-		
 		return mav;
 		
 	}
+	
 }

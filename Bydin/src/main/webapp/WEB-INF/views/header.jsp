@@ -84,7 +84,7 @@
             margin-bottom: 50px;
             margin-top:20px;
             max-width: 1270px;
-            height:2500px;
+            height:4000px;
         }
 
         #m_slider {

@@ -1,7 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
+<style>
+	ul, li {
+		list-style: none;
+	}
+	.m_item_image{
+		width:270px;
+		display: flex;
+		justify-content: center;
+	}
+	.m_item_info p{
+		text-align: center;
+	}
+	#m_item {
+		display: flex;
+		justify-content: center;
+		padding-top: 100px;
+	}
+	#m_ul {
+		float: left;
+	}
+	#m_li {
+		float: left;
+		width: 300px;
+		padding: 2px;
+	}
+</style>
 <div id="main">
+
+	<!-- 이미지 슬라이드 -->
     <div id="m_slider">
         <div class="slider_item">
         	<img src="https://admin.dodot.co.kr/data/main_banner/18/bc123e19b0f5919e65a12ab1d52a5fc9.jpg">
@@ -21,13 +49,76 @@
         </div>
     </div>
 
+	<!-- 메인 영상 -->
 	<div id="m_video">
 		<video autoplay="autoplay" loop muted>
 			<source src="${cpath }/resources/video/m_video.mp4">
 		</video>
 	</div>
 
+	<!-- 메인페이지에 카테고리별 대표 이미지 띄우기 -->
+	<!-- 서재 -->
+	<div id="m_item">
+	<ul id="m_ul">
+	<c:forEach items="${dto1 }" var="dto1" begin="1" end="4">
+		<li id="m_li">
+			<div><img class="m_item_image" src="${cpath }/upload/${dto1.image}"></div>
+			<div class="m_item_info"><p>${dto1.name }</p></div>
+		</li>
+	</c:forEach>
+	</ul>
+	</div>
+	
+	<!-- 침실 -->
+	<div id="m_item">
+	<ul id="m_ul">
+	<c:forEach items="${dto2 }" var="dto2" begin="1" end="4">
+		<li id="m_li">
+			<div><img class="m_item_image" src="${cpath }/upload/${dto2.image}"></div>
+			<div class="m_item_info"><p>${dto2.name }</p></div>
+		</li>
+	</c:forEach>
+	</ul>
+	</div>
+	
+	<!-- 거실 -->
+	<div id="m_item">
+	<ul id="m_ul">
+	<c:forEach items="${dto3 }" var="dto3" begin="1" end="4">
+		<li id="m_li">
+			<div><img class="m_item_image" src="${cpath }/upload/${dto3.image}"></div>
+			<div class="m_item_info"><p>${dto3.name }</p></div>
+		</li>
+	</c:forEach>
+	</ul>
+	</div>
+	
+	<!-- 주방 -->
+	<div id="m_item">
+	<ul id="m_ul">
+	<c:forEach items="${dto4 }" var="dto4" begin="1" end="4">
+		<li id="m_li">
+			<div><img class="m_item_image" src="${cpath }/upload/${dto4.image}"></div>
+			<div class="m_item_info"><p>${dto4.name }</p></div>
+		</li>
+	</c:forEach>
+	</ul>
+	</div>
+	
+	<!-- 의자 -->
+	<div id="m_item">
+	<ul id="m_ul">
+	<c:forEach items="${dto5 }" var="dto5" begin="1" end="5">
+		<li id="m_li">
+			<div><img class="m_item_image" src="${cpath }/upload/${dto5.image}"></div>
+			<div class="m_item_info"><p>${dto5.name }</p></div>
+		</li>
+	</c:forEach>
+	</ul>
+	</div>
+
 </div>
+
     <script type="text/javascript">
         window.addEventListener('load',(event) => {
             const slideHandler = () => {
