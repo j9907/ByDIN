@@ -18,5 +18,5 @@ public class MemberService {
 	public MemberDTO selectuser(MemberDTO member) {
 		return dao.selectuser(member);
 	}
-
+	
 }
