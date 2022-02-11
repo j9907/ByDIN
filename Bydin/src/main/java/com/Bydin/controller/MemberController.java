@@ -34,9 +34,14 @@ public class MemberController {
 	@PostMapping("login")
 	public ModelAndView login(MemberDTO member,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		MemberDTO dto = ms.selectuser(member);
-		if(dto != null) {session.setAttribute("login", dto);}
-		mav.setViewName(dto != null ? "redirect:/" : "login");
+		MemberDTO dto = ms.selectuser(member.getUserid());
+		if(dto != null && member != null) {
+			boolean pwdMatch = pwdencoder.matches(member.getUserpw(),dto.getUserpw());
+			System.out.println(pwdMatch);
+			session.setAttribute("login", dto != null && pwdMatch == true ? dto : null);
+			}
+		mav.addObject("msg",session.getAttribute("login") == null && dto == null ? "아이디 또는 비밀번호가 잘못되었습니다." : "");
+		mav.setViewName(session.getAttribute("login") == null && dto == null  ? "redirect:/member/login" : "redirect:/");
 		return mav;
 	}
 	

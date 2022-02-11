@@ -13,8 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.Bydin.Service.AdminService;
 import com.Bydin.admin.TotalGoodsDTO;
 
-import oracle.net.aso.m;
-
 @Controller
 @RequestMapping("admin/")
 public class adminController {
@@ -33,17 +31,18 @@ public class adminController {
 	
 	@PostMapping("addItem")
 	public ModelAndView addItem(MultipartRequest upload, TotalGoodsDTO dto) {
-		ModelAndView mav = new ModelAndView("redirect:/addItem");
-		MultipartFile file = upload.getFile("image");
+		ModelAndView mav = new ModelAndView("redirect:admin/addItem");
+		MultipartFile file = upload.getFile("file");
 		System.out.println(file);
 //		int cnt = as.upload(file);
-//		String fileName = file.getOriginalFilename();
-//		dto.setImage(fileName);
-//		System.out.println(dto.getImage());
-//		System.out.println(dto.getCtgcode());
+		String fileName = file.getOriginalFilename();
+		dto.setImage(fileName);
+		System.out.println(dto.getImage());
+		System.out.println(dto.getCtgcode());
 		// dto.setImage(upload.getOriginalFilename());
 		
-//		int add = as.addItem(dto);
+		int add = as.addItem(dto);
+		System.out.println(add);
 //		System.out.println(add);
 		
 		return mav;

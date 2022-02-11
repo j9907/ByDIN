@@ -68,7 +68,7 @@
     <div id="addList">
         <div class="add_left"><p>제품이미지</p></div>
 
-        <div class="add_right"><input name="image" type="file" accept="image/*"></div>
+        <div class="add_right"><input name="file" type="file" accept="image/*"></div>
     </div>
         
     <div id="addList">
