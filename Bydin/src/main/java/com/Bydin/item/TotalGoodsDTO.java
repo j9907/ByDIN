@@ -1,25 +1,12 @@
-package com.Bydin.admin;
+package com.Bydin.item;
 
 import java.sql.Date;
 
-import org.springframework.web.multipart.MultipartFile;
 
 public class TotalGoodsDTO {
-	//create table totalGoods(
-	//		idx		    number		    default totalGoods_seq.nextval primary key,
-	//		no		    number		    not null,
-	//		name		varchar2(100)	not null,
-	//		price		number		    not null,
-	//		image		varchar2(1000)	,
-	//		ctgcode		number		    not null,
-	//		uploadDate	date		    default sysdate,
-	//		stock		number		    ,
-	//		info		varchar2(2000)  ,	
-	//	);
-	
 
-	private int idx, no, price, ctgcode, stock;
-	private String name, info;
+	private int idx, no, price, stock;
+	private String name, info, ctgcode;
 	private Date uploadDate;
 	private String image;
 	
@@ -47,10 +34,10 @@ public class TotalGoodsDTO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getCtgcode() {
+	public String getCtgcode() {
 		return ctgcode;
 	}
-	public void setCtgcode(int ctgcode) {
+	public void setCtgcode(String ctgcode) {
 
 		this.ctgcode = ctgcode;
 	}

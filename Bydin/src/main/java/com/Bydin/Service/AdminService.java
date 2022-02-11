@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.Bydin.DAO.MemberDAO;
 import com.Bydin.admin.AdminDAO;
-import com.Bydin.admin.TotalGoodsDTO;
+import com.Bydin.item.TotalGoodsDTO;
 
 @Service
 public class AdminService {
