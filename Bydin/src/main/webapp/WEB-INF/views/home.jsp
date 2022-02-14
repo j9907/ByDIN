@@ -60,7 +60,7 @@
 	<!-- 서재 -->
 	<div id="m_item">
 	<ul id="m_ul">
-	<c:forEach items="${dto1 }" var="dto1" begin="1" end="4">
+	<c:forEach items="${dto1 }" var="dto1" begin="0" end="3">
 		<li id="m_li">
 			<div><img class="m_item_image" src="${cpath }/upload/${dto1.image}"></div>
 			<div class="m_item_info"><p>${dto1.name }</p></div>
@@ -72,7 +72,7 @@
 	<!-- 침실 -->
 	<div id="m_item">
 	<ul id="m_ul">
-	<c:forEach items="${dto2 }" var="dto2" begin="1" end="4">
+	<c:forEach items="${dto2 }" var="dto2" begin="0" end="3">
 		<li id="m_li">
 			<div><img class="m_item_image" src="${cpath }/upload/${dto2.image}"></div>
 			<div class="m_item_info"><p>${dto2.name }</p></div>
@@ -84,7 +84,7 @@
 	<!-- 거실 -->
 	<div id="m_item">
 	<ul id="m_ul">
-	<c:forEach items="${dto3 }" var="dto3" begin="1" end="4">
+	<c:forEach items="${dto3 }" var="dto3" begin="0" end="3">
 		<li id="m_li">
 			<div><img class="m_item_image" src="${cpath }/upload/${dto3.image}"></div>
 			<div class="m_item_info"><p>${dto3.name }</p></div>
@@ -96,7 +96,7 @@
 	<!-- 주방 -->
 	<div id="m_item">
 	<ul id="m_ul">
-	<c:forEach items="${dto4 }" var="dto4" begin="1" end="4">
+	<c:forEach items="${dto4 }" var="dto4" begin="0" end="3">
 		<li id="m_li">
 			<div><img class="m_item_image" src="${cpath }/upload/${dto4.image}"></div>
 			<div class="m_item_info"><p>${dto4.name }</p></div>
@@ -108,7 +108,7 @@
 	<!-- 의자 -->
 	<div id="m_item">
 	<ul id="m_ul">
-	<c:forEach items="${dto5 }" var="dto5" begin="1" end="5">
+	<c:forEach items="${dto5 }" var="dto5" begin="0" end="3">
 		<li id="m_li">
 			<div><img class="m_item_image" src="${cpath }/upload/${dto5.image}"></div>
 			<div class="m_item_info"><p>${dto5.name }</p></div>

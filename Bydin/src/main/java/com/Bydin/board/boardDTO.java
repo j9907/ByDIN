@@ -15,7 +15,7 @@ public class boardDTO {
 //	DIVISION	VARCHAR2(100 BYTE)	No		9	
 //	EMAIL	VARCHAR2(100 BYTE)	Yes		10	
 	
-	private String title,writer,content,password,img,division,email;
+	private String title,writer,content,password,img,division,email,uploaddate;
 	private int anwercheck,idx;
 	public int getIdx() {
 		return idx;
@@ -23,12 +23,11 @@ public class boardDTO {
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	private Date uploaddate;
 	
-	public Date getUploaddate() {
+	public String getUploaddate() {
 		return uploaddate;
 	}
-	public void setUploaddate(Date uploaddate) {
+	public void setUploaddate(String uploaddate) {
 		this.uploaddate = uploaddate;
 	}
 	public String getTitle() {

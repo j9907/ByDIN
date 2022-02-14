@@ -78,9 +78,6 @@ h3{
 	font-weight: bold;
 	font-size:15pt;
 }
-#a:hover{
-	border-bottom:1px solid #6667ab;
-}
 .paging{
 	text-align: center;
 }
@@ -95,6 +92,7 @@ h3{
 	color:black;
 	font-size:11pt;
 }
+
 .search{
 	padding:5px;
 	border-radius: 10px;
@@ -152,13 +150,13 @@ h3{
 	</c:choose>
 	<c:forEach var="list" items="${list }">
 		<tr>
+			<td class="boardw">${list.idx }</td>
 			<td colspan="2" class="boardt">
-				<div class="board-number">${list.idx }</div>
-				<div class="board-title"><a href="#" id="a">${list.title }</a></div>
+				<a href="${cpath }/qna/confirm/${list.idx}" id="a">${list.title }</a>
 			</td>
-			<td class="boardw">${list.writer }</td>
-			<td class="boardd">${list.uploaddate }</td>
-			<td class="boardv">${list.anwercheck}</td>
+			<td class="boardd">${list.writer }</td>
+			<td class="boardv" id="b_date">${list.uploaddate }</td>
+			<td class="boardy">${list.anwercheck}</td>
 		</tr>
 	</c:forEach>
 
@@ -168,4 +166,12 @@ h3{
 	<a href="${cpath }/qna/write"><button>새글쓰기</button></a>
 </div>
 </div>
+<script>
+	const check = document.querySelectorAll('td[id^="b_date"]')
+	check.forEach((el,i) => {
+		const date = (el.innerText).substr(0,11);
+		el.innerText = date
+	});
+	console.log(check)
+</script>
 <%@ include file="../footer.jsp"%>
