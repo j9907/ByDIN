@@ -89,6 +89,7 @@
 
         #m_slider {
             width: 1200px;
+            overflow: hidden;
             height: 500px;
             margin: 0 auto;
         }
@@ -163,24 +164,26 @@
                         	<img title="${login.userid == 'admin' ? '관리자페이지' : '마이페이지' }" src="${cpath }/resources/img/icon/로그인.png" height="40px" width="40px">
                         </a>
                         <img title="장바구니" src="${cpath }/resources/img/icon/장바구니.png" height="40px" width="40px">
-                        <img title="고객센터" src="${cpath }/resources/img/icon/고객센터.png" height="40px" width="40px">
+                        <a href="${cpath }/qna/board" class="h_r_a"><img title="고객센터" src="${cpath }/resources/img/icon/고객센터.png" height="40px" width="40px"></a>
                 </div>
             </div>
         </div>
         <div id="h_down">
         <ul class="h_ul">
         	<li class="h_menu2">NEW</li>
-        	<li class="h_menu">서재</li>
-        	<li class="h_menu">침실</li>
-        	<li class="h_menu">거실</li>
-        	<li class="h_menu">주방</li>
-        	<li class="h_menu">의자</li>
+        	<li class="h_menu"><a class="h_a" href="${cpath }/item/studyroom">서재</a></li>
+        	<li class="h_menu"><a class="h_a" href="${cpath }/item/bedroom">침실</a></li>
+        	<li class="h_menu"><a class="h_a" href="${cpath }/item/livingroom">거실</a></li>
+        	<li class="h_menu"><a class="h_a" href="${cpath }/item/kichen">주방</a></li>
+        	<li class="h_menu"><a class="h_a" href="${cpath }/item/chair">의자</a></li>
         </ul>
      	<div class="h_right">
      		<ul class="h_ul">
      			<li class="h_menu h_m">${empty login ? '' : login.username} ${empty login ? '' : '님'}</li>
      			<li class="h_menu"><a class="h_a" href="${cpath }/${empty login ? 'member/login' : 'member/logout'}">${empty login ? '로그인' : '로그아웃' }</a></li>
+     			<c:if test="${empty login }">
      			<li class="h_menu"><a class="h_a" href="${cpath }/member/terms">회원가입</a></li>
+     			</c:if>
      			<li class="h_menu">쿠폰/혜택</li>
      		</ul>
      	</div>

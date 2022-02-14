@@ -50,13 +50,14 @@
 <%@ include file="topbar.jsp" %>
 	
 
-<!--   서재 studyroom 카테고리코드 1-01   -->
+<!--   침실 bedroom 카테고리코드 1-02   -->
+
 	<div id="l_item">
 	<ul id="l_ul">
-	<c:forEach items="${dto1 }" var="dto1">
+	<c:forEach items="${dto2 }" var="dto2">
 		<li id="l_li">
-			<div><img class="l_item_image" src="${cpath }/upload/${dto1.image}"></div>
-			<div class="l_item_info"><p>${dto1.name }</p></div>
+			<div><img class="l_item_image" src="${cpath }/upload/${dto2.image}"></div>
+			<div class="l_item_info"><p>${dto2.name }</p></div>
 		</li>
 	</c:forEach>
 	</ul>

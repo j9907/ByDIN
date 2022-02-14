@@ -20,6 +20,7 @@
 		font-size: 15pt;
 		font-weight: bold;
 		margin:60px;
+		cursor: pointer;
 	}
 	
 </style>
