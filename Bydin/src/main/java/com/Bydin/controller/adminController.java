@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Bydin.Service.AdminService;
-import com.Bydin.admin.TotalGoodsDTO;
+import com.Bydin.item.TotalGoodsDTO;
 
 @Controller
 @RequestMapping("admin/")

@@ -14,5 +14,11 @@ public interface boardDAO {
 
 	@Insert("insert into qna(title,writer,content,password,division,email) values (#{title},#{writer},#{content},#{password},#{division},#{email})")
 	int insertboard(boardDTO dto);
+	
+	@Select("select * from qna where idx=#{idx}")
+	boardDTO selectone(int idx);
+	
+	@Select("select password from qna where idx=#{idx}")
+	String checkpass(int idx);
 
 }
