@@ -20,7 +20,10 @@
 		font-size: 15pt;
 		font-weight: bold;
 		margin:60px;
+		cursor:pointer;
 	}
+	
+	
 	
 </style>
 <div id="m_join">

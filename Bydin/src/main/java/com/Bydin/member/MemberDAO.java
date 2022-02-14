@@ -11,7 +11,7 @@ public interface MemberDAO {
 			+ "values (#{userid},#{userpw},#{username},#{useremail},#{phoneno},#{useradd},#{birth},#{gender})")
 	public int insertuser(MemberDTO member);
 
-	@Select("select * from member where userid=#{userid} and userpw=#{userpw}")
-	public MemberDTO selectuser(MemberDTO member);
+	@Select("select * from member where userid=#{userid}")
+	public MemberDTO selectuser(String userid);
 
 }

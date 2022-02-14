@@ -6,25 +6,27 @@ h3{
 	text-align: center;
 	padding-top:30px;
 	font-size:20pt;
-	color:midnightblue;
+	color:#6667ab;
+	max-width: 1200px;
+	margin: 0 auto;
 }
 #boardList{
 	border-collapse: collapse; 
-	margin: 30px auto 30px auto;
-	width: 80%;
-	min-width: 80%;
+	margin: 30px auto;
+	width: 1200px;
+	min-width: 1200px;
 	text-align:center;
 }
 #boardList tr {
-	border-bottom: 1px solid #dadada;
+	border-bottom: 1px solid #6667ab;
 	height: 45px;
 }
 #boardList tr:hover {
 	cursor: default;
 }
 #boardList thead > tr {
-	background-color:midnightblue;	
-	color: #ffd700;
+	background-color:#6667ab;	
+	color: #fff;
 	font-weight: bold;
 }
 #boardList tbody td {
@@ -32,9 +34,6 @@ h3{
 }
 #boardList tbody > tr:hover {
 	background-color: #dadada;
-}
-#boardList tbody .boardt {
-	width: 5%;
 }
 #boardList tbody .boardt {
 	width: 58%;
@@ -49,18 +48,25 @@ h3{
 #boardList tbody .boardt > a:hover {
 	cursor: pointer;
 }
-#boardList tbody .boardw {
+#boardList .boardw {
+	width: 8%;
+}
+#boardList  .boardt {
+	width: 68%;
+}
+#boardList  .boardd {
+	width: 8%;
+}
+#boardList .boardv {
+	width: 8%;
+}
+#boardList .boardy {
 	width: 10%;
 }
-#boardList tbody .boardv {
-	width: 10%;
-}
-#boardList tbody .boardd {
-	width: 10%;
-}
-#boardList tbody .current {
+#boardList .current {
 	background-color: #eaeaea;
 }
+
 .board-number{
 	display: inline-block;
 	float: left;
@@ -73,7 +79,7 @@ h3{
 	font-size:15pt;
 }
 #a:hover{
-	border-bottom:1px solid midnightblue;
+	border-bottom:1px solid #6667ab;
 }
 .paging{
 	text-align: center;
@@ -96,42 +102,70 @@ h3{
 .in_search{
 	padding:5px;
 	border-radius: 10px;
-	border:1px solid midnightblue;
+	border:1px solid #6667ab;
 }
 .in_sub{
 	padding:6px;
-	background-color: midnightblue;
+	background-color: #6667ab;
 	border-radius: 10px;
 	color:white;
 	border:0;
 	cursor:pointer;
 }
+.b_btn{
+	max-width: 1200px;
+	margin:auto;
+	padding:30px;
+}
+.b_btn button{
+	background-color: #6667ab;
+	border: 0;
+	border-radius: 10px;
+	color:#fff;
+	padding: 10px;
+	cursor:pointer;
+	outline: none;
+}
 </style>
 <div id="table">
-<h3>게시판</h3>
+<h3>문의 게시판</h3>
 <table id="boardList">
 <thead>
 
 	<tr>
+		<td class="boardw">글번호</td>
 		<td class="boardt" colspan="2">제목</td>
-		<td class="boardw">작성자</td>
-		<td class="boardd">작성일</td>
-		<td class="boardv">조회수</td>
+		<td class="boardd">작성자</td>
+		<td class="boardv">작성일</td>
+		<td class="boardy">답변유무</td>
 	</tr>
 </thead>
-<!-- <tbody> -->
-<%-- 	<c:forEach var="list" items="${list }"> --%>
-<!-- 		<tr> -->
-<!-- 			<td colspan="2" class="boardt"> -->
-<%-- 				<div class="board-number">${list.idx }</div> --%>
-<%-- 				<div class="board-title"><a href="${cpath }/board/read/${list.idx}" id="a">${list.title }</a></div> --%>
-<!-- 			</td> -->
-<%-- 			<td class="boardw">${list.writer }</td> --%>
-<%-- 			<td class="boardd">${list.datetime }</td> --%>
-<%-- 			<td class="boardv">${list.viewCount }</td> --%>
-<!-- 		</tr> -->
-<%-- 	</c:forEach> --%>
-<!-- </tbody>	 -->
+<tbody>
+<c:choose>
+	<c:when test="${empty list}">
+	<tr>
+	<td colspan="7">
+		작성된 게시글이 없습니다.
+	</td>
+	</tr>
+	</c:when>
+	</c:choose>
+	<c:forEach var="list" items="${list }">
+		<tr>
+			<td colspan="2" class="boardt">
+				<div class="board-number">${list.idx }</div>
+				<div class="board-title"><a href="#" id="a">${list.title }</a></div>
+			</td>
+			<td class="boardw">${list.writer }</td>
+			<td class="boardd">${list.uploaddate }</td>
+			<td class="boardv">${list.anwercheck}</td>
+		</tr>
+	</c:forEach>
+
+</tbody>	
 </table>
+<div class="b_btn">
+	<a href="${cpath }/qna/write"><button>새글쓰기</button></a>
+</div>
 </div>
 <%@ include file="../footer.jsp"%>

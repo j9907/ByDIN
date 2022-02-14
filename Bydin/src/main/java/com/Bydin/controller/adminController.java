@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Bydin.Service.AdminService;
-import com.Bydin.item.TotalGoodsDTO;
+import com.Bydin.admin.TotalGoodsDTO;
 
 @Controller
 @RequestMapping("admin/")
@@ -34,16 +34,9 @@ public class adminController {
 		ModelAndView mav = new ModelAndView("redirect:/admin/addItem");
 		MultipartFile file = upload.getFile("file");
 		System.out.println(file);
-		int cnt = as.upload(file);
-//		String fileName = file.getOriginalFilename();
-//		dto.setImage(fileName);
-//		System.out.println(dto.getImage());
-//		System.out.println(dto.getCtgcode());
-		dto.setImage(file.getOriginalFilename());
-		
+		int cnt = as.upload(file);	
+		dto.setImage(file.getOriginalFilename());		
 		int add = as.addItem(dto);
-//		System.out.println(add);
-		
 		return mav;
 		
 	}
