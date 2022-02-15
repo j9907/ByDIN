@@ -145,7 +145,7 @@ margin-top:30px;
             <p class="b_text">내용 <font color="#6667ab">*</font></p>      	
             	</div>
             	<div class="board_right">
-            	<textarea name="content" rows="10" class="writeinput textarea" placeholder="글을 작성하세요!"></textarea>
+            	<textarea name="content" rows="10" class="writeinput textarea" placeholder="글을 작성하세요!"></textarea></p>
             </div>
             </div>
             <div class="board_box">

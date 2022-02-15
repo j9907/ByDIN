@@ -22,6 +22,7 @@ public class BoardService {
 	public int insertboard(boardDTO dto) {
 		return dao.insertboard(dto); 
 	}
+
 	public boardDTO selectone(int idx) {
 		return dao.selectone(idx);
 	}
