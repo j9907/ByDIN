@@ -33,5 +33,29 @@ public class ItemController {
 		return mav;
 	}
 	
+	@GetMapping("livingroom")
+	public ModelAndView livingroom() {
+		ModelAndView mav = new ModelAndView();
+		List<TotalGoodsDTO> dto3 = is.getLivingroomItem();
+		mav.addObject("dto3", dto3);
+		return mav;
+	}
+	
+	@GetMapping("kichen")
+	public ModelAndView kichen() {
+		ModelAndView mav = new ModelAndView();
+		List<TotalGoodsDTO> dto4 = is.getKichenItem();
+		mav.addObject("dto4", dto4);
+		return mav;
+	}
+	
+	@GetMapping("chair")
+	public ModelAndView chair() {
+		ModelAndView mav = new ModelAndView();
+		List<TotalGoodsDTO> dto5 = is.getChairItem();
+		mav.addObject("dto5", dto5);
+		return mav;
+	}
+	
 	
 }
