@@ -40,6 +40,7 @@ body,div,input{
  	cursor: pointer;
  	width: 300px;
  }
+
 </style>
 <div id="m_login">
 <form method="post">
