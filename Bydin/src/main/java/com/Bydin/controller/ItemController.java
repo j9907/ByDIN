@@ -28,7 +28,7 @@ public class ItemController {
 	@GetMapping("bedroom")
 	public ModelAndView bedroom() {
 		ModelAndView mav = new ModelAndView();
-		List<TotalGoodsDTO> dto2 = is.getBedroomaItem();
+		List<TotalGoodsDTO> dto2 = is.getBedroomItem();
 		mav.addObject("dto2", dto2);
 		return mav;
 	}
