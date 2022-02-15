@@ -89,6 +89,7 @@
 
         #m_slider {
             width: 1200px;
+            overflow: hidden;
             height: 500px;
             margin: 0 auto;
         }
@@ -170,11 +171,11 @@
         <div id="h_down">
         <ul class="h_ul">
         	<li class="h_menu2">NEW</li>
-        	<li class="h_menu">서재</li>
-        	<li class="h_menu">침실</li>
-        	<li class="h_menu">거실</li>
-        	<li class="h_menu">주방</li>
-        	<li class="h_menu">의자</li>
+        	<li class="h_menu"><a class="h_a" href="${cpath }/item/studyroom">서재</a></li>
+        	<li class="h_menu"><a class="h_a" href="${cpath }/item/bedroom">침실</a></li>
+        	<li class="h_menu"><a class="h_a" href="${cpath }/item/livingroom">거실</a></li>
+        	<li class="h_menu"><a class="h_a" href="${cpath }/item/kichen">주방</a></li>
+        	<li class="h_menu"><a class="h_a" href="${cpath }/item/chair">의자</a></li>
         </ul>
      	<div class="h_right">
      		<ul class="h_ul">
