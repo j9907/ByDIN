@@ -150,7 +150,7 @@ h3{
 	</c:choose>
 	<c:forEach var="list" items="${list }">
 		<tr>
-			<td class="boardw">${list.idx }</td>
+			<td class="boardw">${list.st }</td>
 			<td colspan="2" class="boardt">
 				<a href="${cpath }/qna/confirm/${list.idx}" id="a">${list.title }</a>
 			</td>
