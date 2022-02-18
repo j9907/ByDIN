@@ -78,6 +78,7 @@
 	resize: none;
 	height: 100px;
 	outline: none;
+	
 }
 
 .replybtn {
@@ -138,6 +139,14 @@ p.replydate {
 	border-bottom: 1px solid #6667ab;
 	padding-bottom: 10px;
 }
+.b_title{
+	border:0;
+	border-bottom: 2px solid #6667ab;
+	width: 300px;
+	font-weight: bold;
+	outline: none;
+	font-size: 14pt;
+}
 </style>
 <div class="main">
 	<h1 style="margin: 0 auto;">문의글</h1>
@@ -165,14 +174,16 @@ p.replydate {
 		</c:if>
 	</div>
 	<div class="b_count">
-		<p class="p_count">댓글</p>
+		<p class="p_count">댓글 <font style="color:#6667ab; font-size:11pt;">${row}</font></p>
 	</div>
 	<div id="replybox">
 		<div class="replylist" id="replylist">	</div>
 			<c:if test="${login.userid == 'admin' }">
 				<form method="post" action="${cpath }/qna/reply/${list.idx}">
 					<p class="p_text">답변</p>
-					<div class="reply">
+					<div class="reply">						
+						<input type="text" name="title" class="b_title" placeholder="제목">
+						<input type="hidden" name="writer" value="${login.username }">						
 						<textarea name="content" class="replyinput" id="content"></textarea>
 						<input type="submit" value="등록" class="replybtn">
 					</div>
@@ -218,14 +229,5 @@ p.replydate {
 	}
 	main();
 	
-// 	function getFormatDate(date) {
-// 		var time = new Date(date);
-// 		var year = time.getFullYear();
-// 		var month = (1 + time.getMonth());
-// 		month = month >= 10 ? month : '0' + month;
-// 		var day = time.getDate();
-// 		day = day >= 10 ? day : '0' + day;
-// 		return year + '-' + month + '-' + day;
-// 	}
 	</script>
 <%@ include file="../footer.jsp"%>
