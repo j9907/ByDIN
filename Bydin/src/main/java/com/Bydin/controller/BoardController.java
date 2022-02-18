@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Bydin.Service.BoardService;
+import com.Bydin.board.ReplyDTO;
 import com.Bydin.board.boardDTO;
 
 @Controller
@@ -53,7 +54,9 @@ public class BoardController {
 	public ModelAndView read(@PathVariable int num) {
 		ModelAndView mav = new ModelAndView("qna/read");
 		boardDTO list = bs.selectone(num);
+		int row = bs.replycount(num);
 		mav.addObject("list", list);
+		mav.addObject("row", row);
 		return mav;
 	}
 	
@@ -83,4 +86,35 @@ public class BoardController {
 		int row = bs.deleteboard(num);
 		return "redirect:/qna/board";
 	}
+	
+	@PostMapping("reply/{num}")
+	public ModelAndView reply(@PathVariable int num,ReplyDTO dto) {
+		ModelAndView mav = new ModelAndView();
+		dto.setBoardidx(num);
+		int row = bs.insertreply(dto);
+		if(row != 0) {
+			mav.setViewName("redirect:/qna/read/" + num);
+		}
+		return mav;
+	}
+	
+	@GetMapping("modify/{num}")
+	public ModelAndView modify(@PathVariable int num) {
+		ModelAndView mav = new ModelAndView("qna/modify");
+		boardDTO list = bs.selectone(num);
+		mav.addObject("list", list);
+		return mav;
+	} 
+	
+	@PostMapping("modify/{num}")
+	public ModelAndView modify(@PathVariable int num, boardDTO dto) {
+		ModelAndView mav = new ModelAndView();
+		dto.setIdx(num);
+		int row = bs.updateboard(dto);
+		if(row != 0) {
+			mav.setViewName("redirect:/qna/read/" + num);
+		}
+		return mav;
+	}
+	
 }

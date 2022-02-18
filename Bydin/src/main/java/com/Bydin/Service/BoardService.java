@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Bydin.board.BoardPaging;
+import com.Bydin.board.ReplyDTO;
 import com.Bydin.board.boardDAO;
 import com.Bydin.board.boardDTO;
 
@@ -16,6 +17,7 @@ import com.Bydin.board.boardDTO;
 public class BoardService {
 
 	@Autowired private boardDAO dao;
+	
 
 	public ModelAndView selectboard(int page) {
 		ModelAndView mav = new ModelAndView("qna/board");
@@ -54,5 +56,21 @@ public class BoardService {
 
 	public int deleteboard(int num) {
 		return dao.delboard(num);
+	}
+
+	public int insertreply(ReplyDTO dto) {
+		int row = dao.insertreply(dto);
+		if(row != 0) {
+			int rownum = dao.updateanswer(dto.getBoardidx());
+		}
+		return row;
+	}
+
+	public int replycount(int num) {
+		return dao.replycount(num);
+	}
+
+	public int updateboard(boardDTO dto) {
+		return dao.updateboard(dto);
 	}
 }

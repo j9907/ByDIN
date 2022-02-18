@@ -2,7 +2,13 @@ package com.Bydin.board;
 
 public class ReplyDTO {
 	private int idx,boardidx;
-	private String writer,content,uploaddate;
+	private String writer,content,uploaddate,title;
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public int getIdx() {
 		return idx;
 	}
