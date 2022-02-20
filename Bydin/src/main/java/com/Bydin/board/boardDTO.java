@@ -14,71 +14,105 @@ public class boardDTO {
 //	"	8	
 //	DIVISION	VARCHAR2(100 BYTE)	No		9	
 //	EMAIL	VARCHAR2(100 BYTE)	Yes		10	
-	
-	private String title,writer,content,password,img,division,email;
-	private int anwercheck,idx;
+
+	private String title, writer, content, password, img, division, email, uploaddate, answer;
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+	private int anwercheck, idx, st;
+
+	public int getSt() {
+		return st;
+	}
+
+	public void setSt(int st) {
+		this.st = st;
+	}
+
 	public int getIdx() {
 		return idx;
 	}
+
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	private Date uploaddate;
-	
-	public Date getUploaddate() {
+
+	public String getUploaddate() {
 		return uploaddate;
 	}
-	public void setUploaddate(Date uploaddate) {
+
+	public void setUploaddate(String uploaddate) {
 		this.uploaddate = uploaddate;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getWriter() {
 		return writer;
 	}
+
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getImg() {
 		return img;
 	}
+
 	public void setImg(String img) {
 		this.img = img;
 	}
+
 	public String getDivision() {
 		return division;
 	}
+
 	public void setDivision(String division) {
 		this.division = division;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public int getAnwercheck() {
 		return anwercheck;
 	}
+
 	public void setAnwercheck(int anwercheck) {
 		this.anwercheck = anwercheck;
 	}
-	
-	
+
 }

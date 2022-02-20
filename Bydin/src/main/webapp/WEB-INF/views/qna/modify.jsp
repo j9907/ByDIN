@@ -97,7 +97,7 @@ margin-top:30px;
 	font-weight: bold;
 }
 </style>
-<div id="board_text"><h2>문의게시판 글쓰기</h2></div>
+<div id="board_text"><h2>문의게시판 수정</h2></div>
         <form method="post">
 <div id="readlist">
         <div class="main">
@@ -107,12 +107,12 @@ margin-top:30px;
             <p class="b_text">문의 구분 <font color="#6667ab">*</font></p>      	
             	</div>
             	<div class="board_right">
-            	<select name="division" class="board_s" >
-            		<option value="상품">상품 문의</option>
-            		<option value="배송">배송 문의</option>
-            		<option value="주문">주문 문의</option>
-            		<option value="AS">AS 문의</option>
-            		<option value="기타">기타 문의</option>
+            	<select name="division" class="board_s"id="select_b">
+            		<option value="상품" ${list.division == '상품' ? 'selected="selected"' : ''}>상품 문의</option>
+            		<option value="배송" ${list.division == '배송' ? 'selected="selected"' : ''}>배송 문의</option>
+            		<option value="주문" ${list.division == '주문' ? 'selected="selected"' : ''}>주문 문의</option>
+            		<option value="AS" ${list.division == 'AS' ? 'selected="selected"' : ''}>AS 문의</option>
+            		<option value="기타" ${list.division == '기타' ? 'selected="selected"' : ''}>기타 문의</option>
             	</select>
             	</div>
             </div>
@@ -121,7 +121,7 @@ margin-top:30px;
             <p class="b_text">제목 <font color="#6667ab">*</font></p>      	
             	</div>
             	<div class="board_right">
-                    <input class="b_input" type="text" placeholder="제목" autofocus autocomplete="off" name="title">
+                    <input class="b_input" type="text" placeholder="제목" autofocus autocomplete="off" name="title" value="${list.title }">
                     </div>
                 </div>
                  <div class="board_box">
@@ -129,7 +129,7 @@ margin-top:30px;
             <p class="b_text">작성자 <font color="#6667ab">*</font></p>      	
             	</div>
             	<div class="board_right">
-                    <input class="b_input" type="text" value="${empty login ? '' : login.userid }" name="writer" id="b_wrtier">
+                    <input class="b_input" type="text" value="${list.writer }" name="writer" id="b_wrtier">
             	</div>
             </div>
             <div class="board_box">
@@ -137,7 +137,7 @@ margin-top:30px;
             <p class="b_text">이메일 <font color="#6667ab">*</font></p>      	
             	</div>
             	<div class="board_right">
-                    <input class="b_input" type="text" autocomplete="off" name="email">
+                    <input class="b_input" type="text" autocomplete="off" name="email" value="${list.email }">
                     </div>
                 </div>
              <div class="board_box">
@@ -145,7 +145,7 @@ margin-top:30px;
             <p class="b_text">내용 <font color="#6667ab">*</font></p>      	
             	</div>
             	<div class="board_right">
-            	<textarea name="content" rows="10" class="writeinput textarea" placeholder="글을 작성하세요!"></textarea></p>
+            	<textarea name="content" rows="10" class="writeinput textarea" placeholder="글을 작성하세요!">${list.content }</textarea></p>
             </div>
             </div>
             <div class="board_box">
@@ -153,7 +153,7 @@ margin-top:30px;
             <p class="b_text">비밀번호 <font color="#6667ab">*</font></p>      	
             	</div>
             	<div class="board_right">
-                    <input  class="b_input" type="password" autocomplete="off" name="password">
+                    <input  class="b_input" type="password" autocomplete="off" name="password" value="${list.password }">
                     </div>
                 </div>
         </div>
@@ -174,10 +174,10 @@ margin-top:30px;
   		if(jsVar == '0'){
   			alert('작성이 실패되었습니다');
   		}
-  	const userid = document.getElementById('b_wrtier')
-  	if(userid.value != ''){
-  		userid.setAttribute("readonly","readonly");
-  	}
-  	
+  		const select = document.getElementById('select_b')
+  		select.forEach((el,i) => {
+  			console.log(el.options)
+  		});
+  	  	console.log(select)
   </script>
 <%@ include file="../footer.jsp"%>

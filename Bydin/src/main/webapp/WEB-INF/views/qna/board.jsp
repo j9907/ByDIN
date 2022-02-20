@@ -78,9 +78,6 @@ h3{
 	font-weight: bold;
 	font-size:15pt;
 }
-#a:hover{
-	border-bottom:1px solid #6667ab;
-}
 .paging{
 	text-align: center;
 }
@@ -95,6 +92,7 @@ h3{
 	color:black;
 	font-size:11pt;
 }
+
 .search{
 	padding:5px;
 	border-radius: 10px;
@@ -152,20 +150,56 @@ h3{
 	</c:choose>
 	<c:forEach var="list" items="${list }">
 		<tr>
+			<td class="boardw">${list.st }</td>
 			<td colspan="2" class="boardt">
-				<div class="board-number">${list.idx }</div>
-				<div class="board-title"><a href="#" id="a">${list.title }</a></div>
+				<a href="${cpath }/qna/confirm/${list.idx}" id="a">${list.title }</a>
 			</td>
-			<td class="boardw">${list.writer }</td>
-			<td class="boardd">${list.uploaddate }</td>
-			<td class="boardv">${list.anwercheck}</td>
+			<td class="boardd">${list.writer }</td>
+			<td class="boardv" id="b_date">${list.uploaddate }</td>
+			<td class="boardy" id="b_answer">${list.anwercheck}</td>
 		</tr>
 	</c:forEach>
 
 </tbody>	
 </table>
+<div class="paging">
+		<c:if test="${prev }">
+			<a href="${cpath }/qna/board/${begin - 1}/"
+			   style="display: inline; color:#6667ab; font-size:12pt;">◀</a>
+		</c:if>
+		<c:forEach var="page" begin="${begin }" end="${end }">
+			<c:if test="${nowPage == page }">
+				<b style="border-bottom:1px solid #6667ab">[${page }]</b>
+			</c:if>
+			<c:if test="${not (nowPage == page) }">
+				<a id="searchLisk" style="display: inline; color:#6667ab; font-size:12pt;" href="${cpath }/board/${number == 0 ? '' : 'boardsearch'}/${page}">
+					[${page }] </a>
+			</c:if>
+		</c:forEach>
+		
+		<c:if test="${next }">
+			<a href="${cpath }/qna/board/${end + 1}"
+			   style="display: inline; color:#6667ab; font-size:12pt;">▶</a>
+		</c:if>
+	</div>
 <div class="b_btn">
 	<a href="${cpath }/qna/write"><button>새글쓰기</button></a>
 </div>
 </div>
+<script>
+	const check = document.querySelectorAll('td[id^="b_date"]')
+	check.forEach((el,i) => {
+		const date = (el.innerText).substr(0,11);
+		el.innerText = date
+	});
+	const answer = document.querySelectorAll('td[id^="b_answer"]')
+	answer.forEach((el,i) => {
+		if(el.innerText == 0){
+			el.innerText = "답변 미완료"
+		}
+		else{
+			el.innerText = "답변 완료"
+		}
+	})
+</script>
 <%@ include file="../footer.jsp"%>

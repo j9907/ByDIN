@@ -40,6 +40,7 @@ body,div,input{
  	cursor: pointer;
  	width: 300px;
  }
+
 </style>
 <div id="m_login">
 <form method="post">
@@ -51,4 +52,14 @@ body,div,input{
 </div>
 </form>
 </div>
+<script>
+	const msg = '${msg}'
+	if(msg === '아이디 또는 비밀번호가 잘못되었습니다.'){
+		alert(msg)
+		location.href='${cpath}/member/login'
+	}
+	if(msg === '로그인완료'){
+		location.href='${cpath}/'
+	}
+</script>
 <%@ include file="../footer.jsp"%>
