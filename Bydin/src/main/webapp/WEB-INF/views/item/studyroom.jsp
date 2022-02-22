@@ -87,9 +87,19 @@
 	  	text-decoration: none;
 	  	display: block;
 	}
+	.dropdown-content button {
+	  	color: black;
+	  	padding: 12px 16px;
+	  	border: 0;
+	  	display: block;
+	  	width: 100%;
+	  	text-align: left;
+	  	font-size: 16px;
+	}
 	
 	/* Change color of dropdown links on hover */
 	.dropdown-content a:hover {background-color: #ddd}
+	.dropdown-content button:hover {background-color: #ddd}
 	
 	/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 	.show {display:block;}
@@ -111,11 +121,11 @@
     </div>
 
 	<div id="dropdown">
-		<button onclick="myfunction2()" class="dropbtn">2nd ctg</button>
+		<button onclick="myfunction2()" class="dropbtn">전체보기</button>
 		<div id="myDropdown2" class="dropdown-content">
-			<a href="${cpath }">1</a>
-			<a href="${cpath }">2</a>
-			<a href="${cpath }">3</a>
+			<a href="${cpath }">책상/테이블</a>
+			<a href="${cpath }">책장/선반장</a>
+			<a href="${cpath }">악세사리</a>
 		</div>
 	</div>
 </div>
@@ -123,17 +133,23 @@
 
 <div class="topbar_right">
 	<div id="dropdown">
-		<button onclick="myfunction3()" class="dropbtn">sortdropdown</button>
+		<button onclick="myfunction3()" class="dropbtn" id="btn">기본정렬순</button>
 		<div id="myDropdown3" class="dropdown-content">
-			<a href="#" onclick="return sort_cnt()">인기상품순</a>
-			<a href="#" onclick="return sort_abc()">가나다순</a>
-			<a href="#" onclick="return sort_high()">높은가격순</a>
-			<a href="#" onclick="return sort_row()">낮은가격순</a>
+			<button href="#" id="basicbtn">기본정렬순</button>
+			<button href="#" id="abcbtn">가나다순</button>
+			<button href="#" id="highbtn">높은가격순</button>
+			<button href="#" id="lowbtn">낮은가격순</button>
 		</div>
 	</div>
 </div>
 
 
+</div>
+<div id="l_item">
+	<ul id="l_ul">
+	<div id="item">
+	</div>
+	</ul>
 </div>
 	
 	
@@ -148,20 +164,6 @@
 		document.getElementById('myDropdown3').classList.toggle('show');
 	}
 	
-	function sort_abc(){
-		const itemsort = document.getElementById('l_item_name')
-		itemsort.sort((a, b) => {
-            // 0보다 큰값, 혹은 작은값
-            // 반환형은 무조건 정수로 반환
-            const asc = 1;
-            return (a.name > b.name ? 1 : -1) * asc;
-        })
-        itemsort.forEach(dto => {
-            const div = createElementFromData(dto);
-            l_item.appendChild(div);
-        })
-	}
-	
 	window.onclick = function(event) {
 	    if(!event.target.matches('.dropbtn')){
 	        var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -174,21 +176,213 @@
 	        }
 	    }
 	}
+	// lowPrice
+	function lowPrice(event){
+        arr.sort((a, b) => {
+            const asc = 1
+            return (a.price > b.price ? 1 : -1) * asc
+        })
+    }
+
+    // highPrice
+    function highPrice(event) {
+        arr.sort((a, b) => {
+            const desc = -1
+            return (a.price > b.price ? 1 : -1) * desc
+        })
+    }
+
+    const item = document.getElementById('item')
+   	const btn = document.getElementById('btn')
+
+    var dom = ""
+    
+    //basic_sort
+    const basicbtn = document.getElementById('basicbtn')
+    
+    basicbtn.addEventListener("click", async (event) => {
+    	
+    	btn.innerText = ''
+    	btn.innerText = '기본정렬순'
+    	
+    	dom = ""
+    	const url = '${cpath}/item/dto1'
+    	const opt = {
+    			method: 'GET'
+    	}
+    	const resp = await fetch(url, opt)
+    	const json = await resp.json()
+    	console.log(json)
+    	json.forEach(dto => {
+        	console.log(dto.image)
+        	
+        	dom += '<li id="l_li">'
+        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></div>'
+        	dom += '</li>'
+        	
+    	});
+    	item.innerHTML = dom;
+    })
+    
+    // abc
+    const abcbtn = document.getElementById('abcbtn')
+        
+    abcbtn.addEventListener("click", async (event) => {
+    	
+    	btn.innerText = ''
+    	btn.innerText = '가나다순'
+    	
+    	dom = ""
+    	const url = '${cpath}/item/dto1'
+        	const opt = {
+        			method: 'GET'
+        	}
+        	const resp = await fetch(url, opt)
+        	console.log(resp)
+        	const json = await resp.json()
+        	console.log(json)
+        	
+        json.sort((a, b) => {
+            const asc = 1
+            console.log((a.name > b.name ? 1 : -1) * asc)
+            return (a.name > b.name ? 1 : -1) * asc
+        })
+            json.forEach(dto => {
+            	console.log(dto.image)
+            	
+            	dom += '<li id="l_li">'
+            	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+            	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+            	dom += '<div><p>'+dto.price+'</p></div>'
+            	dom += '</li>'
+            	
+            /* const div = createElementFromData(dto)
+            l_item_js.appendChild(div) */
+        	});
+    		console.log(dom)
+        	item.innerHTML = dom;
+    });
+    
+    // highPrice
+    
+    const highbtn = document.getElementById('highbtn')
+    
+    highbtn.addEventListener("click", async (event) => {
+    	
+    	btn.innerText = ''
+    	btn.innerText = '높은가격순'
+    	
+    	dom = ""
+    	const url = '${cpath}/item/dto1'
+        	const opt = {
+        			method: 'GET'
+        	}
+        	const resp = await fetch(url, opt)
+        	console.log(resp)
+        	const json = await resp.json()
+        	console.log(json)
+        	
+        json.sort((a, b) => {
+            const desc = -1
+            console.log((a.price > b.price ? 1 : -1) * desc)
+            return (a.price > b.price ? 1 : -1) * desc
+        })
+            json.forEach(dto => {
+            	console.log(dto.image)
+            	
+            	dom += '<li id="l_li">'
+            	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+            	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+            	dom += '<div><p>'+dto.price+'</p></div>'
+            	dom += '</li>'
+            	
+            /* const div = createElementFromData(dto)
+            l_item_js.appendChild(div) */
+        	});
+    		console.log(dom)
+        	item.innerHTML = dom;
+    });
+    
+    
+    
+    // lowPrice
+    
+    const lowbtn = document.getElementById('lowbtn')
+    
+    lowbtn.addEventListener("click", async (event) => {
+    	
+    	btn.innerText = ''
+    	btn.innerText = '낮은가격순'
+    	
+    	dom = ""
+    	const url = '${cpath}/item/dto1'
+        	const opt = {
+        			method: 'GET'
+        	}
+        	const resp = await fetch(url, opt)
+        	console.log(resp)
+        	const json = await resp.json()
+        	console.log(json)
+        	
+        json.sort((a, b) => {
+            const asc = 1
+            console.log((a.price > b.price ? 1 : -1) * asc)
+            return (a.price > b.price ? 1 : -1) * asc
+        })
+            json.forEach(dto => {
+            	console.log(dto.image)
+            	
+            	dom += '<li id="l_li">'
+            	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+            	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+            	dom += '<div><p>'+dto.price+'</p></div>'
+            	dom += '</li>'
+            	
+            /* const div = createElementFromData(dto)
+            l_item_js.appendChild(div) */
+        	});
+    		console.log(dom)
+        	item.innerHTML = dom;
+    });
+    
+    
+    
+
+    window.addEventListener('load',async (event) => {
+    	const url = '${cpath}/item/dto1'
+    	const opt = {
+    			method: 'GET'
+    	}
+    	const resp = await fetch(url, opt)
+    	console.log(resp)
+    	const json = await resp.json()
+    	console.log(json)
+    	
+    	json.forEach(dto => {
+        	console.log(dto.image)
+        	
+        	dom += '<li id="l_li">'
+        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></div>'
+        	dom += '</li>'
+        	
+    	});
+		console.log(dom)
+    	item.innerHTML = dom;
+    	
+    });
+    
 	
 </script>
 
 <!--   서재 studyroom 카테고리코드 1-01   -->
-	<div id="l_item">
-	<ul id="l_ul">
-	<c:forEach items="${dto1 }" var="dto1">
-		<li id="l_li">
-			<div><img class="l_item_image" src="${cpath }/upload/${dto1.image}"></div>
-			<div class="l_item_info" id="l_item_name"><p>${dto1.name }</p></div>
-			<div><p>${dto1.price }</p></div>
-		</li>
-	</c:forEach>
-	</ul>
-	</div>
+	
+
+	
+	
 
 
 <%@ include file="../footer.jsp"%>
