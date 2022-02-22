@@ -17,7 +17,7 @@ public interface boardDAO {
 	@Select("select * from (select rownum as st, A.* from (select * from qna order by idx asc) A where rownum <= #{last} order by rownum desc) where st >= #{first} ")
 	List<boardDTO> selectboard(BoardPaging pagin);
 
-	@Insert("insert into qna(title,writer,content,password,division,email) values (#{title},#{writer},#{content},#{password},#{division},#{email})")
+	@Insert("insert into qna(title,writer,img,content,password,division,email) values (#{title},#{writer},#{img},#{content},#{password},#{division},#{email})")
 	int insertboard(boardDTO dto);
 	
 	@Select("select * from qna where idx=#{idx}")
