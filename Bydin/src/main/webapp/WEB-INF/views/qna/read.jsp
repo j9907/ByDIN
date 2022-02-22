@@ -147,6 +147,9 @@ p.replydate {
 	outline: none;
 	font-size: 14pt;
 }
+#board_img{
+	width:100px;
+}
 </style>
 <div class="main">
 	<h1 style="margin: 0 auto;">문의글</h1>
@@ -161,7 +164,15 @@ p.replydate {
 			</div>
 		</div>
 		<div id="buttom">
-			<pre>${list.content }</pre>
+			
+			<c:if test="${list.img != null }">
+			<div id="board_pr">
+				 <img src="${cpath }/upload/${list.img}" id="board_img">
+			</div>
+			</c:if>
+			<div id="read_div">
+			<p id="read_text">
+			${list.content }</p></div>
 		</div>
 	</div>
 	<div id="btngroup">
