@@ -14,7 +14,7 @@ public interface boardDAO {
 	@Select("select count(*) from qna")
 	public int selectCount(BoardPaging paging);
 
-	@Select("select * from (select rownum as st, A.* from (select * from qna order by idx asc) A where rownum <= #{last} order by rownum desc) where st >= #{first} ")
+	@Select("select * from (select rownum as st, A.* from (select * from qna order by idx desc) A where rownum <= #{last}) where st >= #{first} order by st desc")
 	List<boardDTO> selectboard(BoardPaging pagin);
 
 	@Insert("insert into qna(title,writer,img,content,password,division,email) values (#{title},#{writer},#{img},#{content},#{password},#{division},#{email})")

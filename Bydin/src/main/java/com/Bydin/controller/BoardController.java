@@ -28,7 +28,7 @@ public class BoardController {
 			return boardList(1);				
 	}
 
-	@GetMapping("{page}")
+	@GetMapping("board/{page}")
 	public ModelAndView boardList(@PathVariable int page) {
 			return bs.selectboard(page);			
 	}

@@ -148,7 +148,7 @@ p.replydate {
 	font-size: 14pt;
 }
 #board_img{
-	width:100px;
+	width:200px;
 }
 </style>
 <div class="main">
