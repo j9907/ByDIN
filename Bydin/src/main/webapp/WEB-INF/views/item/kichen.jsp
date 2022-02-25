@@ -131,11 +131,12 @@
     </div>
 
 	<div id="dropdown">
-		<button onclick="myfunction2()" class="dropbtn">2nd ctg</button>
+		<button onclick="myfunction2()" class="dropbtn">전체보기</button>
 		<div id="myDropdown2" class="dropdown-content">
-			<a href="${cpath }">1</a>
-			<a href="${cpath }">2</a>
-			<a href="${cpath }">3</a>
+			<button href="#" id="basicbtn">전체보기</button>
+			<button href="#" value="2-41">식탁</button>
+			<button href="#" value="2-42">수납장</button>
+			<button href="#" value="2-43">식탁의자</button>
 		</div>
 	</div>
 </div>
@@ -375,6 +376,231 @@
         	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
         	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
         	dom += '<div><p>'+dto.price+'</p></a></label></div>'
+        	dom += '</li>'
+        	
+    	});
+		console.log(dom)
+    	item.innerHTML = dom;
+    	
+    });
+    
+	
+    const item = document.getElementById('item')
+   	const btn = document.getElementById('btn')
+
+    let dom = ""
+	
+
+    // filtering
+	const filterItem = document.querySelector('div#myDropdown2').addEventListener('click', async e => {
+		
+		const url = '${cpath}/filter?ctgcode2=' + e.target.value
+		const resp = await fetch(url)
+		const json = await resp.json()
+		
+		dom = '';
+		
+		
+		json.forEach(dto => {
+        	
+        	dom += '<li id="l_li">'
+        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></div>'
+        	dom += '</li>'
+        	
+    	});
+    	item.innerHTML = dom;
+	})
+	
+	
+	// lowPrice
+	function lowPrice(event){
+        arr.sort((a, b) => {
+            const asc = 1
+            return (a.price > b.price ? 1 : -1) * asc
+        })
+    }
+
+    // highPrice
+    function highPrice(event) {
+        arr.sort((a, b) => {
+            const desc = -1
+            return (a.price > b.price ? 1 : -1) * desc
+        })
+    }
+
+    
+    //basic_sort
+    const basicbtn = document.getElementById('basicbtn')
+    
+    basicbtn.addEventListener("click", async (event) => {
+    	
+    	btn.innerText = ''
+    	btn.innerText = '기본정렬순'
+    	
+    	dom = ""
+    	const url = '${cpath}/item/dto4'
+    	const opt = {
+    			method: 'GET'
+    	}
+    	const resp = await fetch(url, opt)
+    	const json = await resp.json()
+    	console.log(json)
+    	json.forEach(dto => {
+        	console.log(dto.image)
+        	
+        	dom += '<li id="l_li">'
+        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></div>'
+        	dom += '</li>'
+        	
+    	});
+    	item.innerHTML = dom;
+    })
+    
+    // abc
+    const abcbtn = document.getElementById('abcbtn')
+        
+    abcbtn.addEventListener("click", async (event) => {
+    	
+    	btn.innerText = ''
+    	btn.innerText = '가나다순'
+    	
+    	dom = ""
+    	const url = '${cpath}/item/dto4'
+        	const opt = {
+        			method: 'GET'
+        	}
+        	const resp = await fetch(url, opt)
+        	console.log(resp)
+        	const json = await resp.json()
+        	console.log(json)
+        	
+        json.sort((a, b) => {
+            const asc = 1
+            console.log((a.name > b.name ? 1 : -1) * asc)
+            return (a.name > b.name ? 1 : -1) * asc
+        })
+            json.forEach(dto => {
+            	console.log(dto.image)
+            	
+            	dom += '<li id="l_li">'
+            	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+            	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+            	dom += '<div><p>'+dto.price+'</p></div>'
+            	dom += '</li>'
+            	
+            /* const div = createElementFromData(dto)
+            l_item_js.appendChild(div) */
+        	});
+    		console.log(dom)
+        	item.innerHTML = dom;
+    });
+    
+    // highPrice
+    
+    const highbtn = document.getElementById('highbtn')
+    
+    highbtn.addEventListener("click", async (event) => {
+    	
+    	btn.innerText = ''
+    	btn.innerText = '높은가격순'
+    	
+    	dom = ""
+    	const url = '${cpath}/item/dto4'
+        	const opt = {
+        			method: 'GET'
+        	}
+        	const resp = await fetch(url, opt)
+        	console.log(resp)
+        	const json = await resp.json()
+        	console.log(json)
+        	
+        json.sort((a, b) => {
+            const desc = -1
+            console.log((a.price > b.price ? 1 : -1) * desc)
+            return (a.price > b.price ? 1 : -1) * desc
+        })
+            json.forEach(dto => {
+            	console.log(dto.image)
+            	
+            	dom += '<li id="l_li">'
+            	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+            	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+            	dom += '<div><p>'+dto.price+'</p></div>'
+            	dom += '</li>'
+            	
+            /* const div = createElementFromData(dto)
+            l_item_js.appendChild(div) */
+        	});
+    		console.log(dom)
+        	item.innerHTML = dom;
+    });
+    
+    
+    
+    // lowPrice
+    
+    const lowbtn = document.getElementById('lowbtn')
+    
+    lowbtn.addEventListener("click", async (event) => {
+    	
+    	btn.innerText = ''
+    	btn.innerText = '낮은가격순'
+    	
+    	dom = ""
+    	const url = '${cpath}/item/dto4'
+        	const opt = {
+        			method: 'GET'
+        	}
+        	const resp = await fetch(url, opt)
+        	console.log(resp)
+        	const json = await resp.json()
+        	console.log(json) 
+        	
+        json.sort((a, b) => {
+            const asc = 1
+            console.log((a.price > b.price ? 1 : -1) * asc)
+            return (a.price > b.price ? 1 : -1) * asc
+        })
+            json.forEach(dto => {
+            	console.log(dto.image)
+            	
+            	dom += '<li id="l_li">'
+            	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+            	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+            	dom += '<div><p>'+dto.price+'</p></div>'
+            	dom += '</li>'
+            	
+            /* const div = createElementFromData(dto)
+            l_item_js.appendChild(div) */
+        	});
+    		console.log(dom)
+        	item.innerHTML = dom;
+    });
+    
+    
+    
+
+    window.addEventListener('load',async (event) => {
+    	const url = '${cpath}/item/dto4'
+    	const opt = {
+    			method: 'GET'
+    	}
+    	const resp = await fetch(url, opt)
+    	console.log(resp)
+    	const json = await resp.json()
+    	console.log(json)
+    	
+    	json.forEach(dto => {
+        	console.log(dto.image)
+        	
+        	dom += '<li id="l_li">'
+        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></div>'
         	dom += '</li>'
         	
     	});

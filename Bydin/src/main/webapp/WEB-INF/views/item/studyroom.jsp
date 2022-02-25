@@ -133,9 +133,10 @@
 	<div id="dropdown">
 		<button onclick="myfunction2()" class="dropbtn">전체보기</button>
 		<div id="myDropdown2" class="dropdown-content">
-			<a href="${cpath }">책상/테이블</a>
-			<a href="${cpath }">책장/선반장</a>
-			<a href="${cpath }">악세사리</a>
+			<button href="#" id="basicbtn">전체보기</button>
+			<button href="#" value="2-11">책상/테이블</button>
+			<button href="#" value="2-12">책장/선반장</button>
+			<button href="#" value="2-13">악세사리</button>
 		</div>
 	</div>
 </div>
@@ -184,6 +185,39 @@
 	        }
 	    }
 	}
+	
+	const item = document.getElementById('item')
+   	const btn = document.getElementById('btn')
+
+    let dom = ""
+	
+
+    // filtering
+	const filterItem = document.querySelector('div#myDropdown2').addEventListener('click', async e => {
+		
+		const url = '${cpath}/filter?ctgcode2=' + e.target.value
+		const resp = await fetch(url)
+		const json = await resp.json()
+		
+		dom = '';
+		
+		
+		json.forEach(dto => {
+        	
+        	dom += '<li id="l_li">'
+        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></div>'
+        	dom += '</li>'
+        	
+    	});
+    	item.innerHTML = dom;
+	})
+	
+
+	
+	
+	
 	// lowPrice
 	function lowPrice(event){
         arr.sort((a, b) => {
@@ -200,10 +234,6 @@
         })
     }
 
-    const item = document.getElementById('item')
-   	const btn = document.getElementById('btn')
-
-    var dom = ""
     
     //basic_sort
     const basicbtn = document.getElementById('basicbtn')

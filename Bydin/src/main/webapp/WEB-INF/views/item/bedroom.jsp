@@ -96,6 +96,7 @@
 	  	text-align: left;
 	  	font-size: 16px;
 	}
+
 	#h_a{
 		text-decoration: none;
 		color:inherit;
@@ -105,6 +106,7 @@
 	#h_a > label{
 		cursor:pointer;
 	}
+
 	
 	/* Change color of dropdown links on hover */
 	.dropdown-content a:hover {background-color: #ddd}
@@ -130,11 +132,13 @@
     </div>
 
 	<div id="dropdown">
-		<button onclick="myfunction2()" class="dropbtn">2nd ctg</button>
+		<button onclick="myfunction2()" class="dropbtn">전체보기</button>
 		<div id="myDropdown2" class="dropdown-content">
-			<a href="${cpath }">1</a>
-			<a href="${cpath }">2</a>
-			<a href="${cpath }">3</a>
+			<button href="#" id="basicbtn">전체보기</button>
+			<button href="#" value="2-21">거울/화장대</button>
+			<button href="#" value="2-22">침대</button>
+			<button href="#" value="2-23">행거</button>
+			<button href="#" value="2-24">서랍장/협탁</button>
 		</div>
 	</div>
 </div>
@@ -182,6 +186,7 @@
 	        }
 	    }
 	}
+<<<<<<< HEAD
 	// lowPrice
 	function lowPrice(event){
         arr.sort((a, b) => {

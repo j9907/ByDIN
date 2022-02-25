@@ -2,10 +2,26 @@ package com.Bydin.item;
 
 public class CtgDTO {
 
-		private String ctgName, ctgCode, ctgRef;
+		private String ctgName, ctgCode1, ctgCode2, ctgRef;
 		private int ctgLevel;
 		
 		
+
+		public String getCtgCode1() {
+			return ctgCode1;
+		}
+
+		public void setCtgCode1(String ctgCode1) {
+			this.ctgCode1 = ctgCode1;
+		}
+
+		public String getCtgCode2() {
+			return ctgCode2;
+		}
+
+		public void setCtgCode2(String ctgCode2) {
+			this.ctgCode2 = ctgCode2;
+		}
 
 		public int getCtgLevel() {
 			return ctgLevel;
@@ -23,13 +39,7 @@ public class CtgDTO {
 			this.ctgName = ctgName;
 		}
 
-		public String getCtgCode() {
-			return ctgCode;
-		}
 
-		public void setCtgCode(String ctgCode) {
-			this.ctgCode = ctgCode;
-		}
 
 		public String getCtgRef() {
 			return ctgRef;

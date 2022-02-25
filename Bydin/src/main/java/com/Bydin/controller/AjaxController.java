@@ -1,10 +1,12 @@
 package com.Bydin.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Bydin.Ajax.AjaxService;
@@ -57,16 +59,25 @@ public class AjaxController {
 		return list;
 	}
 	
-	@GetMapping("ctg")
-	public List<CtgDTO> ctgdto(){
-		List<CtgDTO> list = as.getCtg();
-		System.out.println(list.get(1));
-		return list;
-	}
-	
+
 	@GetMapping("item/newitems")
 	public List<TotalGoodsDTO> newitem(){
 		List<TotalGoodsDTO> list = is.getNewItem();
 		return list;
 	}
+	@GetMapping("ctg")
+	public List<CtgDTO> ctgdto(@RequestParam HashMap<String, Object> param){
+//		System.out.println(param);
+		List<CtgDTO> list = as.getCtg(param);
+		return list;
+	}
+	
+	@GetMapping("filter")
+	public List<TotalGoodsDTO> fltdto(@RequestParam HashMap<String, Object> param){
+//		System.out.println(param);
+		List<TotalGoodsDTO> list = as.getflt(param);
+		return list;
+	}
+	
+
 }
