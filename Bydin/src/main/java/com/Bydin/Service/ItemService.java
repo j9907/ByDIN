@@ -32,6 +32,14 @@ public class ItemService {
 	public List<TotalGoodsDTO> getChairItem() {
 		return dao.selectChair();
 	}
+
+	public List<TotalGoodsDTO> getNewItem() {
+		return dao.getNewItem();
+	}
+
+	public TotalGoodsDTO getItem(int num) {
+		return dao.getItem(num);
+	}
 	
 	
 }

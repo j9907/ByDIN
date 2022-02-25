@@ -73,15 +73,9 @@
         
     <div id="addList">
         <div class="add_left"><p>카테고리</p></div>
-        <div class="add_right">
-			<select name="ctgcode">
-				<option value="1-01">서재</option>
-				<option value="1-02">침실</option>
-				<option value="1-03">거실</option>
-				<option value="1-04">주방</option>
-				<option value="1-05">의자</option>
-			</select>
-		</div>
+        <div class="add_right" id="ctg_1st"></div>
+        
+		<div id="ctg_2nd"></div>
     </div>
         
     <div id="addList">
@@ -104,6 +98,54 @@
 
 <script>
 	document.getElementById('now_date').valueAsDate = new Date();
+	
+	const ctgdiv = document.querySelector('div#ctg_1st')
+	const ctgdiv2 = document.querySelector('div#ctg_2nd')
+	const onch = document.getElementById('ctgCode1')
+	async function main(){
+	
+	const url = '${cpath}/ctg'
+	const opt = { method: 'GET'}
+	const resp = await fetch(url, opt)
+	const json = await resp.json()
+	
+	
+	let dom = ''
+	dom += '<select name="ctgCode1" onchange="change()">'
+	json.forEach(ctg => {
+		console.log(ctg.ctgCode1)
+		if (ctg.ctgLevel == 1){
+		dom += '<option value='+ctg.ctgCode1+'>'+ctg.ctgRef+'</option>'
+		}
+	})
+	
+	dom += '</select>'
+	
+	ctgdiv.innerHTML = dom;
+	
+	
+	}
+	main();
+	
+	async function change(){
+		const url = '${cpath}/ctg'
+		const opt = { method: 'GET'}
+		const resp = await fetch(url, opt)
+		const json = await resp.json()
+		
+		let dom2 = ''
+			
+		dom2 += '<select name="ctgCode2">'
+		json.forEach(ctg => {
+			console.log(ctg.ctgCode1)
+			if (ctg.ctgLevel == 2 && ctg.ctgCode1 == '1-01'){
+				dom2 += '<option value='+ctg.ctgCode2+'>'+ctg.ctgRef+'</option>'
+			}
+		})
+		dom2 += '</select>'
+		
+		ctgdiv2.innerHTML = dom2;
+	}
 </script>
 
 <%@ include file="../footer.jsp"%>
