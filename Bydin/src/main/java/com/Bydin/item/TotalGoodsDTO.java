@@ -6,10 +6,30 @@ import java.sql.Date;
 public class TotalGoodsDTO {
 
 	private int idx, no, price, stock;
-	private String name, info, ctgcode;
+	private String name, info, infoImg, ctgcode1, ctgcode2;
 	private Date uploadDate;
 	private String image;
 	
+	
+	
+	public String getInfoImg() {
+		return infoImg;
+	}
+	public void setInfoImg(String infoImg) {
+		this.infoImg = infoImg;
+	}
+	public String getCtgcode1() {
+		return ctgcode1;
+	}
+	public void setCtgcode1(String ctgcode1) {
+		this.ctgcode1 = ctgcode1;
+	}
+	public String getCtgcode2() {
+		return ctgcode2;
+	}
+	public void setCtgcode2(String ctgcode2) {
+		this.ctgcode2 = ctgcode2;
+	}
 	public String getImage() {
 		return image;
 	}
@@ -33,13 +53,6 @@ public class TotalGoodsDTO {
 	}
 	public void setPrice(int price) {
 		this.price = price;
-	}
-	public String getCtgcode() {
-		return ctgcode;
-	}
-	public void setCtgcode(String ctgcode) {
-
-		this.ctgcode = ctgcode;
 	}
 	public int getStock() {
 		return stock;

@@ -35,11 +35,15 @@
         	padding-right: 30px;
         	width: 100px;
         }
+        .ctg_right{
+        	display: flex;
+        }
         #slt{
         	height: 25px;
         }
         .add_right input {
-            height: 40px;
+/*             height: 40px; */
+			padding: 10px;
             width: 98%;
             border-radius: 5px;
             border: 1px solid lightgray;
@@ -55,7 +59,13 @@
 			width: 300px;
 			font-weight: bold;
         }
-        .info > input {
+        .info{
+        	height: 550px;
+        }
+        .infoImg{
+        	height: 50px;
+        }
+        .infoTxt > input{
         	height: 500px;
         }
     </style>
@@ -82,7 +92,8 @@
         
     <div id="addList">
         <div class="add_left"><p>카테고리</p></div>
-        <div class="add_right ctg" id="ctg_1st">
+        <div class="add_right ctg_right">
+        <div class="ctg" id="ctg_1st">
         <select name="ctgCode1" id="ctgCode1" class="slt">
         	<option value="">===대분류===</option>
         	<option value="1-01">서재</option>
@@ -93,10 +104,11 @@
         </select>
         </div>
         
-		<div class="add_right ctg" id="ctg_2nd" class="slt">
+		<div class="ctg" id="ctg_2nd" class="slt">
 		<select name="ctgCode2" id="ctgCode2">
 			<option>===소분류===</option>
 		</select></div>
+		</div>
     </div>
         
     <div id="addList">
@@ -111,7 +123,10 @@
         
     <div id="addList">
         <div class="add_left"><p>상세설명</p></div>
-        <div class="add_right info"><input name="info" type="text" maxlength="2000" required></div>
+        <div class="info add_right">
+	        <div class="infoImg"><input name="infoImg" type="file" accept="image/*"></div>
+	        <div class="infoTxt"><input name="info" type="text" maxlength="2000" required></div>
+        </div>
     </div>
     <input type="submit" value="등록" class="addSubmit">
 </form>

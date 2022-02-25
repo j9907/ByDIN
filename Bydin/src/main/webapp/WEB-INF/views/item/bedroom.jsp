@@ -121,11 +121,13 @@
     </div>
 
 	<div id="dropdown">
-		<button onclick="myfunction2()" class="dropbtn">2nd ctg</button>
+		<button onclick="myfunction2()" class="dropbtn">전체보기</button>
 		<div id="myDropdown2" class="dropdown-content">
-			<a href="${cpath }">1</a>
-			<a href="${cpath }">2</a>
-			<a href="${cpath }">3</a>
+			<button href="#" id="basicbtn">전체보기</button>
+			<button href="#" value="2-21">거울/화장대</button>
+			<button href="#" value="2-22">침대</button>
+			<button href="#" value="2-23">행거</button>
+			<button href="#" value="2-24">서랍장/협탁</button>
 		</div>
 	</div>
 </div>
@@ -173,6 +175,37 @@
 	        }
 	    }
 	}
+    const item = document.getElementById('item')
+   	const btn = document.getElementById('btn')
+
+    let dom = ""
+	
+
+    // filtering
+	const filterItem = document.querySelector('div#myDropdown2').addEventListener('click', async e => {
+		
+		const url = '${cpath}/filter?ctgcode2=' + e.target.value
+		const resp = await fetch(url)
+		const json = await resp.json()
+		
+		dom = '';
+		
+		
+		json.forEach(dto => {
+        	
+        	dom += '<li id="l_li">'
+        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></div>'
+        	dom += '</li>'
+        	
+    	});
+    	item.innerHTML = dom;
+	})
+	
+
+	
+	
 	// lowPrice
 	function lowPrice(event){
         arr.sort((a, b) => {
@@ -189,10 +222,6 @@
         })
     }
 
-    const item = document.getElementById('item')
-   	const btn = document.getElementById('btn')
-
-    var dom = ""
     
     //basic_sort
     const basicbtn = document.getElementById('basicbtn')
@@ -209,9 +238,9 @@
     	}
     	const resp = await fetch(url, opt)
     	const json = await resp.json()
-    	console.log(json)
+//     	console.log(json)
     	json.forEach(dto => {
-        	console.log(dto.image)
+//         	console.log(dto.image)
         	
         	dom += '<li id="l_li">'
         	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
@@ -237,17 +266,17 @@
         			method: 'GET'
         	}
         	const resp = await fetch(url, opt)
-        	console.log(resp)
+//         	console.log(resp)
         	const json = await resp.json()
-        	console.log(json)
+//         	console.log(json)
         	
         json.sort((a, b) => {
             const asc = 1
-            console.log((a.name > b.name ? 1 : -1) * asc)
+//             console.log((a.name > b.name ? 1 : -1) * asc)
             return (a.name > b.name ? 1 : -1) * asc
         })
             json.forEach(dto => {
-            	console.log(dto.image)
+//             	console.log(dto.image)
             	
             	dom += '<li id="l_li">'
             	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
@@ -258,7 +287,7 @@
             /* const div = createElementFromData(dto)
             l_item_js.appendChild(div) */
         	});
-    		console.log(dom)
+//     		console.log(dom)
         	item.innerHTML = dom;
     });
     
@@ -277,17 +306,17 @@
         			method: 'GET'
         	}
         	const resp = await fetch(url, opt)
-        	console.log(resp)
+//         	console.log(resp)
         	const json = await resp.json()
-        	console.log(json)
+//         	console.log(json)
         	
         json.sort((a, b) => {
             const desc = -1
-            console.log((a.price > b.price ? 1 : -1) * desc)
+//             console.log((a.price > b.price ? 1 : -1) * desc)
             return (a.price > b.price ? 1 : -1) * desc
         })
             json.forEach(dto => {
-            	console.log(dto.image)
+//             	console.log(dto.image)
             	
             	dom += '<li id="l_li">'
             	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
@@ -298,7 +327,7 @@
             /* const div = createElementFromData(dto)
             l_item_js.appendChild(div) */
         	});
-    		console.log(dom)
+//     		console.log(dom)
         	item.innerHTML = dom;
     });
     
@@ -319,17 +348,17 @@
         			method: 'GET'
         	}
         	const resp = await fetch(url, opt)
-        	console.log(resp)
+//         	console.log(resp)
         	const json = await resp.json()
-        	console.log(json) 
+//         	console.log(json) 
         	
         json.sort((a, b) => {
             const asc = 1
-            console.log((a.price > b.price ? 1 : -1) * asc)
+//             console.log((a.price > b.price ? 1 : -1) * asc)
             return (a.price > b.price ? 1 : -1) * asc
         })
             json.forEach(dto => {
-            	console.log(dto.image)
+//             	console.log(dto.image)
             	
             	dom += '<li id="l_li">'
             	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
@@ -340,7 +369,7 @@
             /* const div = createElementFromData(dto)
             l_item_js.appendChild(div) */
         	});
-    		console.log(dom)
+//     		console.log(dom)
         	item.innerHTML = dom;
     });
     
@@ -353,12 +382,12 @@
     			method: 'GET'
     	}
     	const resp = await fetch(url, opt)
-    	console.log(resp)
+//     	console.log(resp)
     	const json = await resp.json()
-    	console.log(json)
+//     	console.log(json)
     	
     	json.forEach(dto => {
-        	console.log(dto.image)
+//         	console.log(dto.image)
         	
         	dom += '<li id="l_li">'
         	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
@@ -367,7 +396,7 @@
         	dom += '</li>'
         	
     	});
-		console.log(dom)
+// 		console.log(dom)
     	item.innerHTML = dom;
     	
     });

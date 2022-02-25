@@ -10,8 +10,8 @@ import com.Bydin.item.TotalGoodsDTO;
 
 public interface AdminDAO {
 
-	@Insert("insert into totalGoods(name, price, image, ctgcode1, ctgcode2, uploadDate, stock, info) "
-			+ "values(#{name}, #{price}, #{image}, #{ctgcode1}, #{ctgcode2}, #{uploadDate}, #{stock}, #{info})")
+	@Insert("insert into totalGoods(name, price, image, ctgcode1, ctgcode2, uploadDate, stock, info, infoImg) "
+			+ "values(#{name}, #{price}, #{image}, #{ctgcode1}, #{ctgcode2}, #{uploadDate}, #{stock}, #{info}, #{infoImg})")
 	int addItem(TotalGoodsDTO dto);
 
 	@Select("select * from ctg")
