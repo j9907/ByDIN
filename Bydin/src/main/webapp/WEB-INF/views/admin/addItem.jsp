@@ -22,12 +22,21 @@
         }
         .add_left{
             padding:15px 0;
-            width:20%;
+            width:215px;
             font-weight: bold;
         }
         .add_right{
             padding: 15px 0 15px 0;
             width: 870px;
+        }
+        .ctg{
+        	display: flex;
+        	padding-top: 20px;
+        	padding-right: 30px;
+        	width: 100px;
+        }
+        #slt{
+        	height: 25px;
         }
         .add_right input {
             height: 40px;
@@ -73,15 +82,21 @@
         
     <div id="addList">
         <div class="add_left"><p>카테고리</p></div>
-        <div class="add_right">
-			<select name="ctgcode">
-				<option value="1-01">서재</option>
-				<option value="1-02">침실</option>
-				<option value="1-03">거실</option>
-				<option value="1-04">주방</option>
-				<option value="1-05">의자</option>
-			</select>
-		</div>
+        <div class="add_right ctg" id="ctg_1st">
+        <select name="ctgCode1" id="ctgCode1" class="slt">
+        	<option value="">===대분류===</option>
+        	<option value="1-01">서재</option>
+        	<option value="1-02">침실</option>
+        	<option value="1-03">거실</option>
+        	<option value="1-04">주방</option>
+        	<option value="1-05">의자</option>
+        </select>
+        </div>
+        
+		<div class="add_right ctg" id="ctg_2nd" class="slt">
+		<select name="ctgCode2" id="ctgCode2">
+			<option>===소분류===</option>
+		</select></div>
     </div>
         
     <div id="addList">
@@ -104,6 +119,29 @@
 
 <script>
 	document.getElementById('now_date').valueAsDate = new Date();
+	
+	const ctgs = document.querySelector('select#ctgCode1')
+	const ctgs2 = document.querySelector('select#ctgCode2')
+	
+	ctgs.addEventListener('change', selectCtg2)
+	
+	async function selectCtg2(event){
+		
+		console.log(event.target.value)
+		
+		const url = '${cpath}/ctg?ctg1=' + event.target.value
+// 		const opt = { method: 'GET'}
+		const resp = await fetch(url)
+		const json = await resp.json()
+		
+		let dom2 = ''
+			
+		json.forEach(ctg => {
+				dom2 += '<option value='+ctg.ctgCode2+'>'+ctg.ctgRef+'</option>'
+		})
+		
+		ctgs2.innerHTML = dom2;
+	}
 </script>
 
 <%@ include file="../footer.jsp"%>

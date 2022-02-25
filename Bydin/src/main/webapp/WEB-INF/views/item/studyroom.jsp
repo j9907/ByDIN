@@ -123,9 +123,7 @@
 	<div id="dropdown">
 		<button onclick="myfunction2()" class="dropbtn">전체보기</button>
 		<div id="myDropdown2" class="dropdown-content">
-			<a href="${cpath }">책상/테이블</a>
-			<a href="${cpath }">책장/선반장</a>
-			<a href="${cpath }">악세사리</a>
+			<a href="#" ></a>
 		</div>
 	</div>
 </div>
@@ -176,6 +174,12 @@
 	        }
 	    }
 	}
+	
+	// filtering
+	const filterbtn = document.getElementById('myDropDown2')
+	
+	
+	
 	// lowPrice
 	function lowPrice(event){
         arr.sort((a, b) => {
