@@ -109,6 +109,9 @@
 			<option>===소분류===</option>
 		</select></div>
 		</div>
+        <div class="add_right" id="ctg_1st"></div>
+        
+		<div id="ctg_2nd"></div>
     </div>
         
     <div id="addList">
@@ -156,6 +159,52 @@
 		})
 		
 		ctgs2.innerHTML = dom2;
+	const ctgdiv = document.querySelector('div#ctg_1st')
+	const ctgdiv2 = document.querySelector('div#ctg_2nd')
+	const onch = document.getElementById('ctgCode1')
+	async function main(){
+	
+	const url = '${cpath}/ctg'
+	const opt = { method: 'GET'}
+	const resp = await fetch(url, opt)
+	const json = await resp.json()
+	
+	
+	let dom = ''
+	dom += '<select name="ctgCode1" onchange="change()">'
+	json.forEach(ctg => {
+		console.log(ctg.ctgCode1)
+		if (ctg.ctgLevel == 1){
+		dom += '<option value='+ctg.ctgCode1+'>'+ctg.ctgRef+'</option>'
+		}
+	})
+	
+	dom += '</select>'
+	
+	ctgdiv.innerHTML = dom;
+	
+	
+	}
+	main();
+	
+	async function change(){
+		const url = '${cpath}/ctg'
+		const opt = { method: 'GET'}
+		const resp = await fetch(url, opt)
+		const json = await resp.json()
+		
+		let dom2 = ''
+			
+		dom2 += '<select name="ctgCode2">'
+		json.forEach(ctg => {
+			console.log(ctg.ctgCode1)
+			if (ctg.ctgLevel == 2 && ctg.ctgCode1 == '1-01'){
+				dom2 += '<option value='+ctg.ctgCode2+'>'+ctg.ctgRef+'</option>'
+			}
+		})
+		dom2 += '</select>'
+		
+		ctgdiv2.innerHTML = dom2;
 	}
 </script>
 

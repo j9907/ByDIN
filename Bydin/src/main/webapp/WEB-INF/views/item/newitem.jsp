@@ -78,6 +78,7 @@
 	  	min-width: 160px;
 	  	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	  	z-index: 1;
+	  	top:327px;
 	}
 	
 	/* Links inside the dropdown */
@@ -104,6 +105,15 @@
 	/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 	.show {display:block;}
 	
+	#dropdown{
+		width: 1200px;
+		margin:0 auto;
+		text-align: right;
+		display: flex;
+		flex-flow: column;
+		align-items: flex-end;
+		padding-top:100px;
+	}
 	#h_a{
 		text-decoration: none;
 		color:inherit;
@@ -117,29 +127,28 @@
 
 
 <!-- topbar 구성 -->
-<div class="topbar">
-<div class="topbar_left">
-	<div id="dropdown">
-        <button onclick="myfunction1()" class="dropbtn">서재</button>
-        <div id="myDropdown1" class="dropdown-content">
-            <a href="${cpath}/item/studyroom">서재</a>
-            <a href="${cpath}/item/bedroom">침실</a>
-            <a href="${cpath}/item/livingroom">거실</a>
-            <a href="${cpath}/item/kichen">주방</a>
-            <a href="${cpath}/item/chair">의자</a>
-        </div>
-    </div>
+<!-- <div class="topbar"> -->
+<!-- <div class="topbar_left"> -->
+<!-- 	<div id="dropdown"> -->
+<!--         <button onclick="myfunction1()" class="dropbtn">서재</button> -->
+<!--         <div id="myDropdown1" class="dropdown-content"> -->
+<%--             <a href="${cpath}/item/studyroom">서재</a> --%>
+<%--             <a href="${cpath}/item/bedroom">침실</a> --%>
+<%--             <a href="${cpath}/item/livingroom">거실</a> --%>
+<%--             <a href="${cpath}/item/kichen">주방</a> --%>
+<%--             <a href="${cpath}/item/chair">의자</a> --%>
+<!--         </div> -->
+<!--     </div> -->
 
-	<div id="dropdown">
-		<button onclick="myfunction2()" class="dropbtn">전체보기</button>
-		<div id="myDropdown2" class="dropdown-content">
-			<button href="#" id="basicbtn">전체보기</button>
-			<button href="#" value="2-11">책상/테이블</button>
-			<button href="#" value="2-12">책장/선반장</button>
-			<button href="#" value="2-13">악세사리</button>
-		</div>
-	</div>
-</div>
+<!-- 	<div id="dropdown"> -->
+<!-- 		<button onclick="myfunction2()" class="dropbtn">전체보기</button> -->
+<!-- 		<div id="myDropdown2" class="dropdown-content"> -->
+<%-- 			<a href="${cpath }">책상/테이블</a> --%>
+<%-- 			<a href="${cpath }">책장/선반장</a> --%>
+<%-- 			<a href="${cpath }">악세사리</a> --%>
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- </div> -->
 
 
 <div class="topbar_right">
@@ -153,6 +162,8 @@
 		</div>
 	</div>
 </div>
+
+
 </div>
 <div id="l_item">
 	<ul id="l_ul">
@@ -185,39 +196,6 @@
 	        }
 	    }
 	}
-	
-	const item = document.getElementById('item')
-   	const btn = document.getElementById('btn')
-
-    let dom = ""
-	
-
-    // filtering
-	const filterItem = document.querySelector('div#myDropdown2').addEventListener('click', async e => {
-		
-		const url = '${cpath}/filter?ctgcode2=' + e.target.value
-		const resp = await fetch(url)
-		const json = await resp.json()
-		
-		dom = '';
-		
-		
-		json.forEach(dto => {
-        	
-        	dom += '<li id="l_li">'
-        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></div>'
-        	dom += '</li>'
-        	
-    	});
-    	item.innerHTML = dom;
-	})
-	
-
-	
-	
-	
 	// lowPrice
 	function lowPrice(event){
         arr.sort((a, b) => {
@@ -234,6 +212,10 @@
         })
     }
 
+    const item = document.getElementById('item')
+   	const btn = document.getElementById('btn')
+
+    var dom = ""
     
     //basic_sort
     const basicbtn = document.getElementById('basicbtn')
@@ -244,7 +226,7 @@
     	btn.innerText = '기본정렬순'
     	
     	dom = ""
-    	const url = '${cpath}/item/dto1'
+    	const url = '${cpath}/item/newitems'
     	const opt = {
     			method: 'GET'
     	}
@@ -273,7 +255,7 @@
     	btn.innerText = '가나다순'
     	
     	dom = ""
-    	const url = '${cpath}/item/dto1'
+    	const url = '${cpath}/item/newitems'
         	const opt = {
         			method: 'GET'
         	}
@@ -313,7 +295,7 @@
     	btn.innerText = '높은가격순'
     	
     	dom = ""
-    	const url = '${cpath}/item/dto1'
+    	const url = '${cpath}/item/newitems'
         	const opt = {
         			method: 'GET'
         	}
@@ -355,14 +337,14 @@
     	btn.innerText = '낮은가격순'
     	
     	dom = ""
-    	const url = '${cpath}/item/dto1'
+    	const url = '${cpath}/item/newitems'
         	const opt = {
         			method: 'GET'
         	}
         	const resp = await fetch(url, opt)
         	console.log(resp)
         	const json = await resp.json()
-        	console.log(json) 
+        	console.log(json)
         	
         json.sort((a, b) => {
             const asc = 1
@@ -389,7 +371,7 @@
     
 
     window.addEventListener('load',async (event) => {
-    	const url = '${cpath}/item/dto1'
+    	const url = '${cpath}/item/newitems'
     	const opt = {
     			method: 'GET'
     	}

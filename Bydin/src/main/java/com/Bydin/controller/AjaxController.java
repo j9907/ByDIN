@@ -73,4 +73,10 @@ public class AjaxController {
 		return list;
 	}
 	
+	
+	@GetMapping("item/newitems")
+	public List<TotalGoodsDTO> newitem(){
+		List<TotalGoodsDTO> list = is.getNewItem();
+		return list;
+	}
 }

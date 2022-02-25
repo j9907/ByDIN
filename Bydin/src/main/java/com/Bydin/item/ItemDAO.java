@@ -24,5 +24,13 @@ public interface ItemDAO {
 	@Select("select * from totalGoods where ctgcode1='1-05'")
 	List<TotalGoodsDTO> selectChair();
 
+	@Select("select * from" + 
+			"(select * from totalgoods order by uploaddate desc)" + 
+			"where rownum <= 20")
+	List<TotalGoodsDTO> getNewItem();
+
+	@Select("select * from totalGoods where idx = #{num}")
+	TotalGoodsDTO getItem(int num);
+
 	
 }

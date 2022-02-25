@@ -26,6 +26,16 @@
 		width: 300px;
 		padding: 2px;
 	}
+	#h_a{
+		text-decoration: none;
+		color:inherit;
+		cursor:pointer;
+	}
+	
+	#h_a > label{
+		cursor:pointer;
+	}
+	
 </style>
 <div id="main">
 
@@ -62,8 +72,11 @@
 	<ul id="m_ul">
 	<c:forEach items="${dto1 }" var="dto1" begin="0" end="3">
 		<li id="m_li">
+		<a id="h_a" href="${cpath }/item/itemview/${dto1.idx}"><label>
 			<div><img class="m_item_image" src="${cpath }/upload/${dto1.image}"></div>
 			<div class="m_item_info"><p>${dto1.name }</p></div>
+		</label>
+		</a>
 		</li>
 	</c:forEach>
 	</ul>
@@ -74,8 +87,10 @@
 	<ul id="m_ul">
 	<c:forEach items="${dto2 }" var="dto2" begin="0" end="3">
 		<li id="m_li">
+		<a id="h_a" href="${cpath }/item/itemview/${dto2.idx}"><label>
 			<div><img class="m_item_image" src="${cpath }/upload/${dto2.image}"></div>
 			<div class="m_item_info"><p>${dto2.name }</p></div>
+			</label></a>
 		</li>
 	</c:forEach>
 	</ul>
@@ -86,8 +101,10 @@
 	<ul id="m_ul">
 	<c:forEach items="${dto3 }" var="dto3" begin="0" end="3">
 		<li id="m_li">
+		<a id="h_a" href="${cpath }/item/itemview/${dto3.idx}"><label>
 			<div><img class="m_item_image" src="${cpath }/upload/${dto3.image}"></div>
 			<div class="m_item_info"><p>${dto3.name }</p></div>
+			</label></a>
 		</li>
 	</c:forEach>
 	</ul>
@@ -98,8 +115,10 @@
 	<ul id="m_ul">
 	<c:forEach items="${dto4 }" var="dto4" begin="0" end="3">
 		<li id="m_li">
+		<a id="h_a" href="${cpath }/item/itemview/${dto4.idx}"><label>
 			<div><img class="m_item_image" src="${cpath }/upload/${dto4.image}"></div>
 			<div class="m_item_info"><p>${dto4.name }</p></div>
+			</label></a>
 		</li>
 	</c:forEach>
 	</ul>
@@ -110,8 +129,10 @@
 	<ul id="m_ul">
 	<c:forEach items="${dto5 }" var="dto5" begin="0" end="3">
 		<li id="m_li">
+		<a id="h_a" href="${cpath }/item/itemview/${dto5.idx}"><label>
 			<div><img class="m_item_image" src="${cpath }/upload/${dto5.image}"></div>
 			<div class="m_item_info"><p>${dto5.name }</p></div>
+			</label></a>
 		</li>
 	</c:forEach>
 	</ul>

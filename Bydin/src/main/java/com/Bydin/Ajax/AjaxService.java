@@ -32,5 +32,4 @@ public class AjaxService {
 		return dao.getflt(param);
 	}
 
-
 }

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Bydin.Service.BoardService;
@@ -26,7 +28,7 @@ public class BoardController {
 			return boardList(1);				
 	}
 
-	@GetMapping("{page}")
+	@GetMapping("board/{page}")
 	public ModelAndView boardList(@PathVariable int page) {
 			return bs.selectboard(page);			
 	}
@@ -43,8 +45,11 @@ public class BoardController {
 	public void write() {}
 	
 	@PostMapping("write")
-	public ModelAndView write(boardDTO dto) {
+	public ModelAndView write(boardDTO dto,MultipartRequest upload) {
 		ModelAndView mav = new ModelAndView();
+		MultipartFile file = upload.getFile("file");
+		int cnt = bs.upload(file);	
+		dto.setImg(file.getOriginalFilename());
 		int row = bs.insertboard(dto);
 		mav.setViewName(row != 0 ? "redirect:/qna/board" : "qna/write");
 		return mav;
