@@ -170,7 +170,7 @@
         </div>
         <div id="h_down">
         <ul class="h_ul">
-        	<li class="h_menu2">NEW</li>
+        	<li class="h_menu2"><a class="h_a" href="${cpath }/item/newitem">NEW</a></li>
         	<li class="h_menu"><a class="h_a" href="${cpath }/item/studyroom">서재</a></li>
         	<li class="h_menu"><a class="h_a" href="${cpath }/item/bedroom">침실</a></li>
         	<li class="h_menu"><a class="h_a" href="${cpath }/item/livingroom">거실</a></li>

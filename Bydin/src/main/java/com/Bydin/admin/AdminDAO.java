@@ -1,13 +1,21 @@
 package com.Bydin.admin;
 
-import org.apache.ibatis.annotations.Insert;
+import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+
+import com.Bydin.item.CtgDTO;
 import com.Bydin.item.TotalGoodsDTO;
 
 public interface AdminDAO {
 
-	@Insert("insert into totalGoods(name, price, image, ctgcode, uploadDate, stock, info) values(#{name}, #{price}, #{image}, #{ctgcode}, #{uploadDate}, #{stock}, #{info})")
+	@Insert("insert into totalGoods(name, price, image, ctgcode1, ctgcode2, uploadDate, stock, info) "
+			+ "values(#{name}, #{price}, #{image}, #{ctgcode1}, #{ctgcode2}, #{uploadDate}, #{stock}, #{info})")
 	int addItem(TotalGoodsDTO dto);
+
+	@Select("select * from ctg")
+	List<CtgDTO> getCtg();
 
 
 }

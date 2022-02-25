@@ -9,20 +9,28 @@ import org.springframework.stereotype.Repository;
 public interface ItemDAO {
 
 
-	@Select("select * from totalGoods where ctgcode='1-01'")
+	@Select("select * from totalGoods where ctgcode1='1-01'")
 	List<TotalGoodsDTO> selectStudyroom();
 
-	@Select("select * from totalGoods where ctgcode='1-02'")
+	@Select("select * from totalGoods where ctgcode1='1-02'")
 	List<TotalGoodsDTO> selectBedroom();
 
-	@Select("select * from totalGoods where ctgcode='1-03'")
+	@Select("select * from totalGoods where ctgcode1='1-03'")
 	List<TotalGoodsDTO> selectLivingroom();
 
-	@Select("select * from totalGoods where ctgcode='1-04'")
+	@Select("select * from totalGoods where ctgcode1='1-04'")
 	List<TotalGoodsDTO> selectKichen();
 
-	@Select("select * from totalGoods where ctgcode='1-05'")
+	@Select("select * from totalGoods where ctgcode1='1-05'")
 	List<TotalGoodsDTO> selectChair();
+
+	@Select("select * from" + 
+			"(select * from totalgoods order by uploaddate desc)" + 
+			"where rownum <= 20")
+	List<TotalGoodsDTO> getNewItem();
+
+	@Select("select * from totalGoods where idx = #{num}")
+	TotalGoodsDTO getItem(int num);
 
 	
 }

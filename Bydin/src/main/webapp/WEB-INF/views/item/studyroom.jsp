@@ -103,6 +103,16 @@
 	
 	/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 	.show {display:block;}
+	
+	#h_a{
+		text-decoration: none;
+		color:inherit;
+		cursor:pointer;
+	}
+	
+	#h_a > label{
+		cursor:pointer;
+	}
 </style>
 
 
@@ -142,8 +152,6 @@
 		</div>
 	</div>
 </div>
-
-
 </div>
 <div id="l_item">
 	<ul id="l_ul">
@@ -216,10 +224,10 @@
     	json.forEach(dto => {
         	console.log(dto.image)
         	
-        	dom += '<li id="l_li">'
+        	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
         	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
         	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></a></label></div>'
         	dom += '</li>'
         	
     	});
@@ -252,11 +260,11 @@
             json.forEach(dto => {
             	console.log(dto.image)
             	
-            	dom += '<li id="l_li">'
-            	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-            	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-            	dom += '<div><p>'+dto.price+'</p></div>'
-            	dom += '</li>'
+            	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></a></label></div>'
+        	dom += '</li>'
             	
             /* const div = createElementFromData(dto)
             l_item_js.appendChild(div) */
@@ -292,11 +300,11 @@
             json.forEach(dto => {
             	console.log(dto.image)
             	
-            	dom += '<li id="l_li">'
-            	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-            	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-            	dom += '<div><p>'+dto.price+'</p></div>'
-            	dom += '</li>'
+            	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></a></label></div>'
+        	dom += '</li>'
             	
             /* const div = createElementFromData(dto)
             l_item_js.appendChild(div) */
@@ -324,7 +332,7 @@
         	const resp = await fetch(url, opt)
         	console.log(resp)
         	const json = await resp.json()
-        	console.log(json)
+        	console.log(json) 
         	
         json.sort((a, b) => {
             const asc = 1
@@ -334,11 +342,11 @@
             json.forEach(dto => {
             	console.log(dto.image)
             	
-            	dom += '<li id="l_li">'
-            	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-            	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-            	dom += '<div><p>'+dto.price+'</p></div>'
-            	dom += '</li>'
+            	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></a></label></div>'
+        	dom += '</li>'
             	
             /* const div = createElementFromData(dto)
             l_item_js.appendChild(div) */
@@ -363,10 +371,10 @@
     	json.forEach(dto => {
         	console.log(dto.image)
         	
-        	dom += '<li id="l_li">'
+        	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
         	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
         	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></a></label></div>'
         	dom += '</li>'
         	
     	});

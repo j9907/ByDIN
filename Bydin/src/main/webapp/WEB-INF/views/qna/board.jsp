@@ -172,7 +172,7 @@ h3{
 				<b style="border-bottom:1px solid #6667ab">[${page }]</b>
 			</c:if>
 			<c:if test="${not (nowPage == page) }">
-				<a id="searchLisk" style="display: inline; color:#6667ab; font-size:12pt;" href="${cpath }/board/${number == 0 ? '' : 'boardsearch'}/${page}">
+				<a id="searchLisk" style="display: inline; color:#6667ab; font-size:12pt;" href="${cpath }/qna/board/${page}">
 					[${page }] </a>
 			</c:if>
 		</c:forEach>

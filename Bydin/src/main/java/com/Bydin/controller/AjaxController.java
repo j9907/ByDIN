@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Bydin.Ajax.AjaxService;
 import com.Bydin.Service.ItemService;
 import com.Bydin.board.ReplyDTO;
+import com.Bydin.item.CtgDTO;
 import com.Bydin.item.TotalGoodsDTO;
 import com.Bydin.member.MemberDTO;
 
@@ -33,6 +34,39 @@ public class AjaxController {
 	@GetMapping("item/dto1")
 	public List<TotalGoodsDTO> dto1(){
 		List<TotalGoodsDTO> list = is.getStudyroomItem();
+		return list;
+	}
+	@GetMapping("item/dto2")
+	public List<TotalGoodsDTO> dto2(){
+		List<TotalGoodsDTO> list = is.getBedroomItem();
+		return list;
+	}
+	@GetMapping("item/dto3")
+	public List<TotalGoodsDTO> dto3(){
+		List<TotalGoodsDTO> list = is.getLivingroomItem();
+		return list;
+	}
+	@GetMapping("item/dto4")
+	public List<TotalGoodsDTO> dto4(){
+		List<TotalGoodsDTO> list = is.getKichenItem();
+		return list;
+	}
+	@GetMapping("item/dto5")
+	public List<TotalGoodsDTO> dto5(){
+		List<TotalGoodsDTO> list = is.getChairItem();
+		return list;
+	}
+	
+	@GetMapping("ctg")
+	public List<CtgDTO> ctgdto(){
+		List<CtgDTO> list = as.getCtg();
+		System.out.println(list.get(1));
+		return list;
+	}
+	
+	@GetMapping("item/newitems")
+	public List<TotalGoodsDTO> newitem(){
+		List<TotalGoodsDTO> list = is.getNewItem();
 		return list;
 	}
 }

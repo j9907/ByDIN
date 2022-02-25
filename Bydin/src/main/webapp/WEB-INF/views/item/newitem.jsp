@@ -78,6 +78,7 @@
 	  	min-width: 160px;
 	  	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	  	z-index: 1;
+	  	top:327px;
 	}
 	
 	/* Links inside the dropdown */
@@ -96,6 +97,23 @@
 	  	text-align: left;
 	  	font-size: 16px;
 	}
+	
+	/* Change color of dropdown links on hover */
+	.dropdown-content a:hover {background-color: #ddd}
+	.dropdown-content button:hover {background-color: #ddd}
+	
+	/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+	.show {display:block;}
+	
+	#dropdown{
+		width: 1200px;
+		margin:0 auto;
+		text-align: right;
+		display: flex;
+		flex-flow: column;
+		align-items: flex-end;
+		padding-top:100px;
+	}
 	#h_a{
 		text-decoration: none;
 		color:inherit;
@@ -105,39 +123,32 @@
 	#h_a > label{
 		cursor:pointer;
 	}
-	
-	/* Change color of dropdown links on hover */
-	.dropdown-content a:hover {background-color: #ddd}
-	.dropdown-content button:hover {background-color: #ddd}
-	
-	/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-	.show {display:block;}
 </style>
 
 
 <!-- topbar 구성 -->
-<div class="topbar">
-<div class="topbar_left">
-	<div id="dropdown">
-        <button onclick="myfunction1()" class="dropbtn">침실</button>
-        <div id="myDropdown1" class="dropdown-content">
-            <a href="${cpath}/item/studyroom">서재</a>
-            <a href="${cpath}/item/bedroom">침실</a>
-            <a href="${cpath}/item/livingroom">거실</a>
-            <a href="${cpath}/item/kichen">주방</a>
-            <a href="${cpath}/item/chair">의자</a>
-        </div>
-    </div>
+<!-- <div class="topbar"> -->
+<!-- <div class="topbar_left"> -->
+<!-- 	<div id="dropdown"> -->
+<!--         <button onclick="myfunction1()" class="dropbtn">서재</button> -->
+<!--         <div id="myDropdown1" class="dropdown-content"> -->
+<%--             <a href="${cpath}/item/studyroom">서재</a> --%>
+<%--             <a href="${cpath}/item/bedroom">침실</a> --%>
+<%--             <a href="${cpath}/item/livingroom">거실</a> --%>
+<%--             <a href="${cpath}/item/kichen">주방</a> --%>
+<%--             <a href="${cpath}/item/chair">의자</a> --%>
+<!--         </div> -->
+<!--     </div> -->
 
-	<div id="dropdown">
-		<button onclick="myfunction2()" class="dropbtn">2nd ctg</button>
-		<div id="myDropdown2" class="dropdown-content">
-			<a href="${cpath }">1</a>
-			<a href="${cpath }">2</a>
-			<a href="${cpath }">3</a>
-		</div>
-	</div>
-</div>
+<!-- 	<div id="dropdown"> -->
+<!-- 		<button onclick="myfunction2()" class="dropbtn">전체보기</button> -->
+<!-- 		<div id="myDropdown2" class="dropdown-content"> -->
+<%-- 			<a href="${cpath }">책상/테이블</a> --%>
+<%-- 			<a href="${cpath }">책장/선반장</a> --%>
+<%-- 			<a href="${cpath }">악세사리</a> --%>
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- </div> -->
 
 
 <div class="topbar_right">
@@ -151,6 +162,8 @@
 		</div>
 	</div>
 </div>
+
+
 </div>
 <div id="l_item">
 	<ul id="l_ul">
@@ -158,6 +171,7 @@
 	</div>
 	</ul>
 </div>
+	
 	
 <script>
 	function myfunction1(){
@@ -212,7 +226,7 @@
     	btn.innerText = '기본정렬순'
     	
     	dom = ""
-    	const url = '${cpath}/item/dto2'
+    	const url = '${cpath}/item/newitems'
     	const opt = {
     			method: 'GET'
     	}
@@ -241,7 +255,7 @@
     	btn.innerText = '가나다순'
     	
     	dom = ""
-    	const url = '${cpath}/item/dto2'
+    	const url = '${cpath}/item/newitems'
         	const opt = {
         			method: 'GET'
         	}
@@ -256,13 +270,13 @@
             return (a.name > b.name ? 1 : -1) * asc
         })
             json.forEach(dto => {
-            	console.log(dto.idx)
+            	console.log(dto.image)
             	
-            	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/' + dto.idx + '"><label>'
-            	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-            	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-            	dom += '<div><p>'+dto.price+'</p></a></lable></div>'
-            	dom += '</li>'
+            	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></a></label></div>'
+        	dom += '</li>'
             	
             /* const div = createElementFromData(dto)
             l_item_js.appendChild(div) */
@@ -281,7 +295,7 @@
     	btn.innerText = '높은가격순'
     	
     	dom = ""
-    	const url = '${cpath}/item/dto2'
+    	const url = '${cpath}/item/newitems'
         	const opt = {
         			method: 'GET'
         	}
@@ -299,10 +313,10 @@
             	console.log(dto.image)
             	
             	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-            	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-            	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-            	dom += '<div><p>'+dto.price+'</p></a></lable></div>'
-            	dom += '</li>'
+        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></a></label></div>'
+        	dom += '</li>'
             	
             /* const div = createElementFromData(dto)
             l_item_js.appendChild(div) */
@@ -323,14 +337,14 @@
     	btn.innerText = '낮은가격순'
     	
     	dom = ""
-    	const url = '${cpath}/item/dto2'
+    	const url = '${cpath}/item/newitems'
         	const opt = {
         			method: 'GET'
         	}
         	const resp = await fetch(url, opt)
         	console.log(resp)
         	const json = await resp.json()
-        	console.log(json) 
+        	console.log(json)
         	
         json.sort((a, b) => {
             const asc = 1
@@ -341,10 +355,10 @@
             	console.log(dto.image)
             	
             	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-            	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-            	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-            	dom += '<div><p>'+dto.price+'</p></a></lable></div>'
-            	dom += '</li>'
+        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></a></label></div>'
+        	dom += '</li>'
             	
             /* const div = createElementFromData(dto)
             l_item_js.appendChild(div) */
@@ -357,7 +371,7 @@
     
 
     window.addEventListener('load',async (event) => {
-    	const url = '${cpath}/item/dto2'
+    	const url = '${cpath}/item/newitems'
     	const opt = {
     			method: 'GET'
     	}
@@ -372,7 +386,7 @@
         	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
         	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
         	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></a></lable></div>'
+        	dom += '<div><p>'+dto.price+'</p></a></label></div>'
         	dom += '</li>'
         	
     	});
@@ -383,10 +397,12 @@
     
 	
 </script>
+
+<!--   서재 studyroom 카테고리코드 1-01   -->
 	
 
-<!--   침실 bedroom 카테고리코드 1-02   -->
-
+	
+	
 
 
 <%@ include file="../footer.jsp"%>
