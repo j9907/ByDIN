@@ -133,7 +133,7 @@
 	<div id="dropdown">
 		<button onclick="myfunction2()" class="dropbtn">전체보기</button>
 		<div id="myDropdown2" class="dropdown-content">
-			<button href="#" id="basicbtn">전체보기</button>
+			<button href="#" id="basic_btn">전체보기</button>
 			<button href="#" value="2-11">책상/테이블</button>
 			<button href="#" value="2-12">책장/선반장</button>
 			<button href="#" value="2-13">악세사리</button>

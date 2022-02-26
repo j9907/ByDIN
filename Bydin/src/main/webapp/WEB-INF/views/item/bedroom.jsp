@@ -134,7 +134,7 @@
 	<div id="dropdown">
 		<button onclick="myfunction2()" class="dropbtn">전체보기</button>
 		<div id="myDropdown2" class="dropdown-content">
-			<button href="#" id="basicbtn">전체보기</button>
+			<button href="#" id="basic_btn">전체보기</button>
 			<button href="#" value="2-21">거울/화장대</button>
 			<button href="#" value="2-22">침대</button>
 			<button href="#" value="2-23">행거</button>
@@ -186,7 +186,7 @@
 	        }
 	    }
 	}
-<<<<<<< HEAD
+
 	// lowPrice
 	function lowPrice(event){
         arr.sort((a, b) => {
