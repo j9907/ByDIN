@@ -118,10 +118,32 @@
 	.dom_right{
 		display: flex;
 		justify-content: space-between;
+		margin-top:15px;
 	}
 	.dom_right2{
 		display: flex;
 	}
+	#btn_qu{
+		display: flex;
+		border:1px solid black;
+	}
+	#min_btn{
+		background-color: #fff;
+		border:0;
+		border-right:1px solid black;
+		cursor:pointer;
+	}
+	#result{
+		padding:0 10px;
+	}
+	#plus_btn{
+		background-color:#fff;
+		border:0;
+		border-left:1px solid black;
+		cursor:pointer;
+	}
+	#close{
+	cursor:pointer;}
 </style>
 <div id="i_main">
 <div id="i_top">
@@ -184,24 +206,52 @@
 	const text = document.getElementById("i_coin")
 	target.addEventListener('change', e => {
 		const coin = target.options[target.selectedIndex].value
+		const remove_box = document.getElementById("dom_box2")
+		const remove_click = document.getElementById("close")
+		console.log(coin != null)
+		console.log(coin != '')
+		console.log(remove_box != null)
+		console.log(remove_box != '')
+		console.log(remove_box)
+		console.log(remove_click)
 		const mon = ${item.price}
 		text.innerText = mon
-		dom += '<div class="dom_box2">'
+		if(coin != '' && remove_box == null){
+			const remove_box = document.getElementById("dom_box2")
+			const remove_click = document.getElementById("close")
+		dom += '<div class="dom_box2" id="dom_box2">'
 		dom += '<p>${item.name}</p>'
 		dom += '<div class="dom_right">'
-		dom += '<div><button id="min_btn">-</button><input id="inputNum" type="number" value="1"><button id="plus_btn">+</button></div>'
+		dom += '<div id="btn_qu"><button id="min_btn">-</button><div id="result">1</div><button id="plus_btn">+</button></div>'
 		dom += '<div class="dom_right2"><p>${item.price}</p>'
-		dom += '<a>X</a></div>'
+		dom += '<a id="close">X</a></div>'
 		dom += '</div></div>'
 		dom_box.innerHTML = dom
 		const btn1 = document.getElementById("plus_btn");
 		const btn2 = document.getElementById("min_btn");
+		const number = document.getElementById("result")
+		
 		btn1.addEventListener('click',e => {
-			num++;
-		})
-		btn2.addEventListener('cleck',e=>{
-			num--;
-		})
+			const num = number.innerText
+			number.innerText = parseInt(num) + 1;
+			console.log(parseInt(num) + 1)
+			
+		});
+		btn2.addEventListener('click',e=>{
+			const num = number.innerText
+			number.innerText = parseInt(num) - 1;
+			console.log(parseInt(num) - 1)
+			
+			if(num == 1){
+				number.innerText = 1
+			}
+		
+			remove_click.addEventListener('click', e => {
+				remove_box.style.display = 'none';
+			});
+		});
+		}
+		
 	})
 	
 	
