@@ -21,10 +21,14 @@
 		width: 1000px;
 		margin:0 auto;
 	}
-	.item_texts, .item_box{
+	.item_texts{
 		margin:30px 0 0 30px;
 	}
 	
+	 .item_box{
+		 margin:0 0 0 30px;
+	 }
+	 
 	.item_text{
 		width: 100%;
 		margin-left:30px;
@@ -65,7 +69,7 @@
 	.text_li2{
 		font-size: 16px;
 		font-family: nanumBarunGothic;
-		padding: 0 0 5px 0;
+		padding: 0 0 7px 0;
 	}
 	.coin{
 		display: flex;
@@ -88,13 +92,15 @@
 		display: flex;
 	}
 	.but_btn{
-		width: 50%;
+		width: 100%;
 		padding:10px;
 		border:1px solid #6667ab;
 		background-color: #fff;
 		color:#6667ab;
 		font-weight: bold;
 		font-size: 13pt;
+		cursor:pointer;
+		
 	}
 	.but_btn2{
 		width: 50%;
@@ -104,6 +110,7 @@
 		color:#fff;
 		font-weight: bold;
 		font-size: 13pt;
+		cursor:pointer;
 	}
 	select.i_select{
 		width: 100%;
@@ -127,6 +134,7 @@
 	#btn_qu{
 		display: flex;
 		border:1px solid black;
+		margin-left:5px;
 	}
 	#min_btn{
 		background-color: #fff;
@@ -145,6 +153,9 @@
 	}
 	#close{
 	cursor:pointer;}
+	.cart_a{
+		width: 50%;
+	}
 </style>
 <div id="i_main">
 <div id="i_top">
@@ -172,26 +183,38 @@
 						<li class="text_li1">배송비</li>
 						<li class="text_li2">무료배송</li>
 					</ul>
+					<ul class="text_ul2">
+						<li class="text_li1">수량 &nbsp;</li>
+						<li class="text_li2">
+						<div id="btn_qu">
+						<button id="min_btn">-</button><div id="result">1</div><button id="plus_btn">+</button>
+						</div></li>
+					</ul>
 				</li>			
 			</ul>
 			<div class="i_select">
-			<select class="i_select" id="selectBox"> 
-				<option value="">== 옵션 선택 ==</option>
-				<option value="${item.idx }">${item.name }</option>
-			</select>
+<!-- 			<select class="i_select" id="selectBox">  -->
+<!-- 				<option value="">== 옵션 선택 ==</option> -->
+<%-- 				<option value="${item.idx }">${item.name }</option> --%>
+<!-- 			</select> -->
+<!-- 	<div class="dom_box2" id="dom_box2"> -->
+<%-- 		<p>${item.name}</p> --%>
+<!-- 		<div class="dom_right"> -->
+<!-- 		 <div id="btn_qu"><button id="min_btn">-</button><div id="result">1</div><button id="plus_btn">+</button></div> -->
+<!-- 		 </div></div> -->
 			</div>
 			<div id="dom_box"></div>
 			<div class="coin">
 			<p class="i_coin">총구매가</p>
 			<div class="con_but">
-			<p class="i_coin2" id="i_coin">0 </p>
+			<p class="i_coin2" id="i_coin">${item.price } </p>
 			
 			<p class="i_coin2"> 원</p>
 			</div>
 			</div>
 			
 			<div class="buy_button">
-			<button class="but_btn">장바구니</button>
+			<a href="${cpath }/buy/cart/${item.idx}" class="cart_a"><button class="but_btn">장바구니</button></a>
 			<button class="but_btn2">구매하기</button>
 			</div>
 		</div>
@@ -202,36 +225,25 @@
 	var target = document.getElementById("selectBox");
 	var dom = ''
 	const dom_box = document.getElementById("dom_box");
-	
-	
+	const btn1 = document.getElementById("plus_btn");
+	const btn2 = document.getElementById("min_btn");
+	const number = document.getElementById("result")
 	const num = document.getElementById("inputNum")
 	const text = document.getElementById("i_coin")
-	target.addEventListener('change', e => {
-		const coin = target.options[target.selectedIndex].value
-		const price = document.getElementById("dom_right")
-		const mon = ${item.price}
-		text.innerText = mon
-
-		if(coin != ''){
-		dom += '<div class="dom_box2" id="dom_box2">'
-		dom += '<p>${item.name}</p>'
-		dom += '<div class="dom_right">'
-		dom += '<div id="btn_qu"><button id="min_btn">-</button><div id="result">1</div><button id="plus_btn">+</button></div>'
-		dom += '<div class="dom_right2" id="dom_right">'
-		dom += '<input type="button" id="close" value="X"></div>'
-		dom += '</div></div>'
+	const price = document.getElementById("dom_right")
+	const mon = ${item.price}
 	
-		dom_box.innerHTML = dom
-		const btn1 = document.getElementById("plus_btn");
-		const btn2 = document.getElementById("min_btn");
-		const number = document.getElementById("result")
-		const remove_click = document.getElementById("close")
-		const remove_box1 = document.getElementById("dom_box2")
-		btn1.addEventListener('click',e => {
+	btn1.addEventListener('click',e => {
 			const num = number.innerText
+			const text = document.getElementById("i_coin")
 			number.innerText = parseInt(num) + 1;
 			console.log(parseInt(num) + 1)
-			const text = document.getElementById("i_coin")
+			if(parseInt(number.innerText) > ${item.stock}){
+				alert('최대 수량입니다.')
+				number.innerText = ${item.stock}
+				text.innerText = parseInt(text.innerText)
+				return false;
+			}
 			text.innerText = parseInt(text.innerText) + parseInt(mon)
 			
 		});
@@ -251,15 +263,8 @@
 			}
 			
 		});
-			
-	 		remove_click.addEventListener('click', e => {
-	 			remove_box1.remove();
-	 		});
-		}
 		
-	})
-	
-	
+		
 	
 	</script>
 <%@ include file="../footer.jsp"%>
