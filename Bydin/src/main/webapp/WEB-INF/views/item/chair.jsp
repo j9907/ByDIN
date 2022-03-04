@@ -374,8 +374,8 @@
         	dom += '</li>'
 
             	
-             const div = createElementFromData(dto)
-            l_item_js.appendChild(div) 
+//              const div = createElementFromData(dto)
+//             l_item_js.appendChild(div) 
         	});
     		console.log(dom)
         	item.innerHTML = dom;
@@ -418,8 +418,8 @@
         	dom += '</li>'
 
             	
-             const div = createElementFromData(dto)
-            l_item_js.appendChild(div) 
+//              const div = createElementFromData(dto)
+//             l_item_js.appendChild(div) 
         	});
     		console.log(dom)
         	item.innerHTML = dom;
