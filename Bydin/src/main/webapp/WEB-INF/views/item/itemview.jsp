@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
@@ -202,54 +203,58 @@
 	var dom = ''
 	const dom_box = document.getElementById("dom_box");
 	
+	
 	const num = document.getElementById("inputNum")
 	const text = document.getElementById("i_coin")
 	target.addEventListener('change', e => {
 		const coin = target.options[target.selectedIndex].value
-		const remove_box = document.getElementById("dom_box2")
-		const remove_click = document.getElementById("close")
-		console.log(coin != null)
-		console.log(coin != '')
-		console.log(remove_box != null)
-		console.log(remove_box != '')
-		console.log(remove_box)
-		console.log(remove_click)
+		const price = document.getElementById("dom_right")
 		const mon = ${item.price}
 		text.innerText = mon
-		if(coin != '' && remove_box == null){
-			const remove_box = document.getElementById("dom_box2")
-			const remove_click = document.getElementById("close")
+
+		if(coin != ''){
 		dom += '<div class="dom_box2" id="dom_box2">'
 		dom += '<p>${item.name}</p>'
 		dom += '<div class="dom_right">'
 		dom += '<div id="btn_qu"><button id="min_btn">-</button><div id="result">1</div><button id="plus_btn">+</button></div>'
-		dom += '<div class="dom_right2"><p>${item.price}</p>'
-		dom += '<a id="close">X</a></div>'
+		dom += '<div class="dom_right2" id="dom_right">'
+		dom += '<input type="button" id="close" value="X"></div>'
 		dom += '</div></div>'
+	
 		dom_box.innerHTML = dom
 		const btn1 = document.getElementById("plus_btn");
 		const btn2 = document.getElementById("min_btn");
 		const number = document.getElementById("result")
-		
+		const remove_click = document.getElementById("close")
+		const remove_box1 = document.getElementById("dom_box2")
 		btn1.addEventListener('click',e => {
 			const num = number.innerText
 			number.innerText = parseInt(num) + 1;
 			console.log(parseInt(num) + 1)
+			const text = document.getElementById("i_coin")
+			text.innerText = parseInt(text.innerText) + parseInt(mon)
 			
 		});
-		btn2.addEventListener('click',e=>{
+		btn2.addEventListener('click',e =>{
+			
 			const num = number.innerText
 			number.innerText = parseInt(num) - 1;
+			const text = document.getElementById("i_coin")
 			console.log(parseInt(num) - 1)
 			
 			if(num == 1){
 				number.innerText = 1
+				text.innerText = ${item.price}
 			}
-		
-			remove_click.addEventListener('click', e => {
-				remove_box.style.display = 'none';
-			});
+			else{
+				text.innerText = parseInt(text.innerText) - parseInt(mon)
+			}
+			
 		});
+			
+	 		remove_click.addEventListener('click', e => {
+	 			remove_box1.remove();
+	 		});
 		}
 		
 	})
