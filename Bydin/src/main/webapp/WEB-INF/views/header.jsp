@@ -88,45 +88,41 @@
         }
 
         #m_slider {
-            width: 1200px;
+            width: 1210px;
             overflow: hidden;
-            height: 500px;
+            position: relative;
+            height: 510px;
             margin: 0 auto;
         }
+        #m_slider_frame{
+        	display: flex;
+        	position: relative;
+        	transition-duration: 0.5s;
+        	left: 0;
+        }
         .slider_item {
-            width: 100%;
-            height: 500px;
-            opacity: 0;
+            width: 1210px;
+            height: 510px;
+/*             opacity: 0; */
             /* display: flex; */
             justify-content: center;
             align-items: center;
             /* color: white; */
-            position: absolute;
+/*             position: absolute; */
             z-index: 0;
             /* transform: translate3d(-888px, 0px, 0px);        */  /* 이건 슬라이드 타입 */
             /* transition: opacity 0.5s ease-in-out;            */  /* 이건 투명도 변화 타입 */
         }
         .slider_item img {
             top: 85px;
-            height: 500px;
-            width: 1200px;
+            height: 510px;
+            width: 1210px;
         }
         .slider_item div {
         	font-size: 30px;
         	text-align: center;
         }
-        .showing {
-            z-index: 1;
-            opacity: 1;
-            transition-duration: 0.5s;
-            /* transform: translate3d(0px, 0px, 0px); */        /* 이건 슬라이드 타입 */
-        }
-        .previous {
-            z-index: 1;
-            opacity: 0;
-            transition-duration: 0.5s;
-            /* transform: translate3d(888px, 0px, 0px); */      /* 이건 슬라이드 타입 */
-        }
+
         .h_a{
         	color:inherit;
         	text-decoration: none;	
@@ -147,6 +143,15 @@
         .h_r_a{
         	color: #fff;
         }
+        #h_a{
+		text-decoration: none;
+		color: inherit;
+		cursor: pointer;
+		}
+		
+		#h_a > label{
+			cursor: pointer;
+		}
     </style>
 <title>ByDIN</title>
 </head>

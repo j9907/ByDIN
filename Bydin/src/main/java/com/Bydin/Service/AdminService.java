@@ -2,11 +2,13 @@ package com.Bydin.Service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import com.Bydin.admin.AdminDAO;
+import com.Bydin.item.CtgDTO;
 import com.Bydin.item.TotalGoodsDTO;
 
 @Service
@@ -37,6 +39,18 @@ public class AdminService {
 			} catch (IllegalStateException | IOException e) {}
 		return cnt;
 
+	}
+
+	public TotalGoodsDTO selectOne(int idx) {
+		return dao.selectOne(idx);
+	}
+
+	public int modItem(TotalGoodsDTO dto) {
+		return dao.modItem(dto);
+	}
+
+	public List<CtgDTO> selectCtg(String ctgcode1) {
+		return dao.selectCtg(ctgcode1);
 	}
 	
 	
