@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import com.Bydin.board.ReplyDTO;
 import com.Bydin.item.CtgDTO;
 import com.Bydin.item.TotalGoodsDTO;
+
 import com.Bydin.member.MemberDTO;
 
 public interface AjaxDAO {

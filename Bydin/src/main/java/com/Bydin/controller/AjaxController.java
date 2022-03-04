@@ -59,6 +59,12 @@ public class AjaxController {
 		return list;
 	}
 	
+
+	@GetMapping("item/newitems")
+	public List<TotalGoodsDTO> newitem(){
+		List<TotalGoodsDTO> list = is.getNewItem();
+		return list;
+	}
 	@GetMapping("ctg")
 	public List<CtgDTO> ctgdto(@RequestParam HashMap<String, Object> param){
 //		System.out.println(param);
@@ -74,9 +80,5 @@ public class AjaxController {
 	}
 	
 	
-	@GetMapping("item/newitems")
-	public List<TotalGoodsDTO> newitem(){
-		List<TotalGoodsDTO> list = is.getNewItem();
-		return list;
-	}
+
 }

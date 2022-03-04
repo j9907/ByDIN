@@ -133,7 +133,7 @@
 	<div id="dropdown">
 		<button onclick="myfunction2()" class="dropbtn">전체보기</button>
 		<div id="myDropdown2" class="dropdown-content">
-			<button href="#" id="basicbtn">전체보기</button>
+			<button href="#" id="basic_btn">전체보기</button>
 			<button href="#" value="2-51">인테리어의자</button>
 			<button href="#" value="2-52">오피스의자</button>
 			<button href="#" value="2-53">바의자</button>
@@ -188,7 +188,6 @@
 	
 	const item = document.getElementById('item')
    	const btn = document.getElementById('btn')
-
     let dom = ''
 	
 
@@ -204,10 +203,10 @@
 		
 		json.forEach(dto => {
         	
-        	dom += '<li id="l_li">'
+			dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
         	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
         	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></div></label></a>'
         	dom += '</li>'
         	
     	});
@@ -236,7 +235,7 @@
 
     
     //basic_sort
-    const basicbtn = document.getElementById('basicbtn')
+    const basicbtn = document.getElementById('basic_btn')
     const basicbtn2 = document.getElementById('basicbtn2')
     
     basicbtn.addEventListener("click", async (event) => {
@@ -254,7 +253,6 @@
     	console.log(json)
     	json.forEach(dto => {
         	console.log(dto.image)
-        	
         	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
         	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
         	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
@@ -285,8 +283,7 @@
         	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
         	dom += '<div><p>'+dto.price+'</p></div></label></a>'
         	dom += '</li>'
-        	
-    	});
+    	})
     	item.innerHTML = dom;
     })
     
@@ -316,18 +313,17 @@
             json.forEach(dto => {
             	console.log(dto.image)
             	
-            	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+           	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
         	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
         	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
         	dom += '<div><p>'+dto.price+'</p></div></label></a>'
         	dom += '</li>'
-            	
             /* const div = createElementFromData(dto)
             l_item_js.appendChild(div) */
         	});
     		console.log(dom)
         	item.innerHTML = dom;
-    });
+    	});
     
     // highPrice
     
@@ -356,7 +352,7 @@
             json.forEach(dto => {
             	console.log(dto.image)
             	
-            	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+           	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
         	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
         	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
         	dom += '<div><p>'+dto.price+'</p></div></label></a>'
@@ -367,7 +363,7 @@
         	});
     		console.log(dom)
         	item.innerHTML = dom;
-    });
+    	});
     
     
     
@@ -409,7 +405,7 @@
         	});
     		console.log(dom)
         	item.innerHTML = dom;
-    });
+    	});
     
     
     

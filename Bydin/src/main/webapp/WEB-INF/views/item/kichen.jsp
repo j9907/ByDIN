@@ -133,7 +133,7 @@
 	<div id="dropdown">
 		<button onclick="myfunction2()" class="dropbtn">전체보기</button>
 		<div id="myDropdown2" class="dropdown-content">
-			<button href="#" id="basicbtn">전체보기</button>
+			<button href="#" id="basic_btn">전체보기</button>
 			<button href="#" value="2-41">식탁</button>
 			<button href="#" value="2-42">수납장</button>
 			<button href="#" value="2-43">식탁의자</button>
@@ -204,10 +204,10 @@
 		
 		json.forEach(dto => {
         	
-        	dom += '<li id="l_li">'
+			dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
         	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
         	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></div>'
+        	dom += '<div><p>'+dto.price+'</p></div></label></a>'
         	dom += '</li>'
         	
     	});
@@ -236,7 +236,7 @@
 
     
     //basic_sort
-    const basicbtn = document.getElementById('basicbtn')
+    const basicbtn = document.getElementById('basic_btn')
     const basicbtn2 = document.getElementById('basicbtn2')
     
     basicbtn.addEventListener("click", async (event) => {
