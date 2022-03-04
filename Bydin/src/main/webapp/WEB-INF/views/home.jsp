@@ -26,21 +26,13 @@
 		width: 300px;
 		padding: 2px;
 	}
-	#h_a{
-		text-decoration: none;
-		color:inherit;
-		cursor:pointer;
-	}
-	
-	#h_a > label{
-		cursor:pointer;
-	}
 	
 </style>
 <div id="main">
 
 	<!-- 이미지 슬라이드 -->
     <div id="m_slider">
+    <div id="m_slider_frame">
         <div class="slider_item">
         	<img src="https://admin.dodot.co.kr/data/main_banner/18/bc123e19b0f5919e65a12ab1d52a5fc9.jpg">
         	<div>슬라이드 이미지 1</div>
@@ -57,6 +49,7 @@
         	<img src="https://admin.dodot.co.kr/data/main_banner/18/39cc3a0f887e9e213879e46f1e36481c.jpg">
         	<div>슬라이드 이미지 4</div>
         </div>
+    </div>
     </div>
 
 	<!-- 메인 영상 -->
@@ -142,49 +135,66 @@
 
     <script type="text/javascript">
         window.addEventListener('load',(event) => {
-            const slideHandler = () => {
-             document.querySelectorAll('.slider_item').forEach( (element) => {
-                element.style.transition = '';
-                element.style.transform = 'translate3d(0px, 0px, 0px)';
+        	let left = 0
+        	
+        	const slider = document.getElementById('m_slider')
+        	const sliderFrame = document.getElementById('m_slider_frame')
+        	
+        	function move(){
+        		const unitSize = 1215
+        		left += unitSize
+        		if(left > unitSize * 3){
+        			left = 0
+        		}
+        		sliderFrame.style.left = -left + 'px'
+        		
+        	}
+        	move();
+        	setInterval(move, 5000);
+        	
+//             const slideHandler = () => {
+//              document.querySelectorAll('.slider_item').forEach( (element) => {
+//                 element.style.transition = '';
+//                 element.style.transform = 'translate3d(0px, 0px, 0px)';
                
-             })
-             document.querySelectorAll('.previous').forEach( (element) => {
+//              })
+//              document.querySelectorAll('.previous').forEach( (element) => {
                  
-                document.querySelector('.previous').style.transform = 'translate3d(-900px, 0px, 0px)';
-            document.querySelector('.showing').style.transform = 'translate3d(900px, 0px, 0px)';
-            })
-         }
+//                 document.querySelector('.previous').style.transform = 'translate3d(-900px, 0px, 0px)';
+//             document.querySelector('.showing').style.transform = 'translate3d(900px, 0px, 0px)';
+//             })
+//          }
 
-        firstSlide = document.querySelector('.slider_item:first-child');   // 첫번째 자식 노드 선택
-        lastSlide = document.querySelector('.slider_item:last-child');     // 마지막 자식 노드 선택
+//         firstSlide = document.querySelector('.slider_item:first-child');   // 첫번째 자식 노드 선택
+//         lastSlide = document.querySelector('.slider_item:last-child');     // 마지막 자식 노드 선택
 
-        function slide() {
-            slideHandler();          // 선택된 방식으로 이미지 변환 결정
+//         function slide() {
+//             slideHandler();          // 선택된 방식으로 이미지 변환 결정
 
 
-            const currentSlide = document.querySelector('.showing');
-            const previousSlide = document.querySelector('.previous');
-            if(currentSlide) {
-                currentSlide.classList.remove('showing');
-                currentSlide.classList.add('previous');
-                const nextSlide = currentSlide.nextElementSibling;
-                if(nextSlide) {
-                    nextSlide.classList.add('showing');
-                }
-                else {
-                    firstSlide.classList.add('showing');
-                }
-            }
-            else {  // 첫번째 실행 때 지정된 클래스가 없으면 부여함
-                firstSlide.classList.add('showing');
-                lastSlide.classList.add('previous');
-            }
-            if(previousSlide) {
-                previousSlide.classList.remove('previous');
-            }
-        }
-        slide();
-        setInterval(slide, 5000);
+//             const currentSlide = document.querySelector('.showing');
+//             const previousSlide = document.querySelector('.previous');
+//             if(currentSlide) {
+//                 currentSlide.classList.remove('showing');
+//                 currentSlide.classList.add('previous');
+//                 const nextSlide = currentSlide.nextElementSibling;
+//                 if(nextSlide) {
+//                     nextSlide.classList.add('showing');
+//                 }
+//                 else {
+//                     firstSlide.classList.add('showing');
+//                 }
+//             }
+//             else {  // 첫번째 실행 때 지정된 클래스가 없으면 부여함
+//                 firstSlide.classList.add('showing');
+//                 lastSlide.classList.add('previous');
+//             }
+//             if(previousSlide) {
+//                 previousSlide.classList.remove('previous');
+//             }
+//         }
+//         slide();
+//         setInterval(slide, 5000);
         })
     </script>
 

@@ -39,8 +39,6 @@ public class CtgDTO {
 			this.ctgName = ctgName;
 		}
 
-
-
 		public String getCtgRef() {
 			return ctgRef;
 		}

@@ -3,12 +3,13 @@
 <%@ include file="../header.jsp" %>
    <style>
       h3 {
-         width: 70%;
+         width: 1100px;
          padding: 20px;
+         padding-left: 40px;
          margin: 0 auto;
       }
       #add {
-         width: 70%;
+         width: 1100px;
          margin: 0 auto;
          text-align: center;
       }
@@ -43,7 +44,7 @@
         }
         .add_right input {
 /*             height: 40px; */
-         padding: 10px;
+         	padding: 10px;
             width: 98%;
             border-radius: 5px;
             border: 1px solid lightgray;
@@ -64,6 +65,13 @@
         }
         .infoImg{
            height: 50px;
+           padding-top: 40px;
+        }
+        #pre{
+        	margin: 10px;
+        }
+        #pre > p{
+        	float: left;
         }
         .infoTxt > input{
            height: 500px;
@@ -76,48 +84,50 @@
 
     <div id="addList">
         <div class="add_left"><p>제품이름</p></div>
-        <div class="add_right"><input name="name" type="text" autofocus required></div>
+        <div class="add_right"><input name="name" type="text" autofocus required value="${item.name }"></div>
     </div>
         
     <div id="addList">
         <div class="add_left"><p>가격</p></div>
-        <div class="add_right"><input name="price" required></div>
+        <div class="add_right"><input name="price" required value="${item.price }"></div>
     </div>
         
     <div id="addList">
         <div class="add_left"><p>제품이미지</p></div>
-
-        <div class="add_right"><input name="file" type="file" accept="image/*"></div>
+        <div>
+			<div class="add_right" id="pre"><p>기존 이미지: ${item.image }</p></div>
+	        <div class="add_right"><input name="file" type="file" accept="image/*"></div>
+        </div>
     </div>
         
     <div id="addList">
         <div class="add_left"><p>카테고리</p></div>
-
         <div class="add_right ctg_right">
         <div class="ctg" id="ctg_1st">
         <select name="ctgcode1" id="ctgCode1" class="slt">
            <option value="">===대분류===</option>
-           <option value="1-01">서재</option>
-           <option value="1-02">침실</option>
-           <option value="1-03">거실</option>
-           <option value="1-04">주방</option>
-           <option value="1-05">의자</option>
+           <option value="1-01" ${item.ctgcode1 == '1-01' ? 'selected="selected"' : '' }>서재</option>
+           <option value="1-02" ${item.ctgcode1 == '1-02' ? 'selected="selected"' : '' }>침실</option>
+           <option value="1-03" ${item.ctgcode1 == '1-03' ? 'selected="selected"' : '' }>거실</option>
+           <option value="1-04" ${item.ctgcode1 == '1-04' ? 'selected="selected"' : '' }>주방</option>
+           <option value="1-05" ${item.ctgcode1 == '1-05' ? 'selected="selected"' : '' }>의자</option>
         </select>
         </div>
         
-
       <div class="ctg" id="ctg_2nd" class="slt">
       <select name="ctgcode2" id="ctgCode2">
          <option>===소분류===</option>
+         <c:forEach var="ctg" items="${ctg }">
+         	<option value="${ctg.ctgCode2 }" ${item.ctgcode2 == ctg.ctgCode2 ? 'selected="selected"' : '' }>${ctg.ctgRef }</option>
+         </c:forEach>
       </select></div>
       </div>
-
 
     </div>
         
     <div id="addList">
         <div class="add_left"><p>재고</p></div>
-        <div class="add_right"><input name="stock" required></div>
+        <div class="add_right"><input name="stock" required value="${item.stock }"></div>
     </div>
     
     <div id="addList">
@@ -128,8 +138,9 @@
     <div id="addList">
         <div class="add_left"><p>상세설명</p></div>
         <div class="info add_right">
-           <div class="infoImg"><input name="file" type="file" accept="image/*" multiple></div>
-           <div class="infoTxt"><input name="info" type="text" maxlength="2000" required></div>
+        	<div id="pre"><p>기존 이미지: ${item.infoImg }</p></div>
+           <div class="infoImg"><input name="file" type="file" accept="image/*" value="${item.infoImg }"></div>
+           <div class="infoTxt"><input name="info" type="text" maxlength="2000" required value="${item.info }"></div>
         </div>
     </div>
     <input type="submit" value="등록" class="addSubmit">
@@ -137,13 +148,15 @@
 </div>
 
 <script>
-
    document.getElementById('now_date').valueAsDate = new Date();
    
    const ctgs = document.querySelector('select#ctgCode1')
    const ctgs2 = document.querySelector('select#ctgCode2')
    
    ctgs.addEventListener('change', selectCtg2)
+   
+//    window.onload = selectCtg2(ctgs);
+   
    
    async function selectCtg2(event){
       
@@ -157,7 +170,6 @@
       let dom2 = ''
          
       json.forEach(ctg => {
-    	  	console.log(ctg.ctgCode2)
             dom2 += '<option value='+ctg.ctgCode2+'>'+ctg.ctgRef+'</option>'
       })
       

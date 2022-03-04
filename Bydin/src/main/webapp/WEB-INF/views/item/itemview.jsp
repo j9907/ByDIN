@@ -131,6 +131,7 @@
 	.dom_right2{
 		display: flex;
 	}
+
 	#btn_qu{
 		display: flex;
 		border:1px solid black;
@@ -155,8 +156,21 @@
 	cursor:pointer;}
 	.cart_a{
 		width: 50%;
+}
+	#moditem{
+		padding-top: 15px;
+	}
+	#mod{
+		padding: 5px;
+		text-decoration: none;
+		color: black;
+		border: 1px solid #666ab7;
+		border-radius: 10px;
+
 	}
 </style>
+<c:set var="modLink" value="${login.username == '관리자' ? 'modItem' : '' }"/>
+<c:set var="modMenu" value="${login.username == '관리자' ? '상품수정' : '' }"/>
 <div id="i_main">
 <div id="i_top">
 	<div class="item_img">
@@ -165,7 +179,11 @@
 	<div class="item_text">
 		<div class="item_texts">
 			<p class="i_text">${item.name }</p>
-			
+			<div id="moditem">
+			<c:if test="${login.username == '관리자' }"><a id="mod" href="${cpath }/admin/modItem/${item.idx}">상품 수정</a></c:if>
+			<c:if test="${login.username == '관리자' }"><a id="mod" href="${cpath }/admin/delItem">상품 삭제</a></c:if>	
+				
+			</div>
 		</div>
 		<div class="item_box">
 			<p class="i_price">${item.price }</p>
