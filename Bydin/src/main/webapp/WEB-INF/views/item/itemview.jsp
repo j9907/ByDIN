@@ -92,7 +92,7 @@
 		display: flex;
 	}
 	.but_btn{
-		width: 100%;
+		width: 50%;
 		padding:10px;
 		border:1px solid #6667ab;
 		background-color: #fff;
@@ -226,13 +226,12 @@
 			<p class="i_coin">총구매가</p>
 			<div class="con_but">
 			<p class="i_coin2" id="i_coin">${item.price } </p>
-			
 			<p class="i_coin2"> 원</p>
 			</div>
 			</div>
 			
 			<div class="buy_button">
-			<a href="${cpath }/buy/cart/${item.idx}" class="cart_a"><button class="but_btn">장바구니</button></a>
+			<button class="but_btn" id="cart">장바구니</button>
 			<button class="but_btn2">구매하기</button>
 			</div>
 		</div>
@@ -250,6 +249,7 @@
 	const text = document.getElementById("i_coin")
 	const price = document.getElementById("dom_right")
 	const mon = ${item.price}
+	const cart = document.getElementById("cart")
 	
 	btn1.addEventListener('click',e => {
 			const num = number.innerText
@@ -282,7 +282,25 @@
 			
 		});
 		
-		
+		cart.addEventListener('click', async e => {
+			if('${login.userid}' != ''){
+				const text = document.getElementById("i_coin")
+				const url = '${cpath}/buy/parchase?idx=' + ${item.idx} + '&member=' + ${login.idx} + '&total=' + text.innerText
+				const resp = await fetch(url)
+				const json = await resp.json()
+				
+				if(confirm("상품을 장바구니에 담았습니다 \n장바구니로 이동하시겠습니까?")){
+					location.href="${cpath}/buy/cart"
+				}
+				else{
+					history.go(0);
+				}
+				
+			}else{
+				alert('로그인이 필요한 서비스입니다.')
+				location.href="${cpath}/member/login"
+			}
+		})
 	
 	</script>
 <%@ include file="../footer.jsp"%>

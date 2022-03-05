@@ -96,10 +96,6 @@
 	  	text-align: left;
 	  	font-size: 16px;
 	}
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'Yeji88' of https://github.com/j9907/ByDIN.git
 	#h_a{
 		text-decoration: none;
 		color:inherit;
