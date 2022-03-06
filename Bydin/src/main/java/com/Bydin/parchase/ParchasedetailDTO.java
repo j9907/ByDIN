@@ -1,7 +1,27 @@
 package com.Bydin.parchase;
 
 public class ParchasedetailDTO {
-	private int idx,orderidx,item_stock,item_price;
+	private int idx,orderidx,item_stock,item_price,totalcount;
+	public int getItem_count() {
+		return totalcount;
+	}
+	public void setItem_count(int totalcount) {
+		this.totalcount = totalcount;
+	}
+	public int getItem_price() {
+		return item_price;
+	}
+	public void setItem_price(int item_price) {
+		this.item_price = item_price;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	private String image;
+	
 	public int getIdx() {
 		return idx;
 	}

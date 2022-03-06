@@ -285,7 +285,7 @@
 		cart.addEventListener('click', async e => {
 			if('${login.userid}' != ''){
 				const text = document.getElementById("i_coin")
-				const url = '${cpath}/buy/parchase?idx=' + ${item.idx} + '&member=' + ${login.idx} + '&total=' + text.innerText
+				const url = '${cpath}/buy/parchase?idx=' + ${item.idx} + '&member=' + ${login.idx} + '&total=' + text.innerText + '&count=' + number.innerText
 				const resp = await fetch(url)
 				const json = await resp.json()
 				

@@ -168,7 +168,7 @@
                         <a class="h_r_a" href="${cpath}/${login.userid == 'admin' ? 'admin' : 'member' }/${login.userid == 'admin' ? 'admin' : 'mypage' }">
                         	<img title="${login.userid == 'admin' ? '관리자페이지' : '마이페이지' }" src="${cpath }/resources/img/icon/로그인.png" height="40px" width="40px">
                         </a>
-                        <img title="장바구니" src="${cpath }/resources/img/icon/장바구니.png" height="40px" width="40px">
+                        <a href="${cpath }/buy/cart"><img title="장바구니" src="${cpath }/resources/img/icon/장바구니.png" height="40px" width="40px"></a>
                         <a href="${cpath }/qna/board" class="h_r_a"><img title="고객센터" src="${cpath }/resources/img/icon/고객센터.png" height="40px" width="40px"></a>
                 </div>
             </div>
