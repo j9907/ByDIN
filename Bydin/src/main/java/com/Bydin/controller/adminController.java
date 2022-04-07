@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +19,10 @@ import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Bydin.Service.AdminService;
+import com.Bydin.Service.PurchaseService;
 import com.Bydin.item.CtgDTO;
 import com.Bydin.item.TotalGoodsDTO;
+import com.Bydin.member.MemberDTO;
 
 
 @Controller
@@ -65,32 +69,52 @@ public class adminController {
 		System.out.println(dto.getCtgcode1());
 		ModelAndView mav = new ModelAndView("redirect:/admin/addItem");
 		int add = as.addItem(dto);
-		return null;
+		return mav;
 		
 	}
-	
+//	0 = image
+//			1 = infoImage
+//
+//			if(0번이 비었어){
+//			0번은 기존이미지 넣고 1번만 이미지 변경}
+//			if(1번이 비었어){
+//			0번은 이미지 변경 1번은 기존이미지}
+//			if(0,1번 다 이미지 있어){
+//			둘다 이미지 변경}
+
 	@PostMapping("modItem/{num}")
 	public ModelAndView modItem(@PathVariable int num, @RequestParam("file") List<MultipartFile> upload, TotalGoodsDTO dto) {
 		ModelAndView mav = new ModelAndView("redirect:/item/itemview/" + num);
 		int cnt = 0;
 		ArrayList<String> filename = new ArrayList<String>();
+		ArrayList<String> dtoname = new ArrayList<String>();
+		dtoname.add(dto.getImage());
+		dtoname.add(dto.getInfoImg());
+//		System.out.println("dto:" + dtoname);
+//		System.out.println("upload:" + upload);
 		
 		for(MultipartFile f : upload) {
-			System.out.println(f.getOriginalFilename());
+//			System.out.println("ori" + f.getOriginalFilename());
 			filename.add(f.getOriginalFilename());
 			cnt = as.upload(f);
 		}
-		
+//		System.out.println("filename:" + filename);
 		dto.setImage(filename.get(0));
 		dto.setInfoImg(filename.get(1));
-		System.out.println(dto.getCtgcode2());
-		System.out.println(dto.getCtgcode1());
+		
+		if (filename.get(0).isEmpty()) {
+			dto.setImage(dtoname.get(0));
+		}
+		if(filename.get(1).isEmpty()) {
+			dto.setInfoImg(dtoname.get(1));
+		}
+		
 		
 		dto.setIdx(num);
 		int mod = as.modItem(dto);
-		System.out.println(mod);
 		return mav;
 	}
+	
 	
 	
 }

@@ -3,6 +3,8 @@ package com.Bydin.controller;
 import java.io.File;
 import java.io.IOException;
 import java.lang.annotation.Inherited;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.inject.Inject;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Bydin.Service.MemberService;
+import com.Bydin.Service.PurchaseService;
 import com.Bydin.member.MemberDTO;
 
 @Controller
@@ -26,6 +29,7 @@ public class MemberController {
 
 	@Autowired private MemberService ms;
 	@Inject BCryptPasswordEncoder pwdencoder;
+	@Autowired private PurchaseService ps;
 	
 	
 	@GetMapping("login")
@@ -92,5 +96,32 @@ public class MemberController {
 		return mav;
 	}
 	
+	
+	@GetMapping("mypage")
+	public ModelAndView cart(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		MemberDTO dto = (MemberDTO) session.getAttribute("login");
+		System.out.println(dto.getIdx());
+		List<HashMap<String, Object>> cartdto = ps.getCart(dto.getIdx());
+		System.out.println(cartdto);
+		
+		List<HashMap<String, Object>> orderdto = ps.getDetail(dto.getIdx());
+		mav.addObject("orderdto", orderdto);
+		System.out.println("orderdto : " + orderdto);
+		
+		List<HashMap<String, Object>> purchasedto = ps.getPurchase(dto.getIdx());
+		mav.addObject("purchasedto", purchasedto);
+		System.out.println("purchasedto : " + purchasedto);
+		
+		
+		mav.addObject("cartdto", cartdto);
+		return mav;
+	}
+	
+	@GetMapping("modInfo")
+	public void modInfo() {}
+	
+//	@PostMapping("modInfo")
+//	public 
 	
 }

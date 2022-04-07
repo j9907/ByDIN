@@ -3,16 +3,22 @@ package com.Bydin.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.Bydin.Ajax.AjaxService;
 import com.Bydin.Service.ItemService;
+import com.Bydin.Service.PurchaseService;
 import com.Bydin.board.ReplyDTO;
 import com.Bydin.item.CtgDTO;
+import com.Bydin.item.Purchase_detailDTO;
 import com.Bydin.item.TotalGoodsDTO;
 import com.Bydin.member.MemberDTO;
 
@@ -20,6 +26,7 @@ import com.Bydin.member.MemberDTO;
 public class AjaxController {
 	@Autowired private AjaxService as;
 	@Autowired private ItemService is;
+	@Autowired private PurchaseService ps;
 	
 	@GetMapping("checkuserid")
 	public int checkuserid(String userid) {
@@ -79,6 +86,32 @@ public class AjaxController {
 		return list;
 	}
 	
+	@GetMapping("cart")
+	public int cart(@RequestParam HashMap<String, Object> param) {
+		int row = as.insertCart(param);
+		return row;
+	}
 	
+//	@GetMapping("purchase/buying/{num}")
+//	public ModelAndView buying(@PathVariable("num") int idx, @RequestParam HashMap<String, Object> param) {
+//		ModelAndView mav = new ModelAndView();
+//		System.out.println("idx: " + idx);
+//		System.out.println("dto : "+ param);
+//		int row = as.modCart(idx, param);
+//		
+//		return mav;
+//	}
+	
+	@GetMapping("cartlist")
+	public List<HashMap<String, Object>> cartlist(HttpSession session){
+		MemberDTO dto = (MemberDTO) session.getAttribute("login");
+		return ps.getCart(dto.getIdx());
+	}
+	
+	@GetMapping("purchase/del/{num}")
+	public void del(@PathVariable int num) {
+		int row = ps.del_datailItem(num);
+		if(row == 1) {int row2 = ps.deleteItem(num);}
+	}
 
 }

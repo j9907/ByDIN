@@ -95,6 +95,7 @@
     <div id="addList">
         <div class="add_left"><p>제품이미지</p></div>
         <div>
+        	<input type="hidden" name="image" value="${item.image }">
 			<div class="add_right" id="pre"><p>기존 이미지: ${item.image }</p></div>
 	        <div class="add_right"><input name="file" type="file" accept="image/*"></div>
         </div>
@@ -139,7 +140,8 @@
         <div class="add_left"><p>상세설명</p></div>
         <div class="info add_right">
         	<div id="pre"><p>기존 이미지: ${item.infoImg }</p></div>
-           <div class="infoImg"><input name="file" type="file" accept="image/*" value="${item.infoImg }"></div>
+        	<input type="hidden" name="infoImg" value="${item.infoImg }">
+           <div class="infoImg"><input name="file" type="file" accept="image/*"></div>
            <div class="infoTxt"><input name="info" type="text" maxlength="2000" required value="${item.info }"></div>
         </div>
     </div>

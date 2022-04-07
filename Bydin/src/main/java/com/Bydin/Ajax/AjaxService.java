@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.Bydin.board.ReplyDTO;
 import com.Bydin.item.CtgDTO;
-
+import com.Bydin.item.Purchase_detailDTO;
 import com.Bydin.item.TotalGoodsDTO;
 import com.Bydin.member.MemberDTO;
 
@@ -32,5 +32,18 @@ public class AjaxService {
 	public List<TotalGoodsDTO> getflt(HashMap<String, Object> param) {
 		return dao.getflt(param);
 	}
+
+	public int insertCart(HashMap<String, Object> param) {
+		int row1 = dao.insertCart(param);
+		int row2 = dao.insertDetail(param);
+		System.out.println("row2 : " + row2);
+		return row1;
+	}
+
+//	public int modCart(int idx, HashMap<String, Object> param) {
+//		return dao.modCart(idx, param);
+//	}
+
+	
 
 }

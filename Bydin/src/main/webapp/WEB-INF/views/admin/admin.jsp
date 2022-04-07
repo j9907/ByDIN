@@ -21,7 +21,6 @@
 	<div id="a_list">
 		<p><a href="${cpath }/admin/addItem">상품추가</a></p>
 		<p><a href="${cpath }/admin/mngAcnt">회원목록</a></p>
-		<p><a href="${cpath }/admin/mngReply">댓글관리</a></p>
 	</div>
 
 <%@ include file="../footer.jsp" %>
