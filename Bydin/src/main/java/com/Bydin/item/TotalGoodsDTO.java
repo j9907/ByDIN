@@ -9,9 +9,16 @@ public class TotalGoodsDTO {
 	private String name, info, infoImg, ctgcode1, ctgcode2;
 	private Date uploadDate;
 	private String image;
+	private String search;
 	
 	
 	
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	public String getInfoImg() {
 		return infoImg;
 	}

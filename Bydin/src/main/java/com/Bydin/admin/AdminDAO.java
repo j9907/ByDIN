@@ -6,8 +6,12 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.Bydin.board.BoardPaging;
 import com.Bydin.item.CtgDTO;
+import com.Bydin.item.PurchaseDTO;
+import com.Bydin.item.Purchase_detailDTO;
 import com.Bydin.item.TotalGoodsDTO;
+import com.Bydin.member.MemberDTO;
 
 public interface AdminDAO {
 
@@ -27,6 +31,21 @@ public interface AdminDAO {
 
 	@Select("select ctgref,ctgcode2 from ctg where ctgcode1 = #{ctgcode1} and ctglevel=2")
 	List<CtgDTO> selectCtg(String ctgcode1);
+
+	@Select("select count(*) from member")
+	int selectCount(BoardPaging paging);
+
+	@Select("select * from (select rownum as st, A.* from (select * from member order by idx desc) A where rownum <= #{last}) where st >= #{first} order by st desc")
+	List<MemberDTO> selectMember(BoardPaging paging);
+
+	@Select("select * from member where idx=#{num}")
+	MemberDTO selectOneMember(int num);
+
+	@Select("select * from purchase where member_idx=#{num}")
+	List<PurchaseDTO> selectMemberPurchase(int num);
+
+	@Select("select * from purchase_detail where member_idx=#{num}")
+	List<Purchase_detailDTO> selectDetail(int num);
 
 
 }

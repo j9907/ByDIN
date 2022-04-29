@@ -2,8 +2,25 @@ package com.Bydin.item;
 
 public class Purchase_detailDTO {
 
-	private int idx, order_idx, item_idx, member_idx;
-	private String order_state, order_name, order_req, order_add;
+	private int idx, order_idx, item_idx, member_idx, item_price;
+	private String item_name, order_state, order_name, order_req, order_add;
+	
+	
+	
+	
+	
+	public String getItem_name() {
+		return item_name;
+	}
+	public void setItem_name(String item_name) {
+		this.item_name = item_name;
+	}
+	public int getItem_price() {
+		return item_price;
+	}
+	public void setItem_price(int item_price) {
+		this.item_price = item_price;
+	}
 	public int getIdx() {
 		return idx;
 	}

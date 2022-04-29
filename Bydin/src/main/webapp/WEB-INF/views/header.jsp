@@ -152,6 +152,13 @@
 		#h_a > label{
 			cursor: pointer;
 		}
+		#search_btn{
+			border: none;
+			background-color: #fff;
+		}
+		#search_btn:hover {
+			cursor: pointer;
+		}
     </style>
 <title>ByDIN</title>
 </head>
@@ -160,14 +167,27 @@
         <div id="headermain">
             <div class="h_main">
                 <a href="${cpath }/"><img src="${cpath }/resources/img/logo/logo.png" width="166px"></a>
+                <form action="${cpath }/search" method="get">
                 <div class="h_search">
                     <input id="h_search" type="text" name="search" placeholder="검색어를 입력하세요">
-                    <img class="input_img" src="${cpath }/resources/img/icon/검색.jpg" height="40px" width="40px">
+                    <button id="search_btn"><img class="input_img" src="${cpath }/resources/img/icon/검색.jpg" height="40px" width="40px"></button>
                 </div>
+                </form>
                 <div class="header_right">
-                        <a class="h_r_a" href="${cpath}/${login.userid == 'admin' ? 'admin' : 'member' }/${login.userid == 'admin' ? 'admin' : 'mypage' }">
+                
+                	<c:choose>
+			              <c:when test="${empty login }"> 
+			              	<a class="h_r_a" href="${cpath }/member/login">
+			              	<img title="마이페이지" src="${cpath }/resources/img/icon/로그인.png" height="40px" width="40px">
+			              	</a> 
+			              </c:when>
+			              <c:when test="${not empty login }"> 
+			              	<a class="h_r_a" href="${cpath}/${login.userid == 'admin' ? 'admin' : 'member' }/${login.userid == 'admin' ? 'admin' : 'mypage' }">
                         	<img title="${login.userid == 'admin' ? '관리자페이지' : '마이페이지' }" src="${cpath }/resources/img/icon/로그인.png" height="40px" width="40px">
-                        </a>
+                        	</a> 
+                          </c:when>
+			              <c:otherwise> 실행 </c:otherwise>
+        			</c:choose>
                         <a class="h_r_a" href="${cpath }/${login.userid != null ? 'purchase/cart' : 'member/login'}">
                         	<input type="hidden" name="idx" value="${login.idx }">
                         	<img title="장바구니" src="${cpath }/resources/img/icon/장바구니.png" height="40px" width="40px">
@@ -197,3 +217,4 @@
      	</div>
  	</div>
     </div>
+    

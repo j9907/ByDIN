@@ -79,4 +79,6 @@ public class ItemController {
 		int row = is.deleteItem(num);
 		return "redirect:/";
 	}
+	
+	
 }

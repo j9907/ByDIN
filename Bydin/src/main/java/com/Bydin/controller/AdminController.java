@@ -21,13 +21,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.Bydin.Service.AdminService;
 import com.Bydin.Service.PurchaseService;
 import com.Bydin.item.CtgDTO;
+import com.Bydin.item.PurchaseDTO;
+import com.Bydin.item.Purchase_detailDTO;
 import com.Bydin.item.TotalGoodsDTO;
 import com.Bydin.member.MemberDTO;
 
 
 @Controller
 @RequestMapping("admin/")
-public class adminController {
+public class AdminController {
 	
 	@Autowired private AdminService as;
 
@@ -36,8 +38,6 @@ public class adminController {
 	
 	@GetMapping("addItem")
 	public void addItem() {	}
-	@GetMapping("mngAcnt")
-	public void mngAcnt() {	}
 	@GetMapping("mngReply")
 	public void mngReply() { }
 	@GetMapping("modItem/{num}")
@@ -115,6 +115,33 @@ public class adminController {
 		return mav;
 	}
 	
+	@GetMapping("mngAcnt")
+	public ModelAndView acntList() {
+		return acntList(1);
+	}
 	
+	@GetMapping("mngAcnt/{page}")
+	public ModelAndView acntList(@PathVariable int page) {
+		return as.selectMember(page);
+	}
+	
+	@GetMapping("memberView/{num}")
+	public ModelAndView memberList(@PathVariable int num) {
+		
+		System.out.println(num);
+		ModelAndView mav = new ModelAndView("admin/memberView");
+		MemberDTO memberdto = as.selectOneMember(num);
+		System.out.println(memberdto);
+		List<PurchaseDTO> purchasedto = as.selectMemberPurchase(num);
+		System.out.println(purchasedto);
+		List<Purchase_detailDTO> detaildto = as.selectDetail(num);
+		System.out.println(detaildto);
+		
+		mav.addObject("memberdto", memberdto);
+		mav.addObject("purchasedto", purchasedto);
+		mav.addObject("detaildto", detaildto);
+		
+		return mav;
+	}
 	
 }

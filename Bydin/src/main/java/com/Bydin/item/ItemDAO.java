@@ -36,5 +36,8 @@ public interface ItemDAO {
 	@Delete("delete from totalGoods where idx = #{num}")
 	int deleteItem(int num);
 
+	@Select("select * from totalgoods where name like '%${value}%'")
+	List<TotalGoodsDTO> searchItem(String search);
+
 	
 }

@@ -44,6 +44,10 @@ public class ItemService {
 	public int deleteItem(int num) {
 		return dao.deleteItem(num);
 	}
+
+	public List<TotalGoodsDTO> searchItem(String search) {
+		return dao.searchItem(search);
+	}
 	
 	
 }

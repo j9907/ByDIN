@@ -230,7 +230,7 @@
 			
 			<div class="buy_button">
 			<button class="but_btn" id="cart">장바구니</button>
-			<button class="but_btn2">구매하기</button>
+			<button class="but_btn2" id="purchase">구매하기</button>
 			</div>
 		</div>
 	</div>
@@ -298,6 +298,23 @@
 			
 			
 		})
+		
+	const purchase = document.getElementById('purchase');
+		
+		purchase.addEventListener('click', async e => {
+			if('${login.userid}' != ''){
+				const url = '${cpath}/cart?itemidx='+${item.idx}+'&member=' + ${login.idx} +'&totalprice='+text.innerText+'&count='+number.innerText
+				const resp = await fetch(url)
+				
+				if(confirm('상품을 구매하시겠습니까?')){
+					location.href='${cpath}/purchase/buy'
+				}
+			}else{
+				alert('로그인이 필요한 서비스입니다')
+				location.href='${cpath}/member/login'
+			}
+		})
+		
 		
 		function dlt(){
 			let dlt = confirm('삭제하시겠습니까?')

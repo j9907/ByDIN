@@ -1,9 +1,21 @@
 package com.Bydin.member;
 
+import java.sql.Date;
+
 public class MemberDTO {
 	private int idx;
 	private String userid,userpw,username,useremail,phoneno,useradd,birth,gender;
+	private Date joindate;
 	
+	
+	
+	
+	public Date getJoindate() {
+		return joindate;
+	}
+	public void setJoindate(Date joindate) {
+		this.joindate = joindate;
+	}
 	public int getIdx() {
 		return idx;
 	}

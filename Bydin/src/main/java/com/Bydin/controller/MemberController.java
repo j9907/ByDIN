@@ -15,6 +15,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -118,10 +119,26 @@ public class MemberController {
 		return mav;
 	}
 	
-	@GetMapping("modInfo")
-	public void modInfo() {}
+	@GetMapping("modInfo/{num}")
+	public ModelAndView modInfo(@PathVariable int num) {
+		ModelAndView mav = new ModelAndView("member/modInfo");
+		MemberDTO login = ms.selectone(num);
+		mav.addObject("login", login);
+		return mav;
+	}
 	
-//	@PostMapping("modInfo")
-//	public 
+	@PostMapping("modInfo/{num}")
+	public ModelAndView modInfo(@PathVariable int num, MemberDTO member, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		member.setIdx(num);
+		member.setUserpw(pwdencoder.encode(member.getUserpw()));
+		int row = ms.modInfo(member);
+		
+		MemberDTO dto = ms.selectuser(member.getUserid());
+		session.setAttribute("login", dto);
+		
+		mav.setViewName(row != 0 ? "redirect:/member/mypage" : "member/modInfo"+num);
+		return mav;
+	}
 	
 }

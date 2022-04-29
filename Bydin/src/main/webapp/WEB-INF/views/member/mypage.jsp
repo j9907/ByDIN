@@ -163,7 +163,7 @@
 		</div>
 		
 	<div id="i_mod">
-		<a id="i_mod_btn" href="${cpath }/member/modInfo">수정</a>
+		<a id="i_mod_btn" href="${cpath }/member/modInfo/${login.idx }">수정</a>
 	</div>
 	</div>
 	
