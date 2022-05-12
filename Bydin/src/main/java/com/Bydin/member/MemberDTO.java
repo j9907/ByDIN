@@ -3,13 +3,37 @@ package com.Bydin.member;
 import java.sql.Date;
 
 public class MemberDTO {
-	private int idx;
-	private String userid,userpw,username,useremail,phoneno,useradd,birth,gender;
+	private int idx, postcode;
+	private String userid,userpw,username,useremail,phoneno,birth,gender,address,detailAddress,extraAddress;
 	private Date joindate;
 	
 	
 	
 	
+	public int getPostcode() {
+		return postcode;
+	}
+	public void setPostcode(int postcode) {
+		this.postcode = postcode;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getDetailAddress() {
+		return detailAddress;
+	}
+	public void setDetailAddress(String detailAddress) {
+		this.detailAddress = detailAddress;
+	}
+	public String getExtraAddress() {
+		return extraAddress;
+	}
+	public void setExtraAddress(String extraAddress) {
+		this.extraAddress = extraAddress;
+	}
 	public Date getJoindate() {
 		return joindate;
 	}
@@ -51,12 +75,6 @@ public class MemberDTO {
 	}
 	public void setPhoneno(String phoneno) {
 		this.phoneno = phoneno;
-	}
-	public String getUseradd() {
-		return useradd;
-	}
-	public void setUseradd(String useradd) {
-		this.useradd = useradd;
 	}
 	public String getBirth() {
 		return birth;

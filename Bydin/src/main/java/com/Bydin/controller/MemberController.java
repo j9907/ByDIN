@@ -141,4 +141,10 @@ public class MemberController {
 		return mav;
 	}
 	
+	@GetMapping("delMember/{num}")
+	public String delMember(@PathVariable int num) {
+		System.out.println("idx : "+num);
+		return "redirect:/member/delMember";
+	}
+	
 }

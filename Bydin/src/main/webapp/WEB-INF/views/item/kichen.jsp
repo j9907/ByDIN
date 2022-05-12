@@ -2,44 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 <style>
-	ul, li {
-		list-style: none;
-	}
-	.l_item_image{
-		width:190px;
-		display: flex;
-		justify-content: center;
-	}
-	.l_item_info{
-		display: flex;
-		justify-content: flex-start;
-	}
-	.l_item_info p{
-		height: 100px;
-		width: 180px;
-		font-size: 15px;
-		/* text-align: center; */
-	}
-	#l_item {
-		max-width: 1100px;
-		margin: 0 auto;
-		display: flex;
-		justify-content: center;
-		padding-top: 50px;
-		padding-bottom: 50px;
-	}
-	#l_ul {
-		float: left;
-	}
-	#l_li {
-		float: left;
-		width: 200px;
-		padding: 10px;
-	}
 	.topbar {
 		padding-top: 100px;
 		display: flex;
-		max-width: 1100px;
+		max-width: 1200px;
 		margin: 0 auto;
 		justify-content: space-between;
 		align-content: center;
@@ -154,7 +120,8 @@
 	</div>
 </div>
 </div>
-<div id="l_item">
+
+<div class="l_item">
 	<ul id="l_ul">
 	<div id="item">
 	</div>
@@ -204,10 +171,10 @@
 		
 		json.forEach(dto => {
         	
-			dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></div></label></a>'
+			dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
         	
     	});
@@ -255,10 +222,10 @@
     	json.forEach(dto => {
         	console.log(dto.image)
         	
-        	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></div></label></a>'
+        	dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
         	
     	});
@@ -280,10 +247,10 @@
     	json.forEach(dto => {
         	console.log(dto.image)
         	
-        	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></div></label></a>'
+        	dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
         	
     	});
@@ -316,14 +283,12 @@
             json.forEach(dto => {
             	console.log(dto.image)
             	
-            	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></div></label></a>'
+            dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
             	
-            /* const div = createElementFromData(dto)
-            l_item_js.appendChild(div) */
         	});
     		console.log(dom)
         	item.innerHTML = dom;
@@ -356,14 +321,12 @@
             json.forEach(dto => {
             	console.log(dto.image)
             	
-            	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></div></label></a>'
+            dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
             	
-            /* const div = createElementFromData(dto)
-            l_item_js.appendChild(div) */
         	});
     		console.log(dom)
         	item.innerHTML = dom;
@@ -398,14 +361,12 @@
             json.forEach(dto => {
             	console.log(dto.image)
             	
-            dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></div></label></a>'
+            dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
             	
-            /* const div = createElementFromData(dto)
-            l_item_js.appendChild(div) */
         	});
     		console.log(dom)
         	item.innerHTML = dom;
@@ -427,10 +388,10 @@
     	json.forEach(dto => {
         	console.log(dto.image)
         	
-        	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></div></label></a>'
+        	dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
         	
     	});

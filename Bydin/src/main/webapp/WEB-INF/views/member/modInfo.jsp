@@ -156,7 +156,7 @@ body, div, input {
 					</p>
 				</div>
 				<div class="login_right">
-					<input class="l_input" type="text" name="userid" placeholder="아이디"
+					<input class="l_input" type="text" name="userid" placeholder="아이디" readonly="readonly"
 						autocomplete="off" required id="userid" value="${login.userid }">
 					<span id="i_check"></span>
 				</div>
@@ -255,39 +255,10 @@ const userpw2 = document.querySelector('input[id="userpw2"]')
 const check = document.getElementById('i_check')
 const pwcheck = document.getElementById('p_check')
 const pwcheck2 = document.getElementById('p_check_to')
-const form = document.forms[0]
+const form = document.forms[1]
 const button = document.getElementById('l_submit')
 console.log(button)
 
-userid.addEventListener("focusout",async (event) => {
-	if((userid.value.length < 5)||(userid.value.length > 12))
-	  {
-			check.innerHTML = "아이디는 최소 5자 최대 12자 까지 가능합니다."
-			check.style.color = "red"
-			check.style.fontSize = "10pt"
-			check.style.fontWeight = "bold"
-	   return false;
-	  }
-	const url = '${cpath}/checkuserid?userid=' + userid.value
-	const opt = {
-			method : 'GET'
-	}
-	const resp = await fetch(url,opt)
-	const json = await resp.json()
-	if(json != 0){
-		check.innerHTML = "일치하는 아이디가 존재합니다."
-		check.style.color = "red"
-		check.style.fontSize = "10pt"
-		check.style.fontWeight = "bold"
-	}
-	else{
-		check.innerHTML = "사용가능한 아이디 입니다."
-		check.style.color = "#6667ab"
-		check.style.fontSize = "10pt"
-		check.style.fontWeight = "bold"
-	}
-	
-});
 
 userid.addEventListener("focusin",async (event) => {
 	check.innerHTML = ''

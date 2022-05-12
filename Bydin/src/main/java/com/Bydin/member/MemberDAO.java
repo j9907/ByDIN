@@ -20,8 +20,8 @@ public interface MemberDAO {
 	@Select("select * from member where idx=#{idx}")
 	public MemberDTO selectone(int idx);
 	
-	@Update("update member set userid=#{userid}, userpw=#{userpw}, username=#{username}, useremail=#{useremail}, phoneno=#{phoneno}, birth=#{birth}, gender=#{gender}, "
-			+ "postcode=#{postcode}, address=#{address}, detailAddress=#{detailAddress}, extraAddress=#{extraAddress}, where idx=#{idx}")
+	@Update("update member set userid=#{userid},userpw=#{userpw},username=#{username},useremail=#{useremail},phoneno=#{phoneno},birth=#{birth},gender=#{gender},"
+			+ "postcode=#{postcode},address=#{address},detailAddress=#{detailAddress},extraAddress=#{extraAddress} where idx=#{idx}")
 	public int modInfo(MemberDTO member);
 
 

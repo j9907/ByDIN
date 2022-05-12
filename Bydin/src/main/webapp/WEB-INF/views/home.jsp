@@ -2,31 +2,59 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 <style>
-	ul, li {
-		list-style: none;
-	}
-	.m_item_image{
-		width:270px;
-		display: flex;
-		justify-content: center;
-	}
-	.m_item_info p{
-		text-align: center;
-	}
-	#m_item {
-		display: flex;
-		justify-content: center;
-		padding-top: 100px;
-	}
-	#m_ul {
-		float: left;
-	}
-	#m_li {
-		float: left;
-		width: 300px;
-		padding: 2px;
-	}
-	
+ul, li {
+	list-style: none;
+}
+
+.l_m_item {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+}
+
+.l_m_item>p {
+	font-weight: bold;
+	font-size: 23px;
+}
+
+.l_m_item>#l_ul {
+	float: left;
+}
+
+.l_m_item>#l_ul>#item>#l_li {
+	float: left;
+	width: 250px;
+	height: 330px;
+	padding: 20px;
+}
+
+.l_m_item>#l_ul>#item>#l_li>a {
+	text-decoration: none;
+	color: black;
+	width: 200px;
+}
+
+.l_m_item>#l_ul>#item>#l_li>a>label>#l_img {
+	margin: 0 auto;
+	height: 250px;
+	border: 1px solid lightgray;
+	display: flex;
+	align-items: center;
+}
+
+.l_m_item>#l_ul>#item>#l_li>a>label>#l_img>img {
+	width: 190px;
+	height: 190px;
+	margin: 0 auto;
+	display: flex;
+}
+
+.l_m_item>#l_ul>#item>#l_li>a>label>#l_title {
+	height: 50px;
+	padding: 10px;
+}
+
 </style>
 <div id="main">
 
@@ -61,73 +89,83 @@
 
 	<!-- 메인페이지에 카테고리별 대표 이미지 띄우기 -->
 	<!-- 서재 -->
-	<div id="m_item">
-	<ul id="m_ul">
+	<div class="l_m_item">
+	<ul id="l_ul">
+	<div id="item">
 	<c:forEach items="${dto1 }" var="dto1" begin="0" end="3">
-		<li id="m_li">
-		<a id="h_a" href="${cpath }/item/itemview/${dto1.idx}"><label>
-			<div><img class="m_item_image" src="${cpath }/upload/${dto1.image}"></div>
-			<div class="m_item_info"><p>${dto1.name }</p></div>
+		<li id="l_li">
+		<a id="l_a" href="${cpath }/item/itemview/${dto1.idx}"><label>
+			<div id="l_img"><img src="${cpath }/upload/${dto1.image}"></div>
+			<div id="l_title"><p>${dto1.name }</p></div>
 		</label>
 		</a>
 		</li>
 	</c:forEach>
+	</div>
 	</ul>
 	</div>
 	
 	<!-- 침실 -->
-	<div id="m_item">
-	<ul id="m_ul">
+	<div class="l_m_item">
+	<ul id="l_ul">
+	<div id="item">
 	<c:forEach items="${dto2 }" var="dto2" begin="0" end="3">
-		<li id="m_li">
-		<a id="h_a" href="${cpath }/item/itemview/${dto2.idx}"><label>
-			<div><img class="m_item_image" src="${cpath }/upload/${dto2.image}"></div>
-			<div class="m_item_info"><p>${dto2.name }</p></div>
+		<li id="l_li">
+		<a id="l_a" href="${cpath }/item/itemview/${dto2.idx}"><label>
+			<div id="l_img"><img src="${cpath }/upload/${dto2.image}"></div>
+			<div id="l_title"><p>${dto2.name }</p></div>
 			</label></a>
 		</li>
 	</c:forEach>
+	</div>
 	</ul>
 	</div>
 	
 	<!-- 거실 -->
-	<div id="m_item">
-	<ul id="m_ul">
+	<div class="l_m_item">
+	<ul id="l_ul">
+	<div id="item">
 	<c:forEach items="${dto3 }" var="dto3" begin="0" end="3">
-		<li id="m_li">
-		<a id="h_a" href="${cpath }/item/itemview/${dto3.idx}"><label>
-			<div><img class="m_item_image" src="${cpath }/upload/${dto3.image}"></div>
-			<div class="m_item_info"><p>${dto3.name }</p></div>
+		<li id="l_li">
+		<a id="l_a" href="${cpath }/item/itemview/${dto3.idx}"><label>
+			<div id="l_img"><img src="${cpath }/upload/${dto3.image}"></div>
+			<div id="l_title"><p>${dto3.name }</p></div>
 			</label></a>
 		</li>
 	</c:forEach>
+	</div>
 	</ul>
 	</div>
 	
 	<!-- 주방 -->
-	<div id="m_item">
-	<ul id="m_ul">
+	<div class="l_m_item">
+	<ul id="l_ul">
+	<div id="item">
 	<c:forEach items="${dto4 }" var="dto4" begin="0" end="3">
-		<li id="m_li">
-		<a id="h_a" href="${cpath }/item/itemview/${dto4.idx}"><label>
-			<div><img class="m_item_image" src="${cpath }/upload/${dto4.image}"></div>
-			<div class="m_item_info"><p>${dto4.name }</p></div>
+		<li id="l_li">
+		<a id="l_a" href="${cpath }/item/itemview/${dto4.idx}"><label>
+			<div id="l_img"><img src="${cpath }/upload/${dto4.image}"></div>
+			<div id="l_title"><p>${dto4.name }</p></div>
 			</label></a>
 		</li>
 	</c:forEach>
+	</div>
 	</ul>
 	</div>
 	
 	<!-- 의자 -->
-	<div id="m_item">
-	<ul id="m_ul">
+	<div class="l_m_item">
+	<ul id="l_ul">
+	<div id="item">
 	<c:forEach items="${dto5 }" var="dto5" begin="0" end="3">
-		<li id="m_li">
-		<a id="h_a" href="${cpath }/item/itemview/${dto5.idx}"><label>
-			<div><img class="m_item_image" src="${cpath }/upload/${dto5.image}"></div>
-			<div class="m_item_info"><p>${dto5.name }</p></div>
+		<li id="l_li">
+		<a id="l_a" href="${cpath }/item/itemview/${dto5.idx}"><label>
+			<div id="l_img"><img src="${cpath }/upload/${dto5.image}"></div>
+			<div id="l_title"><p>${dto5.name }</p></div>
 			</label></a>
 		</li>
 	</c:forEach>
+	</div>
 	</ul>
 	</div>
 

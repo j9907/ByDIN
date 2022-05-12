@@ -73,7 +73,7 @@
 		width: 600px;
 		padding: 10px;
 	}
-	#i_mod_btn {
+	#i_mod_btn, #i_del_btn {
 		text-decoration: none;
 		padding: 15px;
         background-color: #6667ab;
@@ -159,11 +159,17 @@
 		
 		<div>
 		<div class="i_left">주소</div>
-		<div class="i_right">${login.useradd }</div>
+		<div class="i_right">${login.address } ${login.detailAddress }${login.extraAddress }</div>
 		</div>
 		
+		<div>
+		<div class="i_left">EMAIL</div>
+		<div class="i_right">${login.useremail }</div>
+		</div>
+
 	<div id="i_mod">
 		<a id="i_mod_btn" href="${cpath }/member/modInfo/${login.idx }">수정</a>
+		<a id="i_del_btn" onclick="del_check();">회원탈퇴</a>
 	</div>
 	</div>
 	
@@ -177,6 +183,14 @@ console.log(check.substr(0,11))
 // 	el.innerText = date
 check2.innerText = check.substr(0,11);
 	
+function del_check(){
+	let del = confirm('탈퇴하시겠습니까?')
+	if(del){
+		console.log('${cpath}/member/delMember/${login.idx}')
+		location.href = '${cpath}/member/delMember/${login.idx}'
+	}
+}
+
 
 </script>
 

@@ -256,7 +256,7 @@ const userpw2 = document.querySelector('input[id="userpw2"]')
 const check = document.getElementById('i_check')
 const pwcheck = document.getElementById('p_check')
 const pwcheck2 = document.getElementById('p_check_to')
-const form = document.forms[0]
+const form = document.forms[1]
 const button = document.getElementById('l_submit')
 console.log(button)
 

@@ -2,44 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 <style>
-	ul, li {
-		list-style: none;
-	}
-	.l_item_image{
-		width:190px;
-		display: flex;
-		justify-content: center;
-	}
-	.l_item_info{
-		display: flex;
-		justify-content: flex-start;
-	}
-	.l_item_info p{
-		height: 100px;
-		width: 180px;
-		font-size: 15px;
-		/* text-align: center; */
-	}
-	#l_item {
-		max-width: 1100px;
-		margin: 0 auto;
-		display: flex;
-		justify-content: center;
-		padding-top: 50px;
-		padding-bottom: 50px;
-	}
-	#l_ul {
-		float: left;
-	}
-	#l_li {
-		float: left;
-		width: 200px;
-		padding: 10px;
-	}
 	.topbar {
 		padding-top: 100px;
 		display: flex;
-		max-width: 1100px;
+		max-width: 1200px;
 		margin: 0 auto;
 		justify-content: space-between;
 		align-content: center;
@@ -126,30 +92,6 @@
 </style>
 
 
-<!-- topbar 구성 -->
-<!-- <div class="topbar"> -->
-<!-- <div class="topbar_left"> -->
-<!-- 	<div id="dropdown"> -->
-<!--         <button onclick="myfunction1()" class="dropbtn">서재</button> -->
-<!--         <div id="myDropdown1" class="dropdown-content"> -->
-<%--             <a href="${cpath}/item/studyroom">서재</a> --%>
-<%--             <a href="${cpath}/item/bedroom">침실</a> --%>
-<%--             <a href="${cpath}/item/livingroom">거실</a> --%>
-<%--             <a href="${cpath}/item/kichen">주방</a> --%>
-<%--             <a href="${cpath}/item/chair">의자</a> --%>
-<!--         </div> -->
-<!--     </div> -->
-
-<!-- 	<div id="dropdown"> -->
-<!-- 		<button onclick="myfunction2()" class="dropbtn">전체보기</button> -->
-<!-- 		<div id="myDropdown2" class="dropdown-content"> -->
-<%-- 			<a href="${cpath }">책상/테이블</a> --%>
-<%-- 			<a href="${cpath }">책장/선반장</a> --%>
-<%-- 			<a href="${cpath }">악세사리</a> --%>
-<!-- 		</div> -->
-<!-- 	</div> -->
-<!-- </div> -->
-
 
 <div class="topbar_right">
 	<div id="dropdown">
@@ -162,10 +104,10 @@
 		</div>
 	</div>
 </div>
-
-
 </div>
-<div id="l_item">
+
+
+<div class="l_item">
 	<ul id="l_ul">
 	<div id="item">
 	</div>
@@ -236,10 +178,10 @@
     	json.forEach(dto => {
         	console.log(dto.image)
         	
-        	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></a></label></div>'
+        	dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
         	
     	});
@@ -272,14 +214,12 @@
             json.forEach(dto => {
             	console.log(dto.image)
             	
-            	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></a></label></div>'
+            dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
             	
-            /* const div = createElementFromData(dto)
-            l_item_js.appendChild(div) */
         	});
     		console.log(dom)
         	item.innerHTML = dom;
@@ -312,14 +252,12 @@
             json.forEach(dto => {
             	console.log(dto.image)
             	
-            	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></a></label></div>'
+            dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
             	
-            /* const div = createElementFromData(dto)
-            l_item_js.appendChild(div) */
         	});
     		console.log(dom)
         	item.innerHTML = dom;
@@ -354,14 +292,12 @@
             json.forEach(dto => {
             	console.log(dto.image)
             	
-            	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></a></label></div>'
+            dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
             	
-            /* const div = createElementFromData(dto)
-            l_item_js.appendChild(div) */
         	});
     		console.log(dom)
         	item.innerHTML = dom;
@@ -383,10 +319,10 @@
     	json.forEach(dto => {
         	console.log(dto.image)
         	
-        	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></a></label></div>'
+        	dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
         	
     	});

@@ -49,7 +49,7 @@
             border: 1px solid lightgray;
         }
         .addSubmit {
-           padding: 15px;
+         padding: 15px;
          background-color: #6667ab;
          border: 0;
          border-radius: 50px;
