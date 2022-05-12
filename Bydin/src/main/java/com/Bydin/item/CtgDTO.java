@@ -40,7 +40,6 @@ public class CtgDTO {
 		}
 
 
-
 		public String getCtgRef() {
 			return ctgRef;
 		}

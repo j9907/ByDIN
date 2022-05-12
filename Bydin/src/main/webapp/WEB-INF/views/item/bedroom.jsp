@@ -2,44 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 <style>
-	ul, li {
-		list-style: none;
-	}
-	.l_item_image{
-		width:190px;
-		display: flex;
-		justify-content: center;
-	}
-	.l_item_info{
-		display: flex;
-		justify-content: flex-start;
-	}
-	.l_item_info p{
-		height: 100px;
-		width: 180px;
-		font-size: 15px;
-		/* text-align: center; */
-	}
-	#l_item {
-		max-width: 1100px;
-		margin: 0 auto;
-		display: flex;
-		justify-content: center;
-		padding-top: 50px;
-		padding-bottom: 50px;
-	}
-	#l_ul {
-		float: left;
-	}
-	#l_li {
-		float: left;
-		width: 200px;
-		padding: 10px;
-	}
 	.topbar {
 		padding-top: 100px;
 		display: flex;
-		max-width: 1100px;
+		max-width: 1200px;
 		margin: 0 auto;
 		justify-content: space-between;
 		align-content: center;
@@ -96,7 +62,6 @@
 	  	text-align: left;
 	  	font-size: 16px;
 	}
-
 	#h_a{
 		text-decoration: none;
 		color:inherit;
@@ -106,7 +71,6 @@
 	#h_a > label{
 		cursor:pointer;
 	}
-
 	
 	/* Change color of dropdown links on hover */
 	.dropdown-content a:hover {background-color: #ddd}
@@ -148,7 +112,7 @@
 	<div id="dropdown">
 		<button onclick="myfunction3()" class="dropbtn" id="btn">기본정렬순</button>
 		<div id="myDropdown3" class="dropdown-content">
-			<button href="#" id="basicbtn">기본정렬순</button>
+			<button href="#" id="basicbtn2">기본정렬순</button>
 			<button href="#" id="abcbtn">가나다순</button>
 			<button href="#" id="highbtn">높은가격순</button>
 			<button href="#" id="lowbtn">낮은가격순</button>
@@ -156,7 +120,8 @@
 	</div>
 </div>
 </div>
-<div id="l_item">
+
+<div class="l_item">
 	<ul id="l_ul">
 	<div id="item">
 	</div>
@@ -186,7 +151,39 @@
 	        }
 	    }
 	}
+	
+	const item = document.getElementById('item')
+   	const btn = document.getElementById('btn')
 
+    let dom = ''
+	
+
+    // filtering
+	const filterItem = document.querySelector('div#myDropdown2').addEventListener('click', async e => {
+		
+		const url = '${cpath}/filter?ctgcode2=' + e.target.value
+		const resp = await fetch(url)
+		const json = await resp.json()
+		
+		dom = '';
+		
+		
+		json.forEach(dto => {
+        	
+			dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
+        	dom += '</li>'
+        	
+    	});
+    	item.innerHTML = dom;
+	})
+	
+
+	
+	
+	
 	// lowPrice
 	function lowPrice(event){
         arr.sort((a, b) => {
@@ -203,20 +200,17 @@
         })
     }
 
-    const item = document.getElementById('item')
-   	const btn = document.getElementById('btn')
-
-    var dom = ""
     
     //basic_sort
-    const basicbtn = document.getElementById('basicbtn')
+    const basicbtn = document.getElementById('basic_btn')
+    const basicbtn2 = document.getElementById('basicbtn2')
     
     basicbtn.addEventListener("click", async (event) => {
     	
     	btn.innerText = ''
     	btn.innerText = '기본정렬순'
     	
-    	dom = ""
+    	dom = ''
     	const url = '${cpath}/item/dto2'
     	const opt = {
     			method: 'GET'
@@ -227,10 +221,35 @@
     	json.forEach(dto => {
         	console.log(dto.image)
         	
-        	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></a></label></div>'
+        	dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
+        	dom += '</li>'
+        	
+    	});
+    	item.innerHTML = dom;
+    })
+    basicbtn2.addEventListener("click", async (event) => {
+    	
+    	btn.innerText = ''
+    	btn.innerText = '기본정렬순'
+    	
+    	dom = ''
+    	const url = '${cpath}/item/dto2'
+    	const opt = {
+    			method: 'GET'
+    	}
+    	const resp = await fetch(url, opt)
+    	const json = await resp.json()
+    	console.log(json)
+    	json.forEach(dto => {
+        	console.log(dto.image)
+        	
+        	dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
         	
     	});
@@ -261,13 +280,13 @@
             return (a.name > b.name ? 1 : -1) * asc
         })
             json.forEach(dto => {
-            	console.log(dto.idx)
+            	console.log(dto.image)
             	
-            	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/' + dto.idx + '"><label>'
-            	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-            	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-            	dom += '<div><p>'+dto.price+'</p></a></lable></div>'
-            	dom += '</li>'
+            dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
+        	dom += '</li>'
             	
             /* const div = createElementFromData(dto)
             l_item_js.appendChild(div) */
@@ -303,11 +322,11 @@
             json.forEach(dto => {
             	console.log(dto.image)
             	
-            	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-            	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-            	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-            	dom += '<div><p>'+dto.price+'</p></a></lable></div>'
-            	dom += '</li>'
+            dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
+        	dom += '</li>'
             	
             /* const div = createElementFromData(dto)
             l_item_js.appendChild(div) */
@@ -345,11 +364,11 @@
             json.forEach(dto => {
             	console.log(dto.image)
             	
-            	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-            	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-            	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-            	dom += '<div><p>'+dto.price+'</p></a></lable></div>'
-            	dom += '</li>'
+            dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
+        	dom += '</li>'
             	
             /* const div = createElementFromData(dto)
             l_item_js.appendChild(div) */
@@ -374,10 +393,10 @@
     	json.forEach(dto => {
         	console.log(dto.image)
         	
-        	dom += '<li id="l_li"><a id="h_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
-        	dom += '<div><img class="l_item_image" src="${cpath }/upload/'+dto.image+'"></div>'
-        	dom += '<div class="l_item_info"><p id="l_item_name">'+dto.name+'</p></div>'
-        	dom += '<div><p>'+dto.price+'</p></a></lable></div>'
+        	dom += '<li id="l_li"><a id="l_a" href="${cpath}/item/itemview/'+dto.idx+'"><label>'
+        	dom += '<div id="l_img"><img src="${cpath }/upload/'+dto.image+'"></div>'
+        	dom += '<div id="l_title">'+dto.name+'</div>'
+        	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
         	
     	});

@@ -3,6 +3,8 @@ package com.Bydin.controller;
 import java.io.File;
 import java.io.IOException;
 import java.lang.annotation.Inherited;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.inject.Inject;
@@ -13,11 +15,13 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Bydin.Service.MemberService;
+import com.Bydin.Service.PurchaseService;
 import com.Bydin.member.MemberDTO;
 
 @Controller
@@ -26,6 +30,7 @@ public class MemberController {
 
 	@Autowired private MemberService ms;
 	@Inject BCryptPasswordEncoder pwdencoder;
+	@Autowired private PurchaseService ps;
 	
 	
 	@GetMapping("login")
@@ -92,5 +97,54 @@ public class MemberController {
 		return mav;
 	}
 	
+	
+	@GetMapping("mypage")
+	public ModelAndView cart(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		MemberDTO dto = (MemberDTO) session.getAttribute("login");
+		System.out.println(dto.getIdx());
+		List<HashMap<String, Object>> cartdto = ps.getCart(dto.getIdx());
+		System.out.println(cartdto);
+		
+		List<HashMap<String, Object>> orderdto = ps.getDetail(dto.getIdx());
+		mav.addObject("orderdto", orderdto);
+		System.out.println("orderdto : " + orderdto);
+		
+		List<HashMap<String, Object>> purchasedto = ps.getPurchase(dto.getIdx());
+		mav.addObject("purchasedto", purchasedto);
+		System.out.println("purchasedto : " + purchasedto);
+		
+		
+		mav.addObject("cartdto", cartdto);
+		return mav;
+	}
+	
+	@GetMapping("modInfo/{num}")
+	public ModelAndView modInfo(@PathVariable int num) {
+		ModelAndView mav = new ModelAndView("member/modInfo");
+		MemberDTO login = ms.selectone(num);
+		mav.addObject("login", login);
+		return mav;
+	}
+	
+	@PostMapping("modInfo/{num}")
+	public ModelAndView modInfo(@PathVariable int num, MemberDTO member, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		member.setIdx(num);
+		member.setUserpw(pwdencoder.encode(member.getUserpw()));
+		int row = ms.modInfo(member);
+		
+		MemberDTO dto = ms.selectuser(member.getUserid());
+		session.setAttribute("login", dto);
+		
+		mav.setViewName(row != 0 ? "redirect:/member/mypage" : "member/modInfo"+num);
+		return mav;
+	}
+	
+	@GetMapping("delMember/{num}")
+	public String delMember(@PathVariable int num) {
+		System.out.println("idx : "+num);
+		return "redirect:/member/delMember";
+	}
 	
 }

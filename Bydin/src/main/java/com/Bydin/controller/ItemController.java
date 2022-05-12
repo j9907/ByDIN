@@ -73,4 +73,12 @@ public class ItemController {
 		mav.addObject("item",item);
 		return mav;
 	}
+	
+	@GetMapping("dlt/{num}")
+	public String dlt(@PathVariable int num) {
+		int row = is.deleteItem(num);
+		return "redirect:/";
+	}
+	
+	
 }

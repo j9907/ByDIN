@@ -92,7 +92,7 @@
 		display: flex;
 	}
 	.but_btn{
-		width: 100%;
+		width: 50%;
 		padding:10px;
 		border:1px solid #6667ab;
 		background-color: #fff;
@@ -131,6 +131,17 @@
 	.dom_right2{
 		display: flex;
 	}
+	#moditem{
+		padding-top: 15px;
+	}
+	#mod{
+		padding: 5px;
+		text-decoration: none;
+		color: black;
+		border: 1px solid #666ab7;
+		border-radius: 10px;
+		cursor: pointer;
+	}
 	#btn_qu{
 		display: flex;
 		border:1px solid black;
@@ -165,7 +176,11 @@
 	<div class="item_text">
 		<div class="item_texts">
 			<p class="i_text">${item.name }</p>
-			
+			<div id="moditem">
+			<c:if test="${login.username == '관리자' }"><a id="mod" href="${cpath }/admin/modItem/${item.idx}">상품 수정</a></c:if>
+			<c:if test="${login.username == '관리자' }"><a id="mod" onclick="dlt();">상품 삭제</a></c:if>
+				
+			</div>
 		</div>
 		<div class="item_box">
 			<p class="i_price">${item.price }</p>
@@ -214,8 +229,8 @@
 			</div>
 			
 			<div class="buy_button">
-			<a href="${cpath }/buy/cart/${item.idx}" class="cart_a"><button class="but_btn">장바구니</button></a>
-			<button class="but_btn2">구매하기</button>
+			<button class="but_btn" id="cart">장바구니</button>
+			<button class="but_btn2" id="purchase">구매하기</button>
 			</div>
 		</div>
 	</div>
@@ -263,6 +278,51 @@
 			}
 			
 		});
+		
+		
+	const cart = document.getElementById('cart');
+		
+		cart.addEventListener('click', async e => {
+			if('${login.userid}' != ''){
+				const url = '${cpath}/cart?itemidx='+${item.idx}+'&member=' + ${login.idx} +'&totalprice='+text.innerText+'&count='+number.innerText
+				const resp = await fetch(url)
+				
+				if(confirm('상품이 담겼습니다\n장바구니로 이동하시겠습니까?')){
+					location.href='${cpath}/purchase/cart'
+				}
+			}else{
+				alert('로그인이 필요한 서비스입니다')
+				location.href='${cpath}/member/login'
+			}
+			
+			
+			
+		})
+		
+	const purchase = document.getElementById('purchase');
+		
+		purchase.addEventListener('click', async e => {
+			if('${login.userid}' != ''){
+				const url = '${cpath}/cart?itemidx='+${item.idx}+'&member=' + ${login.idx} +'&totalprice='+text.innerText+'&count='+number.innerText
+				const resp = await fetch(url)
+				
+				if(confirm('상품을 구매하시겠습니까?')){
+					location.href='${cpath}/purchase/buy'
+				}
+			}else{
+				alert('로그인이 필요한 서비스입니다')
+				location.href='${cpath}/member/login'
+			}
+		})
+		
+		
+		function dlt(){
+			let dlt = confirm('삭제하시겠습니까?')
+			if (dlt) {
+				location.href = '${cpath}/item/dlt/${item.idx}'
+			}
+		}
+		
 		
 		
 	
