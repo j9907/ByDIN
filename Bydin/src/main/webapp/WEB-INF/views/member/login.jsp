@@ -58,7 +58,8 @@ body,div,input{
 		alert(msg)
 		location.href='${cpath}/member/login'
 	}
-	if(msg === '로그인완료'){
+	
+	if(msg === '로그인 완료'){
 		location.href='${cpath}/'
 	}
 </script>

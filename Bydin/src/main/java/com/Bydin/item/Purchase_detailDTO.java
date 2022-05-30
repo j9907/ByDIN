@@ -2,13 +2,37 @@ package com.Bydin.item;
 
 public class Purchase_detailDTO {
 
-	private int idx, order_idx, item_idx, member_idx, item_price;
-	private String item_name, order_state, order_name, order_req, order_add;
+	private int idx, order_idx, item_idx, member_idx, item_price, order_postcode;
+	private String item_name, order_state, order_name, order_req, order_address, order_detailAddress, order_extraAddress;
 	
 	
 	
 	
 	
+	public int getOrder_postcode() {
+		return order_postcode;
+	}
+	public void setOrder_postcode(int order_postcode) {
+		this.order_postcode = order_postcode;
+	}
+	public String getOrder_address() {
+		return order_address;
+	}
+	public void setOrder_address(String order_address) {
+		this.order_address = order_address;
+	}
+	public String getOrder_detailAddress() {
+		return order_detailAddress;
+	}
+	public void setOrder_detailAddress(String order_detailAddress) {
+		this.order_detailAddress = order_detailAddress;
+	}
+	public String getOrder_extraAddress() {
+		return order_extraAddress;
+	}
+	public void setOrder_extraAddress(String order_extraAddress) {
+		this.order_extraAddress = order_extraAddress;
+	}
 	public String getItem_name() {
 		return item_name;
 	}
@@ -62,12 +86,6 @@ public class Purchase_detailDTO {
 	}
 	public void setOrder_req(String order_req) {
 		this.order_req = order_req;
-	}
-	public String getOrder_add() {
-		return order_add;
-	}
-	public void setOrder_add(String order_add) {
-		this.order_add = order_add;
 	}
 	
 	

@@ -215,11 +215,11 @@ body, div, input {
 				</div>
 				<div class="login_right">
 					<input class="l_input" type="text" id="sample6_postcode" name="postcode"
-						autocomplete="off" required placeholder="우편번호">
+						autocomplete="off" required value="${login.postcode }">
 					<input class="l_input" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input class="l_input" type="text" id="sample6_address" name="address" placeholder="주소"><br>
-					<input class="l_input" type="text" id="sample6_detailAddress" name="detailAddress" placeholder="상세주소">
-					<input class="l_input" type="text" id="sample6_extraAddress" name="extraAddress" placeholder="참고항목">
+					<input class="l_input" type="text" id="sample6_address" name="address" value="${login.address }"><br>
+					<input class="l_input" type="text" id="sample6_detailAddress" name="detailAddress" value="${login.detailAddress }">
+					<input class="l_input" type="text" id="sample6_extraAddress" name="extraAddress" value="${login.extraAddress }">
 				</div>
 			</div>
 			<div class="login_box">

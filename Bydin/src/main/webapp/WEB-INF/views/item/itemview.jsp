@@ -167,6 +167,32 @@
 	.cart_a{
 		width: 50%;
 	}
+	#i_bottom {
+		width: 1000px;
+		margin: 0 auto;
+		padding: 20px;
+	}
+	#infoTitle {
+		font-size: 20px;
+		font-weight: bold;
+		border-bottom: 1px solid lightgrey;
+		width: 1000px;
+		margin: 0 auto;
+		margin-bottom: 20px;
+		padding: 20px 0;
+	}
+	#i_bottom > div > img {
+		width: 900px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+	}
+	#i_bottom > .info {
+		width: 900px;
+		margin: 20px auto;
+		text-align: center;
+		
+	}
 </style>
 <div id="i_main">
 <div id="i_top">
@@ -208,15 +234,6 @@
 				</li>			
 			</ul>
 			<div class="i_select">
-<!-- 			<select class="i_select" id="selectBox">  -->
-<!-- 				<option value="">== 옵션 선택 ==</option> -->
-<%-- 				<option value="${item.idx }">${item.name }</option> --%>
-<!-- 			</select> -->
-<!-- 	<div class="dom_box2" id="dom_box2"> -->
-<%-- 		<p>${item.name}</p> --%>
-<!-- 		<div class="dom_right"> -->
-<!-- 		 <div id="btn_qu"><button id="min_btn">-</button><div id="result">1</div><button id="plus_btn">+</button></div> -->
-<!-- 		 </div></div> -->
 			</div>
 			<div id="dom_box"></div>
 			<div class="coin">
@@ -235,6 +252,16 @@
 		</div>
 	</div>
 </div>
+</div>
+<div id="i_bottom">
+	<div id="infoTitle">상세 설명</div>
+	<c:if test="${item.infoImg != null}">
+	<div><img src="${cpath }/upload/${item.infoImg}"></div>
+	<div class="info">${item.info}</div>
+	</c:if>
+	<c:if test="${item.infoImg == null }">
+		<div class="info">상세 설명이 없습니다</div>
+	</c:if>
 </div>
 <script>
 	var target = document.getElementById("selectBox");

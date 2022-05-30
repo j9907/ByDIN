@@ -132,7 +132,7 @@
 		</div>
 		<div class="m_v_info">
 			<div class="i_left">Address</div>
-			<div class="i_right">${memberdto.useradd }</div>
+			<div class="i_right">${memberdto.address } ${memberdto.detailAddress }${memberdto.extraAddress }</div>
 		</div>
 		<div class="m_v_info">
 			<div class="i_left">Birth</div>

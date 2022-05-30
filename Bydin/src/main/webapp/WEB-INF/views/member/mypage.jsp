@@ -80,9 +80,9 @@
         border: 0;
         border-radius: 50px;
         color: #fff;
-        margin: 20px 0 20px 0;
+        margin: 20px 5px;
         cursor: pointer;
-        width: 100px;
+        width: 120px;
         font-weight: bold;
         display: flex;
         justify-content: center;
@@ -123,7 +123,7 @@
 		</div>
 		<div class="order">
 			<div class="i_left">배송지</div>
-			<div class="i_right">${orderdto[0].ORDER_ADD }</div>
+			<div class="i_right">${orderdto[0].ORDER_ADDRESS } ${orderdto[0].ORDER_DETAILADDRESS }${orderdto[0].ORDER_EXTRAADDRESS }</div>
 		</div>
 		<div class="order">
 			<div class="i_left">배송 요청사항</div>
@@ -170,6 +170,9 @@
 	<div id="i_mod">
 		<a id="i_mod_btn" href="${cpath }/member/modInfo/${login.idx }">수정</a>
 		<a id="i_del_btn" onclick="del_check();">회원탈퇴</a>
+		<c:if test="${login.username == '관리자' }">
+			<a id="i_del_btn" href="${cpath }/admin/admin">관리자페이지</a>
+		</c:if>
 	</div>
 	</div>
 	
@@ -186,8 +189,8 @@ check2.innerText = check.substr(0,11);
 function del_check(){
 	let del = confirm('탈퇴하시겠습니까?')
 	if(del){
-		console.log('${cpath}/member/delMember/${login.idx}')
-		location.href = '${cpath}/member/delMember/${login.idx}'
+		console.log('${cpath}/member/del_member/${login.idx}')
+		location.href = '${cpath}/member/del_member/${login.idx}'
 	}
 }
 

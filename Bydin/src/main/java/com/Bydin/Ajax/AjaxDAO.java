@@ -37,9 +37,16 @@ public interface AjaxDAO {
 			+ "insert (member_idx, totalprice, order_state, totalcount, item_idx) values(#{member} ,#{totalprice},'장바구니',#{count}, #{itemidx})")
 	int insertCart(HashMap<String, Object> param);
 
-	@Insert("insert into purchase_detail (order_idx, item_name, item_stock, item_price, item_idx, order_state, member_idx) "
-			+ "select purchase.idx,totalgoods.name,totalgoods.stock,totalgoods.price,totalgoods.idx,'장바구니',purchase.member_idx from totalgoods,purchase " + 
-			"where totalgoods.idx = #{itemidx} and purchase.idx in (SELECT max(idx) FROM purchase group by idx) and rownum = 1 order by purchase.idx desc")
+	@Insert("insert into purchase_detail "
+			+ "(order_idx, item_name, item_stock, item_price, item_idx, order_state, "
+			+ "member_idx, order_name, order_postcode, order_address, order_detailaddress, order_extraaddress) "
+			+ "select purchase.idx,totalgoods.name,totalgoods.stock,totalgoods.price,totalgoods.idx,'장바구니',purchase.member_idx, "
+			+ "member.username, member.postcode, member.address, member.detailaddress, member.extraaddress "
+			+ "from totalgoods,purchase,member "
+			+ "where purchase.member_idx = member.idx "
+			+ "and totalgoods.idx = purchase.item_idx  "
+			+ "and purchase.idx in (SELECT max(idx) FROM purchase group by idx) "
+			+ "and rownum = 1 order by purchase.idx desc")
 	int insertDetail(HashMap<String, Object> param);
 
 }

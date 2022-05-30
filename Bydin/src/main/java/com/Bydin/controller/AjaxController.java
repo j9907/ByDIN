@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.Bydin.Ajax.AjaxService;
 import com.Bydin.Service.ItemService;
+import com.Bydin.Service.MemberService;
 import com.Bydin.Service.PurchaseService;
 import com.Bydin.board.ReplyDTO;
 import com.Bydin.item.CtgDTO;
@@ -27,6 +28,7 @@ public class AjaxController {
 	@Autowired private AjaxService as;
 	@Autowired private ItemService is;
 	@Autowired private PurchaseService ps;
+	@Autowired private MemberService ms;
 	
 	@GetMapping("checkuserid")
 	public int checkuserid(String userid) {
@@ -114,4 +116,11 @@ public class AjaxController {
 		if(row == 1) {int row2 = ps.deleteItem(num);}
 	}
 
+	@GetMapping("member/del_member/{num}")
+	public ModelAndView del_member(@PathVariable int num, HttpSession session) {
+		ModelAndView mav = new ModelAndView("member/delMember");
+		int row = ms.del_member(num);
+		session.invalidate();
+		return mav;
+	}
 }

@@ -42,7 +42,7 @@
         #slt{
            height: 25px;
         }
-        .add_right input {
+        .add_right input, .add_right textarea {
 /*             height: 40px; */
          	padding: 10px;
             width: 98%;
@@ -50,12 +50,12 @@
             border: 1px solid lightgray;
         }
         .addSubmit {
-           padding: 15px;
+         padding: 15px;
          background-color: #6667ab;
          border: 0;
          border-radius: 50px;
          color: #fff;
-         margin: 20px 0 20px 0;
+         margin: 100px 0 20px 0;
          cursor: pointer;
          width: 300px;
          font-weight: bold;
@@ -73,8 +73,10 @@
         #pre > p{
         	float: left;
         }
-        .infoTxt > input{
-           height: 500px;
+        .infoTxt > textarea{
+           min-height: 500px;
+           max-height: 100%;
+           width: 98%;
         }
     </style>
 
@@ -142,10 +144,12 @@
         	<div id="pre"><p>기존 이미지: ${item.infoImg }</p></div>
         	<input type="hidden" name="infoImg" value="${item.infoImg }">
            <div class="infoImg"><input name="file" type="file" accept="image/*"></div>
-           <div class="infoTxt"><input name="info" type="text" maxlength="2000" required value="${item.info }"></div>
+           <div class="infoTxt"><textarea name="info" rows="20" required>${item.info }</textarea></div>
         </div>
     </div>
+    <div>
     <input type="submit" value="등록" class="addSubmit">
+    </div>
 </form>
 </div>
 
@@ -178,6 +182,7 @@
       ctgs2.innerHTML = dom2;
 
    }
+   
 </script>
 
 <%@ include file="../footer.jsp"%>

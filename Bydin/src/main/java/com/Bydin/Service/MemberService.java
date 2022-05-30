@@ -27,5 +27,9 @@ public class MemberService {
 	public MemberDTO selectone(int idx) {
 		return dao.selectone(idx);
 	}
+
+	public int del_member(int num) {
+		return dao.del_member(num);
+	}
 	
 }

@@ -146,12 +146,12 @@
     	<p>배송지정보</p>
         <div class="add">
             <p>주소 입력</p>
-            <input class="l_input" type="text" id="sample6_postcode" name="postcode"
+            <input class="l_input" type="text" id="sample6_postcode" name="order_postcode"
 						autocomplete="off" required value="${login.postcode }">
 			<input class="l_input" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-			<input class="l_input" type="text" id="sample6_address" name="address" value="${login.address }"><br>
-			<input class="l_input" type="text" id="sample6_detailAddress" name="detailAddress" value="${login.detailAddress }">
-			<input class="l_input" type="text" id="sample6_extraAddress" name="extraAddress" value="${login.extraAddress }">
+			<input class="l_input" type="text" id="sample6_address" name="order_address" value="${login.address }"><br>
+			<input class="l_input" type="text" id="sample6_detailAddress" name="order_detailAddress" value="${login.detailAddress }">
+			<input class="l_input" type="text" id="sample6_extraAddress" name="order_extraAddress" value="${login.extraAddress }">
         </div>
         <div class="costMemo">
             <p>배송 메모 입력</p>

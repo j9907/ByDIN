@@ -22,7 +22,7 @@ public interface PurchaseDAO {
 	@Delete("delete from purchase where item_idx = #{num}")
 	int deleteItem(int num);
 
-	@Update("update purchase_detail set order_state='구매완료', order_name=#{1.order_name}, order_add=#{1.order_add}, order_req=#{1.order_req} where member_idx=#{0}")
+	@Update("update purchase_detail set order_state='구매완료', order_name=#{1.order_name}, order_postcode=#{1.order_postcode}, order_address=#{1.order_address}, order_detailAddress=#{1.order_detailAddress}, order_extraAddress=#{1.order_extraAddress}, order_req=#{1.order_req} where member_idx=#{0}")
 	int buying(int idx, Purchase_detailDTO dto);
 
 	@Select("select * from purchase_detail where member_idx=#{idx}")

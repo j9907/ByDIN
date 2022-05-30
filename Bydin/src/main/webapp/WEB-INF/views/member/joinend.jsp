@@ -28,6 +28,9 @@
 </style>
 <div id="m_join">
 <h1>회원가입이 완료되었습니다!</h1>
+<div>
 	<a href="${cpath }/"><button class="sign_btn">홈으로</button></a>
+	<a href="${cpath }/member/login"><button class="sign_btn">로그인</button></a>
+</div>
 </div>
 <%@ include file="../footer.jsp"%>

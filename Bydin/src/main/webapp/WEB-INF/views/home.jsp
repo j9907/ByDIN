@@ -62,20 +62,19 @@ ul, li {
     <div id="m_slider">
     <div id="m_slider_frame">
         <div class="slider_item">
-        	<img src="https://admin.dodot.co.kr/data/main_banner/18/bc123e19b0f5919e65a12ab1d52a5fc9.jpg">
-        	<div>슬라이드 이미지 1</div>
+        	<a href="${cpath }/item/studyroom"><img src="${cpath }/resources/img/main_slider/slide_studyroom.jpg"></a>
         </div>
         <div class="slider_item">
-        	<img src="https://admin.dodot.co.kr/data/main_banner/18/d71bec32f018b5f2b4c18b88a3d28098.jpg">
-        	<div>슬라이드 이미지 2</div>
+        	<a href="${cpath }/item/bedroom"><img src="${cpath }/resources/img/main_slider/slide_bedroom.jpg"></a>
         </div>
         <div class="slider_item">
-        	<img src="https://admin.dodot.co.kr/data/main_banner/18/d6d3f558a12a03dd25e3ecbf87168d49.jpg">
-        	<div>슬라이드 이미지 3</div>
+        	<a href="${cpath }/item/livingroom"><img src="${cpath }/resources/img/main_slider/slide_livingroom.jpg"></a>
         </div>
         <div class="slider_item">
-        	<img src="https://admin.dodot.co.kr/data/main_banner/18/39cc3a0f887e9e213879e46f1e36481c.jpg">
-        	<div>슬라이드 이미지 4</div>
+        	<a href="${cpath }/item/kichen"><img src="${cpath }/resources/img/main_slider/slide_kichen.png"></a>
+        </div>
+        <div class="slider_item">
+        	<a href="${cpath }/item/chair"><img src="${cpath }/resources/img/main_slider/slide_chair.png"></a>
         </div>
     </div>
     </div>

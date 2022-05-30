@@ -9,7 +9,6 @@ public class MemberDTO {
 	
 	
 	
-	
 	public int getPostcode() {
 		return postcode;
 	}

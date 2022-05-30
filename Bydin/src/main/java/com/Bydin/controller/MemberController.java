@@ -45,7 +45,7 @@ public class MemberController {
 			System.out.println(pwdMatch);
 			session.setAttribute("login", dto != null && pwdMatch == true ? dto : null);
 			}
-		mav.addObject("msg",session.getAttribute("login") == null ? "아이디 또는 비밀번호가 잘못되었습니다." : "로그인완료");
+		mav.addObject("msg",session.getAttribute("login") == null ? "아이디 또는 비밀번호가 잘못되었습니다." : "로그인 완료");
 //		mav.setViewName(session.getAttribute("login") == null && dto == null  ? "redirect:/member/login" : "redirect:/");
 		return mav;
 	}
@@ -141,10 +141,6 @@ public class MemberController {
 		return mav;
 	}
 	
-	@GetMapping("delMember/{num}")
-	public String delMember(@PathVariable int num) {
-		System.out.println("idx : "+num);
-		return "redirect:/member/delMember";
-	}
+	
 	
 }
