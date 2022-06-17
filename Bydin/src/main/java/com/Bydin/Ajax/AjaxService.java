@@ -39,11 +39,4 @@ public class AjaxService {
 		System.out.println("row2 : " + row2);
 		return row1;
 	}
-
-//	public int modCart(int idx, HashMap<String, Object> param) {
-//		return dao.modCart(idx, param);
-//	}
-
-	
-
 }

@@ -80,7 +80,7 @@
         }
     </style>
 
-<h3>상품 등록</h3>
+<h3>상품 수정</h3>
 <div id="add">
 <form method="POST" enctype="multipart/form-data">
 

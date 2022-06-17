@@ -76,14 +76,12 @@ public class AjaxController {
 	}
 	@GetMapping("ctg")
 	public List<CtgDTO> ctgdto(@RequestParam HashMap<String, Object> param){
-//		System.out.println(param);
 		List<CtgDTO> list = as.getCtg(param);
 		return list;
 	}
 	
 	@GetMapping("filter")
 	public List<TotalGoodsDTO> fltdto(@RequestParam HashMap<String, Object> param){
-//		System.out.println(param);
 		List<TotalGoodsDTO> list = as.getflt(param);
 		return list;
 	}

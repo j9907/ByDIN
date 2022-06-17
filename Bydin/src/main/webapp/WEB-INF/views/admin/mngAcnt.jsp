@@ -104,11 +104,10 @@ a{
 	outline: none;
 }
 </style>
-	<h3>회원 관리</h3>
+<h3>회원 관리</h3>
 	
-	<table id="memberList">
+<table id="memberList">
 <thead>
-
 	<tr>
 		<td class="m_idx">회원번호</td>
 		<td class="m_id">아이디</td>
@@ -138,9 +137,9 @@ a{
 			<td class="m_date">${list.joindate }</td>
 		</tr>
 	</c:forEach>
-
 </tbody>	
 </table>
+
 <div class="paging">
 		<c:if test="${prev }">
 			<a href="${cpath }/qna/board/${begin - 1}/"
@@ -162,7 +161,7 @@ a{
 		</c:if>
 	</div>
 <div class="b_btn">
-	<a href="${cpath }/qna/write"><button>새글쓰기</button></a>
+	<a id="i_del_btn" href="${cpath }/admin/admin"><button>관리자 페이지</button></a>
 </div>
 </div>
 <script>
@@ -171,15 +170,6 @@ a{
 		const date = (el.innerText).substr(0,11);
 		el.innerText = date
 	});
-	const answer = document.querySelectorAll('td[id^="b_answer"]')
-	answer.forEach((el,i) => {
-		if(el.innerText == 0){
-			el.innerText = "답변 미완료"
-		}
-		else{
-			el.innerText = "답변 완료"
-		}
-	})
 </script>
 
 <%@ include file="../footer.jsp"%>

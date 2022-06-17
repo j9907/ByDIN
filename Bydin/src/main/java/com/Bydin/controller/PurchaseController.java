@@ -25,9 +25,6 @@ public class PurchaseController {
 
 	@Autowired private PurchaseService ps;
 	
-//	@GetMapping("cart")
-//	public void cart() {}
-	
 	@RequestMapping(value = {"cart", "buy"})
 	public ModelAndView cart(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -45,13 +42,9 @@ public class PurchaseController {
 	@PostMapping("buying/{num}")
 	public ModelAndView buying(@PathVariable("num") int idx, Purchase_detailDTO dto) {
 		ModelAndView mav = new ModelAndView("redirect:/member/mypage");
-//		System.out.println("dto: "+dto.getOrder_name());
 		
 		int row = ps.buying(idx, dto);
 		
-		System.out.println("row:" + row);
-		
-
 		return mav;
 	}
 	

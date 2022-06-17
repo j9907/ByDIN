@@ -239,6 +239,5 @@ p.replydate {
 		rep.innerHTML = dom;
 	}
 	main();
-	
-	</script>
+</script>
 <%@ include file="../footer.jsp"%>

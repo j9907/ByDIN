@@ -181,9 +181,7 @@
 <script>
 var check = document.getElementById('orderdate').innerText;
 var check2 = document.getElementById('orderdate');
-// check.substr(0,11);
 console.log(check.substr(0,11))
-// 	el.innerText = date
 check2.innerText = check.substr(0,11);
 	
 function del_check(){
@@ -193,8 +191,6 @@ function del_check(){
 		location.href = '${cpath}/member/del_member/${login.idx}'
 	}
 }
-
-
 </script>
 
 <%@ include file="../footer.jsp"%>

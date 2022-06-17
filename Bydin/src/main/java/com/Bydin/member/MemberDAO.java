@@ -28,5 +28,4 @@ public interface MemberDAO {
 	@Delete("delete member where idx = #{num}")
 	public int del_member(int num);
 
-
 }

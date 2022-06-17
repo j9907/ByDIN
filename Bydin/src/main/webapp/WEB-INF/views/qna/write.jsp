@@ -266,11 +266,7 @@ img#preview_img{
 	const preview_image = document.getElementById("preview_img")
 	console.log(preview_image)
 	inputImage.addEventListener('change', function(e) {	
-		
-// 		parent.nextSibling.remove();
 		setThumbnail(e);
-// 		document.querySelector("div.upload-display").removeChild();
-		
 	})
 
 	function setThumbnail(event) { 
@@ -278,8 +274,7 @@ img#preview_img{
 		reader.onload = function(event) { 
 			preview_image.setAttribute("src", event.target.result);
 			document.querySelector("div#image_preview").appendChild(img); }; 
-			reader.readAsDataURL(event.target.files[0]); }
-
+		reader.readAsDataURL(event.target.files[0]); }
 
 </script>
 <%@ include file="../footer.jsp"%>

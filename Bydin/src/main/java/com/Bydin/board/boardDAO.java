@@ -41,5 +41,4 @@ public interface boardDAO {
 
 	@Update("update qna set anwercheck = 1 where idx = #{num}")
 	public int updateanswer(int num);
-
 }

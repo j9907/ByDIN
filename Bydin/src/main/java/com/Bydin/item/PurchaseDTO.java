@@ -3,7 +3,6 @@ package com.Bydin.item;
 import java.sql.Date;
 
 public class PurchaseDTO {
-//totalgoods.image, purchase_detail.item_name, purchase_detail.item_price, purchase.totalprice, purchase.totalcount
 	private String image, item_name, order_state;
 	private int item_price, totalprice, totalcount;
 	private Date orderdate;

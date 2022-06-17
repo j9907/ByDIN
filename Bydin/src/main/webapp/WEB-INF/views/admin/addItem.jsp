@@ -93,23 +93,22 @@
     <div id="addList">
         <div class="add_left"><p>카테고리</p></div>
         <div class="add_right ctg_right">
-        <div class="ctg" id="ctg_1st">
-        <select name="ctgcode1" id="ctgCode1" class="slt">
-           <option value="">===대분류===</option>
-           <option value="1-01">서재</option>
-           <option value="1-02">침실</option>
-           <option value="1-03">거실</option>
-           <option value="1-04">주방</option>
-           <option value="1-05">의자</option>
-        </select>
-        </div>
-        
-      <div class="ctg" id="ctg_2nd" class="slt">
-      <select name="ctgcode2" id="ctgCode2">
-         <option>===소분류===</option>
-      </select></div>
-      </div>
-
+	        <div class="ctg" id="ctg_1st">
+	        <select name="ctgcode1" id="ctgCode1" class="slt">
+	           <option value="">===대분류===</option>
+	           <option value="1-01">서재</option>
+	           <option value="1-02">침실</option>
+	           <option value="1-03">거실</option>
+	           <option value="1-04">주방</option>
+	           <option value="1-05">의자</option>
+	        </select>
+	        </div>
+	        
+	    	<div class="ctg" id="ctg_2nd" class="slt">
+	      	<select name="ctgcode2" id="ctgCode2">
+	        <option>===소분류===</option>
+	      	</select></div>
+      	</div>
     </div>
         
     <div id="addList">

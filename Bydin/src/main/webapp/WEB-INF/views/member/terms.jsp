@@ -81,8 +81,7 @@ input[type="checkbox"]:checked + label.l_b {
 <div id="m_terms">
 	<h1 id="l_title">약관동의</h1>
 	<div class="s_check_title">
-		<p class="s_title">Bydin 쇼핑몰 이용약관과 개인정보 수집 및 이용에 동의를 하셔야 회원가입이
-			가능합니다.</p>
+		<p class="s_title">Bydin 쇼핑몰 이용약관과 개인정보 수집 및 이용에 동의를 하셔야 회원가입이 가능합니다.</p>
 	</div>
 	<div id="all_terms">
 		<div id="top_terms">

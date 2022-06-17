@@ -129,7 +129,6 @@ h3{
 <h3>문의 게시판</h3>
 <table id="boardList">
 <thead>
-
 	<tr>
 		<td class="boardw">글번호</td>
 		<td class="boardt" colspan="2">제목</td>
@@ -159,29 +158,28 @@ h3{
 			<td class="boardy" id="b_answer">${list.anwercheck}</td>
 		</tr>
 	</c:forEach>
-
 </tbody>	
 </table>
 <div class="paging">
-		<c:if test="${prev }">
-			<a href="${cpath }/qna/board/${begin - 1}/"
-			   style="display: inline; color:#6667ab; font-size:12pt;">◀</a>
+	<c:if test="${prev }">
+		<a href="${cpath }/qna/board/${begin - 1}/"
+		   style="display: inline; color:#6667ab; font-size:12pt;">◀</a>
+	</c:if>
+	<c:forEach var="page" begin="${begin }" end="${end }">
+		<c:if test="${nowPage == page }">
+			<b style="border-bottom:1px solid #6667ab">[${page }]</b>
 		</c:if>
-		<c:forEach var="page" begin="${begin }" end="${end }">
-			<c:if test="${nowPage == page }">
-				<b style="border-bottom:1px solid #6667ab">[${page }]</b>
-			</c:if>
-			<c:if test="${not (nowPage == page) }">
-				<a id="searchLisk" style="display: inline; color:#6667ab; font-size:12pt;" href="${cpath }/qna/board/${page}">
-					[${page }] </a>
-			</c:if>
-		</c:forEach>
-		
-		<c:if test="${next }">
-			<a href="${cpath }/qna/board/${end + 1}"
-			   style="display: inline; color:#6667ab; font-size:12pt;">▶</a>
+		<c:if test="${not (nowPage == page) }">
+			<a id="searchLisk" style="display: inline; color:#6667ab; font-size:12pt;" href="${cpath }/qna/board/${page}">
+				[${page }] </a>
 		</c:if>
-	</div>
+	</c:forEach>
+	
+	<c:if test="${next }">
+		<a href="${cpath }/qna/board/${end + 1}"
+		   style="display: inline; color:#6667ab; font-size:12pt;">▶</a>
+	</c:if>
+</div>
 <div class="b_btn">
 	<a href="${cpath }/qna/write"><button>새글쓰기</button></a>
 </div>

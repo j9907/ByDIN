@@ -132,7 +132,6 @@
 </div>
 
 <script>
-
 let total = 0
 let totalprice = document.querySelectorAll('div#totalprice')
 totalprice.forEach(ch => total += parseInt(ch.innerText))
@@ -142,32 +141,6 @@ total_price.innerText = total + ' 원'
 
 function buy(){
 	location.href='${cpath}/purchase/buy'
-	
-	
-// 	console.log('${cartdto[0].ORDER_STATE}')
-// 	console.log('${fn:length(cartdto) - 1}')
-// 	for(let i=0; i<${fn:length(cartdto)}; i++){
-// 	if(${cartdto == null || cartdto[i].ORDER_STATE == '구매완료'}){
-// 		alert('구매할 상품이 없습니다')
-// 		break;
-// 	}else{
-// 	location.href = '${cpath}/purchase/buy'
-// 	}
-
-// 	switch('${cartdto[i].ORDER_STATE}'){
-// 	case (''):
-// 		alert('구매할 상품이 없습니다');
-// 		break;
-// 	case ('구매완료'):
-// 		alert('구매할 상품이 없습니다');
-// 		break;
-// 	case ('장바구니'):
-// 		location.href='${cpath}/purchase/buy'
-// 		break;
-	
-// 	}
-
-// 	}
 }
 
 let delbtn = parseInt(document.getElementById('delbtn').dataset.idx);
@@ -182,10 +155,6 @@ async function del(event){
 	}
 	location.reload();
 }
-
-
-	
-	
 </script>
 
 

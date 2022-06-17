@@ -87,6 +87,4 @@ public class MemberDTO {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
-	
 }

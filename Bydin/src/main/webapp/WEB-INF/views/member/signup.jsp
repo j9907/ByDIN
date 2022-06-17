@@ -258,7 +258,6 @@ const pwcheck = document.getElementById('p_check')
 const pwcheck2 = document.getElementById('p_check_to')
 const form = document.forms[1]
 const button = document.getElementById('l_submit')
-console.log(button)
 
 userid.addEventListener("focusout",async (event) => {
 	if((userid.value.length < 5)||(userid.value.length > 12))

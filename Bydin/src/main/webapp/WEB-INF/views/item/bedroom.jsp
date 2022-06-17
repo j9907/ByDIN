@@ -288,8 +288,6 @@
         	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
             	
-            /* const div = createElementFromData(dto)
-            l_item_js.appendChild(div) */
         	});
     		console.log(dom)
         	item.innerHTML = dom;
@@ -328,8 +326,6 @@
         	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
             	
-            /* const div = createElementFromData(dto)
-            l_item_js.appendChild(div) */
         	});
     		console.log(dom)
         	item.innerHTML = dom;
@@ -370,8 +366,6 @@
         	dom += '<div id="l_price">'+dto.price+' 원</div></label></a>'
         	dom += '</li>'
             	
-            /* const div = createElementFromData(dto)
-            l_item_js.appendChild(div) */
         	});
     		console.log(dom)
         	item.innerHTML = dom;

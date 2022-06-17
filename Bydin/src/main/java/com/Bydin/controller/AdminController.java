@@ -38,8 +38,10 @@ public class AdminController {
 	
 	@GetMapping("addItem")
 	public void addItem() {	}
+	
 	@GetMapping("mngReply")
 	public void mngReply() { }
+	
 	@GetMapping("modItem/{num}")
 	public ModelAndView modItem(@PathVariable int num) {
 		ModelAndView mav = new ModelAndView("admin/modItem");
@@ -90,15 +92,11 @@ public class AdminController {
 		ArrayList<String> dtoname = new ArrayList<String>();
 		dtoname.add(dto.getImage());
 		dtoname.add(dto.getInfoImg());
-//		System.out.println("dto:" + dtoname);
-//		System.out.println("upload:" + upload);
 		
 		for(MultipartFile f : upload) {
-//			System.out.println("ori" + f.getOriginalFilename());
 			filename.add(f.getOriginalFilename());
 			cnt = as.upload(f);
 		}
-//		System.out.println("filename:" + filename);
 		dto.setImage(filename.get(0));
 		dto.setInfoImg(filename.get(1));
 		

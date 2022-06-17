@@ -109,7 +109,6 @@
 <div class="v_info">
 	<p id="i_p">회원 정보</p>
 	<div>
-		
 		<div class="m_v_info">
 			<div class="i_left">ID</div>
 			<div class="i_right">${memberdto.userid }</div>
@@ -138,8 +137,6 @@
 			<div class="i_left">Birth</div>
 			<div class="i_right">${memberdto.birth }</div>
 		</div>
-		
-		
 	</div>
 </div>
 
@@ -174,7 +171,7 @@
 		</div>
 		<div class="m_v_info">
 			<div class="i_left">배송지</div>
-			<div class="i_right">${detaildto[0].order_add }</div>
+			<div class="i_right">${detaildto[0].order_address } ${detaildto[0].order_detailAddress }${detaildto[0].order_extraAddress }</div>
 		</div>
 		<div class="m_v_info">
 			<div class="i_left">배송 요청사항</div>

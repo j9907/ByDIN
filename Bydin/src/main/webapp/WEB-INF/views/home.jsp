@@ -188,50 +188,6 @@ ul, li {
         	}
         	move();
         	setInterval(move, 5000);
-        	
-//             const slideHandler = () => {
-//              document.querySelectorAll('.slider_item').forEach( (element) => {
-//                 element.style.transition = '';
-//                 element.style.transform = 'translate3d(0px, 0px, 0px)';
-               
-//              })
-//              document.querySelectorAll('.previous').forEach( (element) => {
-                 
-//                 document.querySelector('.previous').style.transform = 'translate3d(-900px, 0px, 0px)';
-//             document.querySelector('.showing').style.transform = 'translate3d(900px, 0px, 0px)';
-//             })
-//          }
-
-//         firstSlide = document.querySelector('.slider_item:first-child');   // 첫번째 자식 노드 선택
-//         lastSlide = document.querySelector('.slider_item:last-child');     // 마지막 자식 노드 선택
-
-//         function slide() {
-//             slideHandler();          // 선택된 방식으로 이미지 변환 결정
-
-
-//             const currentSlide = document.querySelector('.showing');
-//             const previousSlide = document.querySelector('.previous');
-//             if(currentSlide) {
-//                 currentSlide.classList.remove('showing');
-//                 currentSlide.classList.add('previous');
-//                 const nextSlide = currentSlide.nextElementSibling;
-//                 if(nextSlide) {
-//                     nextSlide.classList.add('showing');
-//                 }
-//                 else {
-//                     firstSlide.classList.add('showing');
-//                 }
-//             }
-//             else {  // 첫번째 실행 때 지정된 클래스가 없으면 부여함
-//                 firstSlide.classList.add('showing');
-//                 lastSlide.classList.add('previous');
-//             }
-//             if(previousSlide) {
-//                 previousSlide.classList.remove('previous');
-//             }
-//         }
-//         slide();
-//         setInterval(slide, 5000);
         })
     </script>
 

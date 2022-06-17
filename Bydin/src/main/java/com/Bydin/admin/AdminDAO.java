@@ -35,7 +35,8 @@ public interface AdminDAO {
 	@Select("select count(*) from member")
 	int selectCount(BoardPaging paging);
 
-	@Select("select * from (select rownum as st, A.* from (select * from member order by idx desc) A where rownum <= #{last}) where st >= #{first} order by st desc")
+	@Select("select * from (select rownum as st, A.* from (select * from member order by idx desc) A where rownum <= #{last}) "
+			+ "where st >= #{first} order by st desc")
 	List<MemberDTO> selectMember(BoardPaging paging);
 
 	@Select("select * from member where idx=#{num}")

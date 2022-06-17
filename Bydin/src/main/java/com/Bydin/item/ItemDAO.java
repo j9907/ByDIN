@@ -38,6 +38,5 @@ public interface ItemDAO {
 
 	@Select("select * from totalgoods where name like '%${value}%'")
 	List<TotalGoodsDTO> searchItem(String search);
-
 	
 }

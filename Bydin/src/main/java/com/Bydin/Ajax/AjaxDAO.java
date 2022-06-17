@@ -48,7 +48,6 @@ public interface AjaxDAO {
 			+ "and purchase.idx in (SELECT max(idx) FROM purchase group by idx) "
 			+ "and rownum = 1 order by purchase.idx desc")
 	int insertDetail(HashMap<String, Object> param);
-
 }
 
 

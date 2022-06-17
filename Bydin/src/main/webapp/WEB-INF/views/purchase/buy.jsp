@@ -186,7 +186,6 @@
     </div>
 	<hr>
 	
-	
     <div class="payInfo">
     	<p>결제정보</p>
         <div id="total_price"></div>
@@ -194,10 +193,7 @@
     </div>
     <hr>
     
-    
     <input type="submit" class="btn" value="결제하기">
-    
-    
     </form>
     </div>
     
@@ -207,7 +203,6 @@
 let total = 0
 let totalprice = document.querySelectorAll('div#totalprice')
 totalprice.forEach(ch => total += parseInt(ch.innerText))
-// console.log(total)
 
 let total_price = document.getElementById('total_price')
 total_price.innerText = '상품금액 : ' + total + ' 원'

@@ -34,13 +34,10 @@ public class HomeController {
 	
 	@GetMapping("search")
 	public ModelAndView search(String search) {
-		System.out.println(search);
 		ModelAndView mav = new ModelAndView("search");
 		List<TotalGoodsDTO> dto = is.searchItem(search);
 		mav.addObject("dto", dto);
-		System.out.println(dto);
 		
 		return mav;
 	}
-	
 }

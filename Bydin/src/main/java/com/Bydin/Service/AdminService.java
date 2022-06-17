@@ -93,6 +93,4 @@ public class AdminService {
 	public List<Purchase_detailDTO> selectDetail(int num) {
 		return dao.selectDetail(num);
 	}
-	
-	
 }
